@@ -1,7 +1,7 @@
-# Moltqa-Al-Quran-Backend Software Project
+# Al-Huda-Academy-Backend Software Project
 ![moltqa](https://github.com/user-attachments/assets/78dec6ef-b4e5-45cc-bc80-66714b81d1ef)
 
-This is a Node.js API project for Moltqa Al-Quran, developed as part of a software graduation project. The platform offers advanced features for Quran recitation and exploration, including the Login Page, Home Page, Search Results for Quranic Surahs and Verses, Detailed Surah Explanations, Secure Account Management, an Admin Panel for managing users and Quranic content, etc.
+This is a Node.js API project for Al-Huda-Academy, developed as part of a software graduation project. The platform offers advanced features for Quran recitation and exploration, including the Login Page, Home Page, Search Results for Quranic Surahs and Verses, Detailed Surah Explanations, Secure Account Management, an Admin Panel for managing users and Quranic content, etc.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ This is a Node.js API project for Moltqa Al-Quran, developed as part of a softwa
 
 ## Overview
 
-The **Moltqa-Al-Quran-Backend** project is a Node.js API designed to support an advanced Quran recitation and exploration platform. This application allows users to access, search, and explore Quranic content while providing a secure, user-friendly interface.
+The **Al-Huda-Academy-Backend** project is a Node.js API designed to support an advanced Quran recitation and exploration platform. This application allows users to access, search, and explore Quranic content while providing a secure, user-friendly interface.
 
 ## Features
 
@@ -37,7 +37,7 @@ To install the project and its dependencies, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/DiaaHSharqawi/Moltqa-Al-Quran-Backend.git
+    git clone https://github.com/DiaaHSharqawi/Al-Huda-Academy-Backend.git
     ```
 
 ## Architecture
