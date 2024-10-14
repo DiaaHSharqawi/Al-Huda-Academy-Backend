@@ -4,18 +4,19 @@ const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
     winston.format.timestamp(),
-    winston.format.printf(({ timestamp, level, message }) => {
+    winston.format.printf(({ timestamp, level, message, ...meta }) => {
       return (
         JSON.stringify(
           {
             timestamp,
             level,
             message,
+            ...(meta && Object.keys(meta).length ? { data: meta } : {}), // Add additional data if present
           },
           null,
           2
         ) + "\n"
-      ); // Add a newline character for spacing
+      );
     })
   ),
   transports: [

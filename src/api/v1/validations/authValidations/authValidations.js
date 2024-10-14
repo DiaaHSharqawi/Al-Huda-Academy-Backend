@@ -21,9 +21,9 @@ const registerSchema = Joi.object({
   lastName: Joi.string().required().messages({
     "string.empty": "Last name is required.",
   }),
-  birthdate: Joi.string().required().messages({
-    "string.empty": "Birthdate is required.",
-  }),
+  //birthdate: Joi.string().required().messages({
+  //"string.empty": "Birthdate is required.",
+  //}),
   phone: Joi.string()
     .pattern(/^\d{10}$/)
     .required()
