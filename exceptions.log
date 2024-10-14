@@ -1,0 +1,12 @@
+{
+  "timestamp": "2024-10-14T09:38:26.398Z",
+  "level": "error",
+  "message": "uncaughtException: validateRegisterData is not defined\nReferenceError: validateRegisterData is not defined\n    at file:///C:/Users/PAVILION/Documents/al_huda_academy_software_project/al_huda_academy_backend/src/api/v1/validations/authValidations/authValidations.js:42:37\n    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)\n    at async loadESM (node:internal/process/esm_loader:28:7)\n    at async handleMainPromise (node:internal/modules/run_main:113:12)"
+}
+
+{
+  "timestamp": "2024-10-14T09:38:31.956Z",
+  "level": "error",
+  "message": "uncaughtException: validateRegisterData is not defined\nReferenceError: validateRegisterData is not defined\n    at file:///C:/Users/PAVILION/Documents/al_huda_academy_software_project/al_huda_academy_backend/src/api/v1/validations/authValidations/authValidations.js:42:37\n    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)\n    at async loadESM (node:internal/process/esm_loader:28:7)\n    at async handleMainPromise (node:internal/modules/run_main:113:12)"
+}
+

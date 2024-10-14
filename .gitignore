@@ -1,2 +1,8 @@
 .env
 node_modules
+
+# Logs
+*.log         # Exclude all log files
+error.log     # Specific log file (if needed)
+exceptions.log # Specific exception log file (if needed)
+rejections.log  # Specific rejection log file (if needed)
