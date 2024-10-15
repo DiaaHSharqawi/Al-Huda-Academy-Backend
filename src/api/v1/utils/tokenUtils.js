@@ -6,7 +6,7 @@ dotenv.config();
 const tokenUtils = {
   generateAccessToken: (userId) => {
     const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
-    const accessTokenExpiration = process.env.ACCESS_TOKEN_SECRET_EXPIRATION; // Expiration time for the token
+    const accessTokenExpiration = process.env.ACCESS_TOKEN_SECRET_EXPIRATION;
     const accessToken = jwt.sign(
       { UserInfo: { id: userId } },
       accessTokenSecret,
@@ -19,7 +19,7 @@ const tokenUtils = {
 
   generateRefreshToken: (userId) => {
     const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;
-    const refreshTokenExpiration = process.env.REFRESH_TOKEN_SECRET_EXPIRATION; // Expiration time for the token
+    const refreshTokenExpiration = process.env.REFRESH_TOKEN_SECRET_EXPIRATION;
 
     // Generate the refresh token
     const refreshToken = jwt.sign(

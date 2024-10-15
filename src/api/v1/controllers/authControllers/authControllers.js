@@ -2,6 +2,7 @@ import authServices from "./../../services/authServices/authServices.js";
 import logger from "./../../../../../config/logger.js";
 import dotenv from "dotenv";
 import axios from "axios";
+import tokenUtils from "../../utils/tokenUtils.js";
 
 dotenv.config();
 
@@ -32,11 +33,18 @@ const authControllers = {
         logger.info(userToRegisterData);
       }
 
-      const result = await authServices.registerUser(userToRegisterData);
+      const registeredUser = await authServices.registerUser(
+        userToRegisterData
+      );
+      logger.info(registeredUser._id);
+      const accessToken = tokenUtils.generateAccessToken(registeredUser._id);
+      const refreshToken = tokenUtils.generateRefreshToken(registeredUser._id);
+      console.log(accessToken, refreshToken);
+
       res.status(201).json({
         success: true,
         message: "User registered successfully",
-        data: result,
+        data: { user: registeredUser, accessToken, refreshToken },
       });
     } catch (error) {
       logger.error("Registration error: ", { error: error.message });
