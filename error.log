@@ -70,3 +70,21 @@
   }
 }
 
+{
+  "timestamp": "2024-10-15T16:17:43.784Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T16:17:43.786Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
