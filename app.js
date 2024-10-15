@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import multer from "multer";
 import mongoose from "mongoose";
 import logger from "./config/logger.js";
 
 import authRoutes from "./src/api/v1/routes/authRoutes/authRoutes.js";
+import uploadFilesRoutes from "./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js";
 
 // Load env variables from .env file
 dotenv.config();
@@ -21,6 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Authentication route
 app.use("/api/auth", authRoutes);
+
+// Cloudinary route
+app.use("/api/uploadFile", uploadFilesRoutes);
 
 // Running Server
 const PORT_NUMBER = process.env.PORT_NUMBER;

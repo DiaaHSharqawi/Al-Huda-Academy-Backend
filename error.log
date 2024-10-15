@@ -1,218 +1,5 @@
 {
-  s: 'S',
-  level: 'error',
-  message: 'Server is running on port 3000 ',
-  timestamp: '2024-10-14T07:26:25.543Z'
-}
-{
-  s: 'S',
-  level: 'error',
-  message: 'Server is running on port 3000 ',
-  timestamp: '2024-10-14T07:27:12.716Z'
-}
-{
-  message: 'Server is running on port 3000 ',
-  level: 'error',
-  timestamp: '2024-10-14T07:31:44.025Z'
-}
-{
-  "timestamp": "2024-10-14T11:34:16.420Z",
-  "level": "error",
-  "message": "Cannot convert object to primitive value"
-}
-
-{
-  "timestamp": "2024-10-14T11:50:47.959Z",
-  "level": "error",
-  "message": "User validation failed: birthdate: Cast to date failed for value \"23/8/2002\" (type string) at path \"birthdate\", profileImage: Path `profileImage` is required.",
-  "data": {
-    "errors": {
-      "birthdate": {
-        "stringValue": "\"23/8/2002\"",
-        "valueType": "string",
-        "kind": "date",
-        "value": "23/8/2002",
-        "path": "birthdate",
-        "reason": {
-          "generatedMessage": true,
-          "code": "ERR_ASSERTION",
-          "actual": false,
-          "expected": true,
-          "operator": "=="
-        },
-        "name": "CastError",
-        "message": "Cast to date failed for value \"23/8/2002\" (type string) at path \"birthdate\""
-      },
-      "profileImage": {
-        "name": "ValidatorError",
-        "message": "Path `profileImage` is required.",
-        "properties": {
-          "message": "Path `profileImage` is required.",
-          "type": "required",
-          "path": "profileImage"
-        },
-        "kind": "required",
-        "path": "profileImage"
-      }
-    },
-    "_message": "User validation failed"
-  }
-}
-
-{
-  "timestamp": "2024-10-14T11:52:35.214Z",
-  "level": "error",
-  "message": "User validation failed: birthdate: Cast to date failed for value \"23/8/2002\" (type string) at path \"birthdate\", profileImage: Path `profileImage` is required.",
-  "data": {
-    "errors": {
-      "birthdate": {
-        "stringValue": "\"23/8/2002\"",
-        "valueType": "string",
-        "kind": "date",
-        "value": "23/8/2002",
-        "path": "birthdate",
-        "reason": {
-          "generatedMessage": true,
-          "code": "ERR_ASSERTION",
-          "actual": false,
-          "expected": true,
-          "operator": "=="
-        },
-        "name": "CastError",
-        "message": "Cast to date failed for value \"23/8/2002\" (type string) at path \"birthdate\""
-      },
-      "profileImage": {
-        "name": "ValidatorError",
-        "message": "Path `profileImage` is required.",
-        "properties": {
-          "message": "Path `profileImage` is required.",
-          "type": "required",
-          "path": "profileImage"
-        },
-        "kind": "required",
-        "path": "profileImage"
-      }
-    },
-    "_message": "User validation failed"
-  }
-}
-
-{
-  "timestamp": "2024-10-14T11:57:13.747Z",
-  "level": "error",
-  "message": "E11000 duplicate key error collection: test.users index: userName_1 dup key: { userName: \"dSh\" }",
-  "data": {
-    "errorResponse": {
-      "index": 0,
-      "code": 11000,
-      "errmsg": "E11000 duplicate key error collection: test.users index: userName_1 dup key: { userName: \"dSh\" }",
-      "keyPattern": {
-        "userName": 1
-      },
-      "keyValue": {
-        "userName": "dSh"
-      }
-    },
-    "index": 0,
-    "code": 11000,
-    "keyPattern": {
-      "userName": 1
-    },
-    "keyValue": {
-      "userName": "dSh"
-    }
-  }
-}
-
-{
-  "timestamp": "2024-10-14T15:27:10.535Z",
-  "level": "error",
-  "message": "This email is already registered. Please use a different email address or log in to your account."
-}
-
-{
-  "timestamp": "2024-10-14T15:27:48.822Z",
-  "level": "error",
-  "message": "existingUser is not defined"
-}
-
-{
-  "timestamp": "2024-10-14T16:04:07.429Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: \"dSh\" }"
-  }
-}
-
-{
-  "timestamp": "2024-10-14T16:04:51.901Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
-  }
-}
-
-{
-  "timestamp": "2024-10-14T16:05:24.120Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
-  }
-}
-
-{
-  "timestamp": "2024-10-14T16:09:34.188Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
-  }
-}
-
-{
-  "timestamp": "2024-10-14T16:09:34.189Z",
-  "level": "error",
-  "message": "This email is already registered. Please use a different email address or log in to your account."
-}
-
-{
-  "timestamp": "2024-10-14T16:09:34.190Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
-  }
-}
-
-{
-  "timestamp": "2024-10-14T16:10:04.115Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
-  }
-}
-
-{
-  "timestamp": "2024-10-14T16:10:04.117Z",
-  "level": "error",
-  "message": "This email is already registered. Please use a different email address or log in to your account."
-}
-
-{
-  "timestamp": "2024-10-14T16:10:04.118Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
-  }
-}
-
-{
-  "timestamp": "2024-10-14T16:10:34.808Z",
+  "timestamp": "2024-10-15T15:53:32.620Z",
   "level": "error",
   "message": "Error occurred during user registration.",
   "data": {
@@ -221,13 +8,7 @@
 }
 
 {
-  "timestamp": "2024-10-14T16:10:34.809Z",
-  "level": "error",
-  "message": "This username is already taken. Please choose a different username."
-}
-
-{
-  "timestamp": "2024-10-14T16:10:34.810Z",
+  "timestamp": "2024-10-15T15:53:32.621Z",
   "level": "error",
   "message": "Registration error: ",
   "data": {
@@ -236,44 +17,56 @@
 }
 
 {
-  "timestamp": "2024-10-14T16:11:43.286Z",
+  "timestamp": "2024-10-15T15:53:59.410Z",
   "level": "error",
   "message": "Error occurred during user registration.",
   "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
+    "error": "This username is already taken. Please choose a different username."
   }
 }
 
 {
-  "timestamp": "2024-10-14T16:11:43.287Z",
-  "level": "error",
-  "message": "This email is already registered. Please use a different email address or log in to your account."
-}
-
-{
-  "timestamp": "2024-10-14T16:11:43.288Z",
+  "timestamp": "2024-10-15T15:53:59.411Z",
   "level": "error",
   "message": "Registration error: ",
   "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
+    "error": "This username is already taken. Please choose a different username."
   }
 }
 
 {
-  "timestamp": "2024-10-14T16:13:29.383Z",
+  "timestamp": "2024-10-15T15:55:33.851Z",
   "level": "error",
   "message": "Error occurred during user registration.",
   "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
+    "error": "This username is already taken. Please choose a different username."
   }
 }
 
 {
-  "timestamp": "2024-10-14T16:13:29.385Z",
+  "timestamp": "2024-10-15T15:55:33.852Z",
   "level": "error",
   "message": "Registration error: ",
   "data": {
-    "error": "This email is already registered. Please use a different email address or log in to your account."
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:58:46.878Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:58:46.880Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
   }
 }
 

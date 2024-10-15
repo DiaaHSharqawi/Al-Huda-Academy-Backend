@@ -21,9 +21,9 @@ const registerSchema = Joi.object({
   lastName: Joi.string().required().messages({
     "string.empty": "Last name is required.",
   }),
-  //birthdate: Joi.string().required().messages({
-  //"string.empty": "Birthdate is required.",
-  //}),
+  birthdate: Joi.string().required().messages({
+    "string.empty": "Birthdate is required.",
+  }),
   phone: Joi.string()
     .pattern(/^\d{10}$/)
     .required()
@@ -45,6 +45,12 @@ const validateRegisterData = (req, res, next) => {
     return res.status(400).json({
       message: "Validation error",
       errors: error.details.map((err) => err.message),
+    });
+  }
+  if (!req.file) {
+    return res.status(400).json({
+      message: "Validation error",
+      error: "Profile image is required.",
     });
   }
   next();

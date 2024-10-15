@@ -6,10 +6,11 @@ import multer from "multer";
 const router = express.Router();
 
 const upload = multer();
+
 // Public Routes
 router.post(
   "/register",
-  upload.none(),
+  upload.single("profileImage"),
   validateRegisterData,
   authControllers.registerUser
 );
