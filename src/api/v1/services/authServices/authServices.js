@@ -14,14 +14,18 @@ const authServices = {
       if (isUserExist) {
         logger.info("User already exist");
         if (isUserExist.userName === userData.userName) {
-          throw new Error(
+          const error = new Error(
             "This username is already taken. Please choose a different username."
           );
+          error.statusCode = 400;
+          throw error;
         }
         if (isUserExist.email === userData.email) {
-          throw new Error(
+          const error = new Error(
             "This email is already registered. Please use a different email address or log in to your account."
           );
+          error.statusCode = 400;
+          throw error;
         }
       }
 
@@ -44,6 +48,7 @@ const authServices = {
       throw error;
     }
   },
+
   loginUser: async (userIdentifier, password) => {
     try {
       const userAccountDetails = await User.findOne({
@@ -51,9 +56,11 @@ const authServices = {
       });
 
       if (!userAccountDetails) {
-        throw new Error(
+        const error = new Error(
           "Invalid credentials. Please check your username or email and password, then try again."
         );
+        error.statusCode = 401;
+        throw error;
       }
 
       const isPasswordMatch = await bcrypt.compare(
@@ -61,10 +68,13 @@ const authServices = {
         userAccountDetails.password
       );
       if (!isPasswordMatch) {
-        throw new Error(
+        const error = new Error(
           "Invalid credentials. Please check your username or email and password, then try again."
         );
+        error.statusCode = 401;
+        throw error;
       }
+
       console.log("userAccountDetails");
       console.log(userAccountDetails);
 
@@ -72,6 +82,9 @@ const authServices = {
         userAccountDetails.toObject();
       return userDetailsWithoutPassword;
     } catch (error) {
+      logger.error("Error occurred during user login.", {
+        error: error.message,
+      });
       throw error;
     }
   },

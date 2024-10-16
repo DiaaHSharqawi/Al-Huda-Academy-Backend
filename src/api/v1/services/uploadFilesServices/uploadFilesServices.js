@@ -29,16 +29,16 @@ const uploadFilesServices = {
   uploadImageService: async (req, res) => {
     logger.info("im in uploadImageService ");
     console.log(req.file);
+
     if (!req.file) {
       throw new Error("No file uploaded");
     }
-    console.log("File uploaded:", {
-      secureUrl: req.file,
-    });
+
     return {
       message: "File uploaded successfully",
       secure_url: req.file.path,
     };
   },
 };
+
 export default uploadFilesServices;

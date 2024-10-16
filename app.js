@@ -25,6 +25,17 @@ app.use("/api/auth", authRoutes);
 // Cloudinary route
 app.use("/api/uploadFile", uploadFilesRoutes);
 
+// Express-Async-Handler MiddleWare
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+
+  res.status(statusCode).json({
+    success: false,
+    message,
+  });
+});
+
 // Running Server
 const PORT_NUMBER = process.env.PORT_NUMBER;
 app.listen(PORT_NUMBER, () => {

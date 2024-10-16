@@ -184,3 +184,39 @@
   "message": "Cannot read properties of undefined (reading '_id')"
 }
 
+{
+  "timestamp": "2024-10-16T14:57:06.983Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-16T14:57:35.323Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-16T15:07:08.365Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-16T15:08:57.216Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
