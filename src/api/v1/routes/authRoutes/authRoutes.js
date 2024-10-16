@@ -1,8 +1,10 @@
 import express from "express";
-import validateRegisterData from "../../validations/authValidations/registerValidations.js";
 import multer from "multer";
 
 import authControllers from "../../controllers/authControllers/authControllers.js";
+
+import validateRegisterData from "../../validations/authValidations/registerValidations.js";
+import validateLoginData from "../../validations/authValidations/loginValidations.js";
 
 const router = express.Router();
 
@@ -16,6 +18,11 @@ router.post(
   authControllers.registerUser
 );
 
-router.post("/login", upload.none(), authControllers.loginUser);
+router.post(
+  "/login",
+  upload.none(),
+  validateLoginData,
+  authControllers.loginUser
+);
 
 export default router;
