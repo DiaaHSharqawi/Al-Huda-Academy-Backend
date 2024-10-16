@@ -73,9 +73,10 @@ const authControllers = {
   loginUser: async (req, res) => {
     try {
       const { userName, email, password } = req.body;
+      const userIdentifier = email || userName;
+
       const loginResult = await authServices.loginUser(
-        userName,
-        email,
+        userIdentifier,
         password
       );
       if (loginResult.error) {

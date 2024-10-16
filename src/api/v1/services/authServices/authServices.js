@@ -44,10 +44,10 @@ const authServices = {
       throw error;
     }
   },
-  loginUser: async (userName, email, password) => {
+  loginUser: async (userIdentifier, password) => {
     try {
       const userAccountDetails = await User.findOne({
-        $or: [{ userName: userName }, { email: email }],
+        $or: [{ userName: userIdentifier }, { email: userIdentifier }],
       });
       console.log("userAccountDetails");
 
