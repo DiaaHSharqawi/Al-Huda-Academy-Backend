@@ -1,5 +1,5 @@
 import express from "express";
-import validateRegisterData from "../../validations/authValidations/authValidations.js";
+import validateRegisterData from "../../validations/authValidations/registerValidations.js";
 import multer from "multer";
 
 import authControllers from "../../controllers/authControllers/authControllers.js";
