@@ -106,3 +106,81 @@
   }
 }
 
+{
+  "timestamp": "2024-10-16T07:20:29.287Z",
+  "level": "error",
+  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
+}
+
+{
+  "timestamp": "2024-10-16T07:21:19.008Z",
+  "level": "error",
+  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
+}
+
+{
+  "timestamp": "2024-10-16T07:21:42.011Z",
+  "level": "error",
+  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
+}
+
+{
+  "timestamp": "2024-10-16T08:08:08.153Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:09:04.121Z",
+  "level": "error",
+  "message": "convertTimeToMilliseconds is not defined"
+}
+
+{
+  "timestamp": "2024-10-16T08:09:40.332Z",
+  "level": "error",
+  "message": "convertTimeToMilliseconds is not defined"
+}
+
+{
+  "timestamp": "2024-10-16T08:11:29.997Z",
+  "level": "error",
+  "message": "convertTimeToMilliseconds is not defined"
+}
+
+{
+  "timestamp": "2024-10-16T08:20:13.417Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:20:50.664Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:22:28.337Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:23:06.733Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:23:59.407Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:24:50.598Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+

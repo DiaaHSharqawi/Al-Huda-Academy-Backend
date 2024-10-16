@@ -3,6 +3,7 @@ import logger from "./../../../../../config/logger.js";
 import dotenv from "dotenv";
 import axios from "axios";
 import tokenUtils from "../../utils/tokenUtils.js";
+import convertTimeToMilliseconds from "./../../utils/millisecondsConverter.js";
 
 dotenv.config();
 
@@ -67,6 +68,44 @@ const authControllers = {
         message: "An unexpected error occurred. Please try again later.",
         details: error,
       });
+    }
+  },
+  loginUser: async (req, res) => {
+    try {
+      const { userName, email, password } = req.body;
+      const loginResult = await authServices.loginUser(
+        userName,
+        email,
+        password
+      );
+      if (loginResult.error) {
+        return res
+          .status(400)
+          .json({ success: false, message: loginResult.error });
+      }
+      console.log("Login controller ! ");
+      console.log(loginResult._id);
+
+      const accessToken = tokenUtils.generateAccessToken(loginResult._id);
+      const refreshToken = tokenUtils.generateRefreshToken(loginResult._id);
+      const refreshTokenExpiration =
+        process.env.REFRESH_TOKEN_SECRET_EXPIRATION;
+
+      res.cookie("jwt", refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        maxAge: convertTimeToMilliseconds(refreshTokenExpiration),
+      });
+      res.status(200).json({
+        success: true,
+        message: "Login successful!",
+        userData: loginResult,
+        accessToken,
+      });
+    } catch (error) {
+      console.error("Login error:", error);
+      res.status(500).json({ message: "Server error" });
     }
   },
 };

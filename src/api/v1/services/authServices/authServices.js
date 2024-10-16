@@ -44,6 +44,39 @@ const authServices = {
       throw error;
     }
   },
+  loginUser: async (userName, email, password) => {
+    try {
+      const userAccountDetails = await User.findOne({
+        $or: [{ userName: userName }, { email: email }],
+      });
+      console.log("userAccountDetails");
+
+      console.log(userAccountDetails);
+
+      if (!userAccountDetails) {
+        return {
+          error:
+            "Invalid credentials. Please check your username or email and password, then try again.",
+        };
+      }
+
+      const isPasswordMatch = await bcrypt.compare(
+        password,
+        userAccountDetails.password
+      );
+      if (!isPasswordMatch) {
+        return {
+          error:
+            "Invalid credentials. Please check your username or email and password, then try again.",
+        };
+      }
+      const { password: _, ...userDetailsWithoutPassword } =
+        userAccountDetails.toObject();
+      return userDetailsWithoutPassword;
+    } catch (error) {
+      logger.info(error);
+    }
+  },
 };
 
 export default authServices;

@@ -1,7 +1,8 @@
 import express from "express";
-import authControllers from "../../controllers/authControllers/authControllers.js";
 import validateRegisterData from "../../validations/authValidations/authValidations.js";
 import multer from "multer";
+
+import authControllers from "../../controllers/authControllers/authControllers.js";
 
 const router = express.Router();
 
@@ -14,5 +15,7 @@ router.post(
   validateRegisterData,
   authControllers.registerUser
 );
+
+router.post("/login", upload.none(), authControllers.loginUser);
 
 export default router;

@@ -1,7 +1,6 @@
 module.exports = {
-  testEnvironment: "node", // Specify the test environment (node or jsdom)
+  testEnvironment: "node",
   transform: {
-    "^.+\\.js$": "babel-jest", // Use babel-jest for transforming JS files
+    "^.+\\.js$": "babel-jest",
   },
-  // Other Jest configurations can go here
 };
