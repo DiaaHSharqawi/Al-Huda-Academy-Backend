@@ -49,15 +49,11 @@ const authServices = {
       const userAccountDetails = await User.findOne({
         $or: [{ userName: userIdentifier }, { email: userIdentifier }],
       });
-      console.log("userAccountDetails");
-
-      console.log(userAccountDetails);
 
       if (!userAccountDetails) {
-        return {
-          error:
-            "Invalid credentials. Please check your username or email and password, then try again.",
-        };
+        throw new Error(
+          "Invalid credentials. Please check your username or email and password, then try again."
+        );
       }
 
       const isPasswordMatch = await bcrypt.compare(
@@ -65,16 +61,18 @@ const authServices = {
         userAccountDetails.password
       );
       if (!isPasswordMatch) {
-        return {
-          error:
-            "Invalid credentials. Please check your username or email and password, then try again.",
-        };
+        throw new Error(
+          "Invalid credentials. Please check your username or email and password, then try again."
+        );
       }
+      console.log("userAccountDetails");
+      console.log(userAccountDetails);
+
       const { password: _, ...userDetailsWithoutPassword } =
         userAccountDetails.toObject();
       return userDetailsWithoutPassword;
     } catch (error) {
-      logger.info(error);
+      throw error;
     }
   },
 };

@@ -79,11 +79,6 @@ const authControllers = {
         userIdentifier,
         password
       );
-      if (loginResult.error) {
-        return res
-          .status(400)
-          .json({ success: false, message: loginResult.error });
-      }
       console.log("Login controller ! ");
       console.log(loginResult._id);
 
@@ -105,8 +100,16 @@ const authControllers = {
         accessToken,
       });
     } catch (error) {
-      console.error("Login error:", error);
-      res.status(500).json({ message: "Server error" });
+      if (error.message.includes("Invalid credentials")) {
+        return res.status(400).json({ success: false, message: error.message });
+      } else
+        res
+          .status(500)
+          .json({
+            success: false,
+            message: "Server error",
+            error: error.message,
+          });
     }
   },
 };
