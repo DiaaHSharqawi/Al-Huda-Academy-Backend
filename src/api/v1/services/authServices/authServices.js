@@ -59,10 +59,12 @@ const authServices = {
   },
 
   loginUser: async (userIdentifier, password) => {
+    const isEmail = userIdentifier.includes("@");
+
     try {
-      const userAccountDetails = await User.findOne({
-        $or: [{ userName: userIdentifier }, { email: userIdentifier }],
-      });
+      const userAccountDetails = await User.findOne(
+        isEmail ? { email: userIdentifier } : { userName: userIdentifier }
+      );
 
       if (!userAccountDetails) {
         const error = new Error(
