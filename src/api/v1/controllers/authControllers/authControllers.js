@@ -73,7 +73,7 @@ const authControllers = {
     });
   }),
 
-  forgotPassword: asyncHandler(async (req, res) => {
+  sendPasswordResetCode: asyncHandler(async (req, res) => {
     const { email, userName } = req.body;
     const userIdentifier = userName || email;
 
