@@ -15,7 +15,14 @@ const loginSchema = Joi.object({
     "string.empty": "Password is required.",
     "string.min": "Password must be at least 6 characters long.",
   }),
-}).or("userName", "email");
+})
+  .xor("userName", "email")
+  .messages({
+    "object.missing":
+      "You must provide either a username or an email, but not both.",
+    "object.xor":
+      "You can only provide either a username or an email, not both.",
+  });
 
 const validateLoginData = (req, res, next) => {
   const { error } = loginSchema.validate(req.body, { abortEarly: false });
