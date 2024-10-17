@@ -1,8 +1,11 @@
 import logger from "../../../../../config/logger.js";
 import User from "../../models/UserModel/User.js";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
 
-const HASH_PASSWORD_SALT = 10;
+dotenv.config();
+
+const HASH_PASSWORD_SALT = process.env.BCRYPT_SALT;
 
 const authServices = {
   registerUser: async (userData) => {
