@@ -72,6 +72,14 @@ const authControllers = {
       accessToken,
     });
   }),
+
+  forgotPassword: asyncHandler(async (req, res) => {
+    const { email, userName } = req.body;
+    const userIdentifier = userName || email;
+
+    await authServices.sendResetPasswordCode(userIdentifier);
+    res.status(200).json({ message: "Password reset code sent to your email" });
+  }),
 };
 
 export default authControllers;
