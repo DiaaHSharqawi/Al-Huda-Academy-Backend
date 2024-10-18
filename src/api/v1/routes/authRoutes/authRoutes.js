@@ -6,6 +6,7 @@ import authControllers from "../../controllers/authControllers/authControllers.j
 import validateRegisterData from "../../validations/authValidations/registerValidations.js";
 import validateLoginData from "../../validations/authValidations/loginValidations.js";
 import validateSendPasswordResetCodeData from "../../validations/authValidations/sendPasswordResetCodeValidations.js";
+import resetPasswordValidationData from "../../validations/authValidations/resetPasswordValidations.js";
 
 const router = express.Router();
 
@@ -32,6 +33,10 @@ router.post(
   authControllers.sendPasswordResetCode
 );
 
-router.post("/reset-password", authControllers.resetPassword);
+router.post(
+  "/reset-password",
+  resetPasswordValidationData,
+  authControllers.resetPassword
+);
 
 export default router;
