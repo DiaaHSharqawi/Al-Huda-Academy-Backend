@@ -1,0 +1,249 @@
+{
+  "timestamp": "2024-10-15T15:53:32.620Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:53:32.621Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:53:59.410Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:53:59.411Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:55:33.851Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:55:33.852Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:58:46.878Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T15:58:46.880Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T16:17:43.784Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T16:17:43.786Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T20:31:22.950Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-15T20:31:22.952Z",
+  "level": "error",
+  "message": "Registration error: ",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-16T07:20:29.287Z",
+  "level": "error",
+  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
+}
+
+{
+  "timestamp": "2024-10-16T07:21:19.008Z",
+  "level": "error",
+  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
+}
+
+{
+  "timestamp": "2024-10-16T07:21:42.011Z",
+  "level": "error",
+  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
+}
+
+{
+  "timestamp": "2024-10-16T08:08:08.153Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:09:04.121Z",
+  "level": "error",
+  "message": "convertTimeToMilliseconds is not defined"
+}
+
+{
+  "timestamp": "2024-10-16T08:09:40.332Z",
+  "level": "error",
+  "message": "convertTimeToMilliseconds is not defined"
+}
+
+{
+  "timestamp": "2024-10-16T08:11:29.997Z",
+  "level": "error",
+  "message": "convertTimeToMilliseconds is not defined"
+}
+
+{
+  "timestamp": "2024-10-16T08:20:13.417Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:20:50.664Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:22:28.337Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:23:06.733Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:23:59.407Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T08:24:50.598Z",
+  "level": "error",
+  "message": "Cannot read properties of undefined (reading '_id')"
+}
+
+{
+  "timestamp": "2024-10-16T14:57:06.983Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-16T14:57:35.323Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-16T15:07:08.365Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-16T15:08:57.216Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This username is already taken. Please choose a different username."
+  }
+}
+
+{
+  "timestamp": "2024-10-18T09:15:37.378Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-18T09:15:53.531Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-18T09:16:09.670Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
