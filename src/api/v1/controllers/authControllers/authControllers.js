@@ -80,6 +80,22 @@ const authControllers = {
     await authServices.sendResetPasswordCode(userIdentifier);
     res.status(200).json({ message: "Password reset code sent to your email" });
   }),
+
+  resetPassword: asyncHandler(async (req, res) => {
+    const { verificationCode, email, userName, newPassword } = req.body;
+
+    const userIdentifier = userName || email;
+
+    logger.info(req.body);
+    await authServices.resetPassword(
+      verificationCode,
+      userIdentifier,
+      newPassword
+    );
+    return res
+      .status(200)
+      .json({ success: true, message: "Password has been reset successfully" });
+  }),
 };
 
 export default authControllers;

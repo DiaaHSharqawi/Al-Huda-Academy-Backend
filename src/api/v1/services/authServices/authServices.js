@@ -115,7 +115,7 @@ const authServices = {
       error.statusCode = 401;
       throw error;
     }
-
+    console.log(userAccountDetails);
     const isPasswordResetCodeSent = await PasswordResetCode.findOne({
       userId: userAccountDetails._id,
     });
@@ -220,6 +220,51 @@ const authServices = {
 
     await transporter.sendMail(mailOptions);
     return;
+  },
+
+  resetPassword: async (verificationCode, userIdentifier, newPassword) => {
+    const isEmail = userIdentifier.includes("@");
+
+    const userAccount = await User.findOne(
+      isEmail ? { email: userIdentifier } : { userName: userIdentifier },
+      { _id: 1 }
+    );
+
+    if (!userAccount) {
+      const error = new Error("No user found with the given identifier.");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const resetToken = await PasswordResetCode.findOne({
+      userId: userAccount._id,
+    });
+    console.log("resetToken");
+    console.log(resetToken);
+    if (!resetToken) {
+      const error = new Error("Invalid or expired code");
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const isValidToken = await bcrypt.compare(
+      verificationCode,
+      resetToken.code
+    );
+
+    if (!isValidToken) {
+      const error = new Error("Invalid or expired code");
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, HASH_PASSWORD_SALT);
+    await User.findByIdAndUpdate(userAccount._id, { password: hashedPassword });
+
+    await PasswordResetCode.deleteOne({
+      userId: userAccount._id,
+      code: resetToken.code,
+    });
   },
 };
 
