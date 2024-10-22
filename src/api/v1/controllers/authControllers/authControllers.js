@@ -48,8 +48,8 @@ const authControllers = {
   }),
 
   loginUser: asyncHandler(async (req, res) => {
-    const { userName, email, password } = req.body;
-    const userIdentifier = email || userName;
+    const { email, password } = req.body;
+    const userIdentifier = email;
 
     const loginResult = await authServices.loginUser(userIdentifier, password);
     console.log("Login controller !");

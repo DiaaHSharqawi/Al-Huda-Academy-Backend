@@ -247,3 +247,282 @@
   }
 }
 
+{
+  "timestamp": "2024-10-21T16:29:03.012Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T17:14:52.367Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T18:43:08.840Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:04:11.253Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:04:53.637Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:05:53.057Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:06:24.170Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:07:10.015Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:07:30.022Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:08:13.289Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:09:39.030Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:10:17.965Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-21T19:10:46.093Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T08:03:37.269Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T09:00:05.731Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T09:01:54.101Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T09:09:27.699Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T09:09:48.405Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T09:11:13.980Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T09:11:41.693Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T09:54:36.358Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T10:27:07.425Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T12:16:28.589Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T12:16:40.234Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T12:17:39.785Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T12:17:56.471Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T13:21:15.818Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T13:21:19.995Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T13:35:05.024Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T13:43:14.602Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-22T13:45:03.879Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+

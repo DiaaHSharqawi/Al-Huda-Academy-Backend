@@ -1,13 +1,7 @@
 import Joi from "joi";
 
 const loginSchema = Joi.object({
-  userName: Joi.string().alphanum().min(3).max(30).optional().messages({
-    "string.empty": "Username cannot be empty.",
-    "string.alphanum": "Username must be alphanumeric.",
-    "string.min": "Username must be at least 3 characters long.",
-    "string.max": "Username must be at most 30 characters long.",
-  }),
-  email: Joi.string().email().optional().messages({
+  email: Joi.string().email().required().messages({
     "string.empty": "Email cannot be empty.",
     "string.email": "Must be a valid email address.",
   }),
@@ -15,22 +9,12 @@ const loginSchema = Joi.object({
     "string.empty": "Password is required.",
     "string.min": "Password must be at least 6 characters long.",
   }),
-})
-  .xor("userName", "email")
-  .messages({
-    "object.missing":
-      "You must provide either a username or an email, but not both.",
-    "object.xor":
-      "You can only provide either a username or an email, not both.",
-  });
+});
 
 const validateLoginData = (req, res, next) => {
   const { error } = loginSchema.validate(req.body, { abortEarly: false });
   if (error) {
     const errorMessages = error.details.map((err) => {
-      if (err.message.includes("must contain at least one of")) {
-        return "You must provide either a username or an email.";
-      }
       return err.message.replace(/"/g, "");
     });
 

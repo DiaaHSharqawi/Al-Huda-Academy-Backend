@@ -60,15 +60,14 @@ const authServices = {
 
   loginUser: async (userIdentifier, password) => {
     const isEmail = userIdentifier.includes("@");
-
+    logger.info(isEmail);
     try {
-      const userAccountDetails = await User.findOne(
-        isEmail ? { email: userIdentifier } : { userName: userIdentifier }
-      );
+      const userAccountDetails = await User.findOne({ email: userIdentifier });
+      console.table(userAccountDetails);
 
       if (!userAccountDetails) {
         const error = new Error(
-          "Invalid credentials. Please check your username or email and password, then try again."
+          "Invalid credentials. Please check your email and password, then try again."
         );
         error.statusCode = 401;
         throw error;
