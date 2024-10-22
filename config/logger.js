@@ -30,13 +30,12 @@ const logger = winston.createLogger({
   ],
 });
 
-// Handle exceptions and rejections
-logger.exceptions.handle(
-  new winston.transports.File({ filename: "exceptions.log" })
-);
+//logger.exceptions.handle(
+// new winston.transports.File({ filename: "exceptions.log" })
+//);
 
-logger.rejections.handle(
-  new winston.transports.File({ filename: "rejections.log" })
-);
+//logger.rejections.handle(
+// new winston.transports.File({ filename: "rejections.log" })
+//);
 
 export default logger;
