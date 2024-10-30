@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import randomstring from "randomstring";
 import nodemailer from "nodemailer";
 import handlebars from "handlebars";
+import { customAlphabet } from "nanoid";
 
 import User from "../../models/UserModel/User.js";
 import PasswordResetCode from "../../models/PasswordResetCodeModel/PasswordResetCodeModel.js";
@@ -12,23 +13,18 @@ dotenv.config();
 
 const HASH_PASSWORD_SALT = parseInt(process.env.BCRYPT_SALT);
 const VERIFICATION_CODE_LENGTH = parseInt(process.env.VERIFICATION_CODE_LENGTH);
+const CHAR_SET_NANOID = process.env.NANOID_CHAR_SET;
 
 const authServices = {
   registerUser: async (userData) => {
     try {
       const isUserExist = await User.findOne({
-        $or: [{ email: userData.email }, { userName: userData.userName }],
+        email: userData.email,
       });
 
       if (isUserExist) {
         logger.info("User already exist");
-        if (isUserExist.userName === userData.userName) {
-          const error = new Error(
-            "This username is already taken. Please choose a different username."
-          );
-          error.statusCode = 400;
-          throw error;
-        }
+
         if (isUserExist.email === userData.email) {
           const error = new Error(
             "This email is already registered. Please use a different email address or log in to your account."
@@ -60,15 +56,14 @@ const authServices = {
 
   loginUser: async (userIdentifier, password) => {
     const isEmail = userIdentifier.includes("@");
-
+    logger.info(isEmail);
     try {
-      const userAccountDetails = await User.findOne(
-        isEmail ? { email: userIdentifier } : { userName: userIdentifier }
-      );
+      const userAccountDetails = await User.findOne({ email: userIdentifier });
+      console.table(userAccountDetails);
 
       if (!userAccountDetails) {
         const error = new Error(
-          "Invalid credentials. Please check your username or email and password, then try again."
+          "Invalid credentials. Please check your email and password, then try again."
         );
         error.statusCode = 401;
         throw error;
@@ -104,13 +99,13 @@ const authServices = {
     const isEmail = userIdentifier.includes("@");
 
     const userAccountDetails = await User.findOne(
-      isEmail ? { email: userIdentifier } : { userName: userIdentifier },
+      { email: userIdentifier },
       { _id: 1, email: 1 }
     );
 
     if (!userAccountDetails) {
       const error = new Error(
-        "Invalid credentials. Please check your username or email, then try again."
+        "Invalid credentials. Please check your email, then try again."
       );
       error.statusCode = 401;
       throw error;
@@ -119,6 +114,7 @@ const authServices = {
     const isPasswordResetCodeSent = await PasswordResetCode.findOne({
       userId: userAccountDetails._id,
     });
+    console.log(isPasswordResetCodeSent);
     if (isPasswordResetCodeSent) {
       const error = new Error(
         "A password reset code has already been sent to your email. Please check your inbox or request a new code after a few minutes."
@@ -127,10 +123,12 @@ const authServices = {
       throw error;
     }
 
-    const verificationCode = randomstring.generate({
-      length: VERIFICATION_CODE_LENGTH,
-      charset: "alphanumeric",
-    });
+    const generateSecureVerificationCode = customAlphabet(
+      CHAR_SET_NANOID,
+      VERIFICATION_CODE_LENGTH
+    );
+
+    const verificationCode = generateSecureVerificationCode();
 
     const hashedVerificationCode = await bcrypt.hash(
       verificationCode,
@@ -156,57 +154,57 @@ const authServices = {
 
     const resetPasswordMessageTemplate = `
     <html>
-  <head>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f9f9f9;
-      }
-      .container {
-        background-color: white;
-        padding: 20px;
-        border: 1px solid #4CAF50;
-        border-radius: 5px;
-        text-align: center;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      h1 {
-        color: #4CAF50;
-        font-size: 24px;
-      }
-      .greeting {
-        font-size: 18px;
-        color: #333;
-        margin-bottom: 20px;
-      }
-      .code {
-        font-size: 24px;
-        font-weight: bold;
-        color: red;
-        margin: 20px 0;
-      }
-      p {
-        font-size: 16px;
-        color: #555;
-        margin: 10px 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <span> Al Huda Academy for the Holy Quran</span> 
-      <h1>Reset Password</h1>
-      <p class="greeting">As-salamu alaykum</p>
-      <p>We received a request to reset your password. Please use the code below to reset your password:</p>
-      <p class="code">{{verificationCode}}</p>
-      <p>Please enter this code along with your new password.</p>
-    </div>
-  </body>
-</html>
-  `;
+      <head>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+          }
+          .container {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #332885;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+          }
+          h1 {
+            color: #332885;
+            font-size: 24px;
+          }
+          .greeting {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+          }
+          .code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #332885;
+            margin: 20px 0;
+          }
+          p {
+            font-size: 16px;
+            color: #555;
+            margin: 10px 0;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <span> Al Huda Academy for the Holy Quran</span> 
+          <h1>Reset Password</h1>
+          <p class="greeting">As-salamu alaykum</p>
+          <p>We received a request to reset your password. Please use the code below to reset your password:</p>
+          <p class="code">{{verificationCode}}</p>
+          <p>Please enter this code along with your new password.</p>
+        </div>
+      </body>
+    </html>
+    `;
 
     const template = handlebars.compile(resetPasswordMessageTemplate);
     const emailHTML = template({ verificationCode });
@@ -223,10 +221,8 @@ const authServices = {
   },
 
   resetPassword: async (verificationCode, userIdentifier, newPassword) => {
-    const isEmail = userIdentifier.includes("@");
-
     const userAccount = await User.findOne(
-      isEmail ? { email: userIdentifier } : { userName: userIdentifier },
+      { email: userIdentifier },
       { _id: 1 }
     );
 

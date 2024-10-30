@@ -2,18 +2,21 @@ import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
-    userName: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    firstName: { type: String },
-    lastName: { type: String },
-    birthdate: { type: Date },
+    fullName: { type: String },
+    age: { type: Number, required: true },
     phone: { type: String },
     city: { type: String },
     country: { type: String },
+    gender: {
+      type: String,
+      enum: ["male", "female"],
+      required: true,
+    },
     role: { type: String, default: "student" },
     profileImage: {
-      secure_url: { type: String, required: true },
+      secure_url: { type: String, required: false },
     },
   },
   { timestamps: true }

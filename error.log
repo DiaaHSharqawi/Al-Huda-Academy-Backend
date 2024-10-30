@@ -1,209 +1,5 @@
 {
-  "timestamp": "2024-10-15T15:53:32.620Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T15:53:32.621Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T15:53:59.410Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T15:53:59.411Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T15:55:33.851Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T15:55:33.852Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T15:58:46.878Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T15:58:46.880Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T16:17:43.784Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T16:17:43.786Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T20:31:22.950Z",
-  "level": "error",
-  "message": "Error occurred during user registration.",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-15T20:31:22.952Z",
-  "level": "error",
-  "message": "Registration error: ",
-  "data": {
-    "error": "This username is already taken. Please choose a different username."
-  }
-}
-
-{
-  "timestamp": "2024-10-16T07:20:29.287Z",
-  "level": "error",
-  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
-}
-
-{
-  "timestamp": "2024-10-16T07:21:19.008Z",
-  "level": "error",
-  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
-}
-
-{
-  "timestamp": "2024-10-16T07:21:42.011Z",
-  "level": "error",
-  "message": "Cannot destructure property 'userName' of 'undefined' as it is undefined."
-}
-
-{
-  "timestamp": "2024-10-16T08:08:08.153Z",
-  "level": "error",
-  "message": "Cannot read properties of undefined (reading '_id')"
-}
-
-{
-  "timestamp": "2024-10-16T08:09:04.121Z",
-  "level": "error",
-  "message": "convertTimeToMilliseconds is not defined"
-}
-
-{
-  "timestamp": "2024-10-16T08:09:40.332Z",
-  "level": "error",
-  "message": "convertTimeToMilliseconds is not defined"
-}
-
-{
-  "timestamp": "2024-10-16T08:11:29.997Z",
-  "level": "error",
-  "message": "convertTimeToMilliseconds is not defined"
-}
-
-{
-  "timestamp": "2024-10-16T08:20:13.417Z",
-  "level": "error",
-  "message": "Cannot read properties of undefined (reading '_id')"
-}
-
-{
-  "timestamp": "2024-10-16T08:20:50.664Z",
-  "level": "error",
-  "message": "Cannot read properties of undefined (reading '_id')"
-}
-
-{
-  "timestamp": "2024-10-16T08:22:28.337Z",
-  "level": "error",
-  "message": "Cannot read properties of undefined (reading '_id')"
-}
-
-{
-  "timestamp": "2024-10-16T08:23:06.733Z",
-  "level": "error",
-  "message": "Cannot read properties of undefined (reading '_id')"
-}
-
-{
-  "timestamp": "2024-10-16T08:23:59.407Z",
-  "level": "error",
-  "message": "Cannot read properties of undefined (reading '_id')"
-}
-
-{
-  "timestamp": "2024-10-16T08:24:50.598Z",
-  "level": "error",
-  "message": "Cannot read properties of undefined (reading '_id')"
-}
-
-{
-  "timestamp": "2024-10-16T14:57:06.983Z",
-  "level": "error",
-  "message": "Error occurred during user login.",
-  "data": {
-    "error": "Invalid credentials. Please check your username or email and password, then try again."
-  }
-}
-
-{
-  "timestamp": "2024-10-16T14:57:35.323Z",
-  "level": "error",
-  "message": "Error occurred during user login.",
-  "data": {
-    "error": "Invalid credentials. Please check your username or email and password, then try again."
-  }
-}
-
-{
-  "timestamp": "2024-10-16T15:07:08.365Z",
+  "timestamp": "2024-10-24T13:48:06.886Z",
   "level": "error",
   "message": "Error occurred during user registration.",
   "data": {
@@ -212,16 +8,691 @@
 }
 
 {
-  "timestamp": "2024-10-16T15:08:57.216Z",
+  "timestamp": "2024-10-24T13:48:13.927Z",
   "level": "error",
   "message": "Error occurred during user registration.",
   "data": {
-    "error": "This username is already taken. Please choose a different username."
+    "error": "User validation failed: profileImage.secure_url: Path `profileImage.secure_url` is required., userName: Path `userName` is required."
   }
 }
 
 {
-  "timestamp": "2024-10-18T09:15:37.378Z",
+  "timestamp": "2024-10-24T13:54:41.629Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "User validation failed: profileImage.secure_url: Path `profileImage.secure_url` is required., userName: Path `userName` is required."
+  }
+}
+
+{
+  "timestamp": "2024-10-24T13:55:35.773Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "User validation failed: profileImage.secure_url: Path `profileImage.secure_url` is required., userName: Path `userName` is required."
+  }
+}
+
+{
+  "timestamp": "2024-10-24T13:58:27.194Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "User validation failed: profileImage.secure_url: Path `profileImage.secure_url` is required."
+  }
+}
+
+{
+  "timestamp": "2024-10-24T15:57:23.780Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-24T16:36:41.361Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T08:17:41.003Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T08:17:48.904Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T09:06:53.942Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:16:48.670Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:16:58.341Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:17:17.461Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:17:38.761Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:17:46.218Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:17:58.381Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:26:22.521Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:26:38.033Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:26:46.427Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:27:27.432Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:27:34.751Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:27:52.916Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:31:16.167Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:31:35.734Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:47:58.822Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:52:53.049Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:53:33.279Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:54:27.944Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:54:34.516Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T11:55:00.384Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:13:04.371Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:18:04.103Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: userName_1 dup key: { userName: null }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:22:36.673Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "E11000 duplicate key error collection: Al-Huda_Academy_DB.users index: email_1 dup key: { email: \"d@gmail.com\" }"
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:23:46.864Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:25:14.829Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:27:27.965Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:27:39.775Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:28:02.355Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:35:25.802Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:37:16.225Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:37:27.777Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:39:11.459Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:40:19.022Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:43:52.262Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:45:34.183Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:46:17.742Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:46:55.611Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:47:10.527Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:47:17.107Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:47:20.522Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:47:28.591Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:48:26.436Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:49:56.740Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T13:53:30.828Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T14:01:41.418Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T14:02:23.710Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T14:02:30.202Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T14:02:35.252Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T14:07:26.332Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T14:35:14.671Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T15:22:29.046Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T15:27:49.057Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T15:30:28.110Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T15:53:47.656Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T15:59:05.626Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T16:04:00.782Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T16:04:24.254Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T16:33:20.237Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T16:33:36.442Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T18:00:57.602Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-25T18:03:41.408Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-27T18:46:56.428Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-29T06:12:16.917Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-29T06:18:31.583Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-29T06:20:05.465Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-29T06:20:11.837Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-29T06:22:07.903Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-29T06:22:36.231Z",
   "level": "error",
   "message": "Error occurred during user login.",
   "data": {
@@ -230,7 +701,7 @@
 }
 
 {
-  "timestamp": "2024-10-18T09:15:53.531Z",
+  "timestamp": "2024-10-29T06:22:44.276Z",
   "level": "error",
   "message": "Error occurred during user login.",
   "data": {
@@ -239,11 +710,65 @@
 }
 
 {
-  "timestamp": "2024-10-18T09:16:09.670Z",
+  "timestamp": "2024-10-30T05:46:59.746Z",
   "level": "error",
   "message": "Error occurred during user login.",
   "data": {
-    "error": "Invalid credentials. Please check your username or email and password, then try again."
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-30T05:47:06.079Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-30T05:47:10.801Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-10-30T06:32:46.459Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-30T11:13:12.089Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-30T11:16:19.520Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
+  }
+}
+
+{
+  "timestamp": "2024-10-30T11:38:30.494Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "This email is already registered. Please use a different email address or log in to your account."
   }
 }
 
