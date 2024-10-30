@@ -11,7 +11,7 @@ dotenv.config();
 const authControllers = {
   registerUser: asyncHandler(async (req, res) => {
     const userToRegisterData = req.body;
-
+    console.log(req.file);
     if (req.file) {
       const formData = new FormData();
       const blob = new Blob([req.file.buffer], { type: req.file.mimetype });
@@ -32,6 +32,10 @@ const authControllers = {
       };
 
       logger.info(userToRegisterData);
+    } else {
+      userToRegisterData.profileImage = {
+        secure_url: "",
+      };
     }
 
     const registeredUser = await authServices.registerUser(userToRegisterData);
@@ -74,17 +78,20 @@ const authControllers = {
   }),
 
   sendPasswordResetCode: asyncHandler(async (req, res) => {
-    const { email, userName } = req.body;
-    const userIdentifier = userName || email;
+    const { email } = req.body;
+    const userIdentifier = email;
 
     await authServices.sendResetPasswordCode(userIdentifier);
-    res.status(200).json({ message: "Password reset code sent to your email" });
+    res.status(200).json({
+      success: true,
+      message: "Password reset code sent to your email",
+    });
   }),
 
   resetPassword: asyncHandler(async (req, res) => {
-    const { verificationCode, email, userName, newPassword } = req.body;
+    const { verificationCode, email, newPassword } = req.body;
 
-    const userIdentifier = userName || email;
+    const userIdentifier = email;
 
     logger.info(req.body);
     await authServices.resetPassword(

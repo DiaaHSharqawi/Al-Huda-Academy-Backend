@@ -1,12 +1,6 @@
 import Joi from "joi";
 
 const registerSchema = Joi.object({
-  userName: Joi.string().alphanum().min(3).max(4).required().messages({
-    "string.empty": "Username is required.",
-    "string.alphanum": "Username must be alphanumeric.",
-    "string.min": "Username must be at least 3 characters long.",
-    "string.max": "Username must be at most 30 characters long.",
-  }),
   email: Joi.string().email().required().messages({
     "string.empty": "Email is required.",
     "string.email": "Must be a valid email address.",
@@ -15,14 +9,15 @@ const registerSchema = Joi.object({
     "string.empty": "Password is required.",
     "string.min": "Password must be at least 6 characters long.",
   }),
-  firstName: Joi.string().required().messages({
-    "string.empty": "First name is required.",
+  fullName: Joi.string().required().messages({
+    "string.empty": "Full name is required.",
   }),
-  lastName: Joi.string().required().messages({
-    "string.empty": "Last name is required.",
-  }),
-  birthdate: Joi.string().required().messages({
-    "string.empty": "Birthdate is required.",
+  age: Joi.number().integer().min(6).max(100).required().messages({
+    "number.base": "Age must be a number.",
+    "number.integer": "Age must be an integer.",
+    "number.min": "Age must be at least 6.",
+    "number.max": "Age must be at most 100.",
+    "any.required": "Age is required.",
   }),
   phone: Joi.string()
     .pattern(/^\d{10}$/)
@@ -36,6 +31,13 @@ const registerSchema = Joi.object({
   }),
   country: Joi.string().required().messages({
     "string.empty": "Country is required.",
+  }),
+  gender: Joi.string().valid("male", "female").required().messages({
+    "string.empty": "Gender is required.",
+    "any.only": "Gender must be one of 'male', 'female'.",
+  }),
+  profileImage: Joi.object().optional().messages({
+    "string.uri": "Profile image must be a valid URL.",
   }),
 });
 
