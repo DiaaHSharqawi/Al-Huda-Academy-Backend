@@ -772,3 +772,642 @@
   }
 }
 
+{
+  "timestamp": "2024-11-05T06:17:23.916Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:24:09.306Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:24:16.828Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:24:22.222Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:25:00.235Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:25:53.320Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:25:57.662Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:26:29.696Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "Invalid credentials. Please check your username or email and password, then try again."
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:27:01.590Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:27:29.312Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "req is not defined"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:27:30.927Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "req is not defined"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:27:56.630Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:28:34.283Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:28:35.590Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:28:44.013Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:29:55.693Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:32:30.658Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:32:32.290Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:33:31.447Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:37:21.130Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:37:36.773Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T06:38:08.158Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:11:26.613Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:14:09.581Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:14:18.320Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:14:42.728Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:14:46.193Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:14:47.056Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:14:47.725Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:28:10.596Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T09:28:21.934Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:03:59.268Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:07:56.859Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:25:12.399Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:27:58.766Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:33:06.683Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:34:31.426Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:34:42.414Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:35:23.119Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:36:51.749Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:37:17.793Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:47:36.508Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:51:06.128Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T11:52:16.636Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T12:22:42.450Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T12:25:06.092Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T12:25:11.768Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T12:25:52.240Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T13:03:21.937Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T13:03:50.231Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T13:43:36.264Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T13:43:52.724Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T13:44:21.447Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:17:29.675Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:18:15.336Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:24:15.346Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:24:27.904Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:24:45.915Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:25:34.423Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:25:51.205Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:29:54.658Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:30:39.047Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:35:46.875Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T15:40:38.335Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T16:02:01.792Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T16:11:23.281Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T16:11:40.057Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T16:12:09.986Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T16:13:40.304Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T16:13:56.184Z",
+  "level": "error",
+  "message": "Error occurred during user registration.",
+  "data": {
+    "error": "register.email_already_registered"
+  }
+}
+
+{
+  "timestamp": "2024-11-05T16:16:19.857Z",
+  "level": "error",
+  "message": "Error occurred during user login.",
+  "data": {
+    "error": "login.invalid_credentials"
+  }
+}
+

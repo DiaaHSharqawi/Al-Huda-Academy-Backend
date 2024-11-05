@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import logger from "./config/logger.js";
+import i18next from "i18next";
+import Backend from "i18next-fs-backend";
+import i18nextHttpMiddleware from "i18next-http-middleware";
 
 import authRoutes from "./src/api/v1/routes/authRoutes/authRoutes.js";
 import uploadFilesRoutes from "./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js";
@@ -10,7 +13,22 @@ import uploadFilesRoutes from "./src/api/v1/routes/uploadFilesRoutes/uploadFiles
 // Load env variables from .env file
 dotenv.config();
 
+// i18next configuration
+i18next
+  .use(Backend)
+  .use(i18nextHttpMiddleware.LanguageDetector)
+  .init({
+    fallbackLng: "en",
+    backend: {
+      loadPath: "./src/api/v1/localization/{{lng}}/translation.json",
+    },
+    lng: "en",
+  });
+
 const app = express();
+
+// Use i18next middleware
+app.use(i18nextHttpMiddleware.handle(i18next));
 
 // Cors policy
 app.use(cors());
@@ -32,7 +50,7 @@ app.use((err, req, res, next) => {
 
   res.status(statusCode).json({
     success: false,
-    message,
+    message: req.t(message),
   });
 });
 

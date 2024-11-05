@@ -46,7 +46,7 @@ const authControllers = {
 
     res.status(201).json({
       success: true,
-      message: "User registered successfully",
+      message: req.t("register.register_successful"),
       data: { user: registeredUser, accessToken, refreshToken },
     });
   }),
@@ -71,7 +71,7 @@ const authControllers = {
     });
     res.status(200).json({
       success: true,
-      message: "Login successful!",
+      message: req.t("login.login_successful"),
       userData: loginResult,
       accessToken,
     });
@@ -84,7 +84,7 @@ const authControllers = {
     await authServices.sendResetPasswordCode(userIdentifier);
     res.status(200).json({
       success: true,
-      message: "Password reset code sent to your email",
+      message: req.t("sendResetPasswordCode.password_reset_code_sent"),
     });
   }),
 
@@ -101,7 +101,10 @@ const authControllers = {
     );
     return res
       .status(200)
-      .json({ success: true, message: "Password has been reset successfully" });
+      .json({
+        success: true,
+        message: req.t("resetPassword.password_reset_ssuccessfully"),
+      });
   }),
 };
 
