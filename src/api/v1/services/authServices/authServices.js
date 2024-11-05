@@ -26,9 +26,7 @@ const authServices = {
         logger.info("User already exist");
 
         if (isUserExist.email === userData.email) {
-          const error = new Error(
-            "This email is already registered. Please use a different email address or log in to your account."
-          );
+          const error = new Error("register.email_already_registered");
           error.statusCode = 400;
           throw error;
         }
@@ -55,16 +53,12 @@ const authServices = {
   },
 
   loginUser: async (userIdentifier, password) => {
-    const isEmail = userIdentifier.includes("@");
-    logger.info(isEmail);
     try {
       const userAccountDetails = await User.findOne({ email: userIdentifier });
       console.table(userAccountDetails);
 
       if (!userAccountDetails) {
-        const error = new Error(
-          "Invalid credentials. Please check your email and password, then try again."
-        );
+        const error = new Error("login.invalid_credentials");
         error.statusCode = 401;
         throw error;
       }
@@ -74,9 +68,7 @@ const authServices = {
         userAccountDetails.password
       );
       if (!isPasswordMatch) {
-        const error = new Error(
-          "Invalid credentials. Please check your username or email and password, then try again."
-        );
+        const error = new Error("login.invalid_credentials");
         error.statusCode = 401;
         throw error;
       }
@@ -96,17 +88,13 @@ const authServices = {
   },
 
   sendResetPasswordCode: async (userIdentifier) => {
-    const isEmail = userIdentifier.includes("@");
-
     const userAccountDetails = await User.findOne(
       { email: userIdentifier },
       { _id: 1, email: 1 }
     );
 
     if (!userAccountDetails) {
-      const error = new Error(
-        "Invalid credentials. Please check your email, then try again."
-      );
+      const error = new Error("sendResetPasswordCode.invalid_credentials");
       error.statusCode = 401;
       throw error;
     }
@@ -117,9 +105,9 @@ const authServices = {
     console.log(isPasswordResetCodeSent);
     if (isPasswordResetCodeSent) {
       const error = new Error(
-        "A password reset code has already been sent to your email. Please check your inbox or request a new code after a few minutes."
+        "sendResetPasswordCode.password_reset_code_already_sent"
       );
-      error.statusCode = 401;
+      error.statusCode = 409;
       throw error;
     }
 
@@ -227,7 +215,7 @@ const authServices = {
     );
 
     if (!userAccount) {
-      const error = new Error("No user found with the given identifier.");
+      const error = new Error("resetPassword.no_user_found");
       error.statusCode = 404;
       throw error;
     }
@@ -238,7 +226,7 @@ const authServices = {
     console.log("resetToken");
     console.log(resetToken);
     if (!resetToken) {
-      const error = new Error("Invalid or expired code");
+      const error = new Error("resetPassword.invalid_or_expired_code");
       error.statusCode = 400;
       throw error;
     }
@@ -249,7 +237,7 @@ const authServices = {
     );
 
     if (!isValidToken) {
-      const error = new Error("Invalid or expired code");
+      const error = new Error("resetPassword.invalid_or_expired_code");
       error.statusCode = 400;
       throw error;
     }

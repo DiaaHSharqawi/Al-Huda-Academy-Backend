@@ -1,0 +1,72 @@
+{
+    "login":{
+    "login_successful": "Login successful!",
+    "invalid_credentials":"Invalid credentials. Please check your email and password, then try again."
+    },
+    "register":{
+    "email_already_registered": "This email is already registered. Please use a different email address or log in to your account.",
+    "register_successful": "User registered successfully"
+    },
+    "sendResetPasswordCode":{
+        "invalid_credentials":"Invalid credentials. Please check your email, then try again.",
+        "password_reset_code_already_sent": "A password reset code has already been sent to your email. Please check your inbox or request a new code after a few minutes.",
+        "password_reset_code_sent": "Password reset code sent to your email"
+    },
+    "resetPassword":{
+        "password_reset_ssuccessfully": "Password reset successfully",
+        "no_user_found": "No user found with the given identifier.",
+        "invalid_or_expired_code": "Invalid or expired code"
+    },
+    "validations":{
+        "email":{
+        "email_is_required": "Email is required.",
+        "email_cannot_be_empty": "Email cannot be empty.",
+        "must_be_a_valid_email_address": "Must be a valid email address."
+        },
+        "password":{
+        "password_is_required": "Password is required.",
+        "password_must_be_at_least_6_characters": "Password must be at least 6 characters.",
+        "password_cannot_be_empty": "Password cannot be empty."
+
+        },
+        "full_name":{
+        "full_name_cannot_be_empty": "Full name cannot be empty.",
+        "full_name_is_required": "Full name is required."
+        },
+        "age":{
+        "age_must_be_a_number": "Age must be a number.",
+        "age_must_be_an_integer": "Age must be an integer.",
+        "age_must_be_at_least_6": "Age must be at least 6.",
+        "age_must_be_at_most_100": "Age must be at most 100.",
+        "age_is_required": "Age is required."
+        },
+        "phone_number":{
+        "phone_number_is_required": "Phone number is required.",
+        "phone_number_must_be_a_10_digit_number" : "Phone number must be a 10-digit number."
+        },
+        "city": {
+        "city_cannot_be_empty": "City cannot be empty.",
+        "city_is_required": "City is required."
+        },
+        "country": {
+        "country_cannot_be_empty": "Country cannot be empty.",
+        "country_is_required": "Country is required."
+        },
+        "gender": {
+            "gender_cannot_be_empty": "Gender cannot be empty.",
+            "gender_is_required": "Gender is required.",
+           "gender_must_be_one_of_male_female": "Gender must be one of 'male', 'female'."
+        },
+        "profile_image": {
+            "profile_image_is_required":"Profile image is required.",
+            "profile_image_must_be_a_valid_url_image":"Profile image must be a valid URL image."
+        },
+        "verification_code":{
+            "verification_code_cannot_be_empty": "Verification code cannot be empty.",
+            "verification_code_is_required": "Verification code is required.",
+            "verification_code_must_be_a_6_digit_number": "Verification code must be a 6-digit number.",
+            "new_password_must_be_at_least_6_characters_long": "New password must be at least 6 characters long."
+        }
+
+    }
+}
