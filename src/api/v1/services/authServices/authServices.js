@@ -1,4 +1,3 @@
-import logger from "../../../../../config/logger.js";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
@@ -23,7 +22,7 @@ const authServices = {
       });
 
       if (isUserExist) {
-        logger.info("User already exist");
+        console.info("User already exist");
 
         if (isUserExist.email === userData.email) {
           const error = new Error("register.email_already_registered");
@@ -45,7 +44,7 @@ const authServices = {
       const savedUser = await newUser.save();
       return savedUser;
     } catch (error) {
-      logger.error("Error occurred during user registration.", {
+      console.error("Error occurred during user registration.", {
         error: error.message,
       });
       throw error;
@@ -80,7 +79,7 @@ const authServices = {
         userAccountDetails.toObject();
       return userDetailsWithoutPassword;
     } catch (error) {
-      logger.error("Error occurred during user login.", {
+      console.error("Error occurred during user login.", {
         error: error.message,
       });
       throw error;

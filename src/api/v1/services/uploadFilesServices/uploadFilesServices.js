@@ -2,7 +2,6 @@ import cloudinary from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import multer from "multer";
 import dotenv from "dotenv";
-import logger from "../../../../../config/logger.js";
 
 dotenv.config();
 
@@ -27,7 +26,7 @@ export const upload = multer({
 
 const uploadFilesServices = {
   uploadImageService: async (req, res) => {
-    logger.info("im in uploadImageService ");
+    console.info("im in uploadImageService ");
     console.log(req.file);
 
     if (!req.file) {

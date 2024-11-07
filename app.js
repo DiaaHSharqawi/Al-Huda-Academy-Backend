@@ -2,14 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import logger from "./config/logger.js";
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";
 import i18nextHttpMiddleware from "i18next-http-middleware";
-import verifyJwtTokenMiddleWare from "./src/api/v1/middlewares/verifyJwt.js";
 
 import authRoutes from "./src/api/v1/routes/authRoutes/authRoutes.js";
 import uploadFilesRoutes from "./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js";
+import athkarRoutes from "./src/api/v1/routes/athkarRoutes/athkarRoutes.js";
 
 // Load env variables from .env file
 dotenv.config();
@@ -41,11 +40,11 @@ app.use(express.urlencoded({ extended: true }));
 // Authentication route
 app.use("/api/auth", authRoutes);
 
-app.get("/api/", verifyJwtTokenMiddleWare, (req, res) => {
-  res.send("Hello World");
-});
 // Cloudinary route
 app.use("/api/uploadFile", uploadFilesRoutes);
+
+// Athkar route
+app.use("/api/athkar", athkarRoutes);
 
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {
@@ -61,11 +60,11 @@ app.use((err, req, res, next) => {
 // Running Server
 const PORT_NUMBER = process.env.PORT_NUMBER;
 app.listen(PORT_NUMBER, () => {
-  logger.info(`Server is running on port ${PORT_NUMBER} `);
+  console.info(`Server is running on port ${PORT_NUMBER} `);
 });
 
 // Mongo configurations
 mongoose
   .connect(process.env.MONGODB_URL)
-  .then(() => logger.info(`MongoDB connected ${process.env.MONGODB_URL}`))
-  .catch((err) => logger.error("MongoDB connection error:", err));
+  .then(() => console.info(`MongoDB connected ${process.env.MONGODB_URL}`))
+  .catch((err) => console.error("MongoDB connection error:", err));

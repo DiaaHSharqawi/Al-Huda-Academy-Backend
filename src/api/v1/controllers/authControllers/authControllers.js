@@ -1,5 +1,4 @@
 import authServices from "./../../services/authServices/authServices.js";
-import logger from "./../../../../../config/logger.js";
 import dotenv from "dotenv";
 import axios from "axios";
 import tokenUtils from "../../utils/tokenUtils.js";
@@ -32,7 +31,7 @@ const authControllers = {
         secure_url: uploadResponse.data.secure_url,
       };
 
-      logger.info(userToRegisterData);
+      console.info(userToRegisterData);
     } else {
       userToRegisterData.profileImage = {
         secure_url: "",
@@ -40,7 +39,7 @@ const authControllers = {
     }
 
     const registeredUser = await authServices.registerUser(userToRegisterData);
-    logger.info(registeredUser._id);
+    console.info(registeredUser._id);
     const accessToken = tokenUtils.generateAccessToken(
       registeredUser._id.toString()
     );
@@ -102,7 +101,7 @@ const authControllers = {
 
     const userIdentifier = email;
 
-    logger.info(req.body);
+    console.info(req.body);
     await authServices.resetPassword(
       verificationCode,
       userIdentifier,
