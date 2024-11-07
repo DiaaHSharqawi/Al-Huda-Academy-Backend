@@ -5,6 +5,7 @@ import axios from "axios";
 import tokenUtils from "../../utils/tokenUtils.js";
 import convertTimeToMilliseconds from "./../../utils/millisecondsConverter.js";
 import asyncHandler from "express-async-handler";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -40,8 +41,12 @@ const authControllers = {
 
     const registeredUser = await authServices.registerUser(userToRegisterData);
     logger.info(registeredUser._id);
-    const accessToken = tokenUtils.generateAccessToken(registeredUser._id);
-    const refreshToken = tokenUtils.generateRefreshToken(registeredUser._id);
+    const accessToken = tokenUtils.generateAccessToken(
+      registeredUser._id.toString()
+    );
+    const refreshToken = tokenUtils.generateRefreshToken(
+      registeredUser._id.toString()
+    );
     console.log(accessToken, refreshToken);
 
     res.status(201).json({
@@ -59,8 +64,12 @@ const authControllers = {
     console.log("Login controller !");
     console.log(loginResult._id);
 
-    const accessToken = tokenUtils.generateAccessToken(loginResult._id);
-    const refreshToken = tokenUtils.generateRefreshToken(loginResult._id);
+    const accessToken = tokenUtils.generateAccessToken(
+      loginResult._id.toString()
+    );
+    const refreshToken = tokenUtils.generateRefreshToken(
+      loginResult._id.toString()
+    );
     const refreshTokenExpiration = process.env.REFRESH_TOKEN_SECRET_EXPIRATION;
 
     res.cookie("jwt", refreshToken, {
@@ -99,12 +108,36 @@ const authControllers = {
       userIdentifier,
       newPassword
     );
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: req.t("resetPassword.password_reset_ssuccessfully"),
+    return res.status(200).json({
+      success: true,
+      message: req.t("resetPassword.password_reset_ssuccessfully"),
+    });
+  }),
+
+  refreshToken: asyncHandler(async (req, res) => {
+    // Use cookie-parser middleware to parse cookies
+    cookieParser()(req, res, () => {});
+
+    // Take the cookies from the request
+    const cookies = req.cookies;
+    console.log(cookies);
+
+    // Check if the JWT cookie exists
+    if (!cookies || !cookies.jwt) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
       });
+    }
+
+    const refreshToken = cookies.jwt;
+
+    const accessToken = await authServices.refreshToken(refreshToken);
+
+    res.status(200).json({
+      success: true,
+      message: accessToken,
+    });
   }),
 };
 

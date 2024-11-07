@@ -1,10 +1,10 @@
 import logger from "../../../../../config/logger.js";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import randomstring from "randomstring";
 import nodemailer from "nodemailer";
 import handlebars from "handlebars";
 import { customAlphabet } from "nanoid";
+import jwt from "jsonwebtoken";
 
 import User from "../../models/UserModel/User.js";
 import PasswordResetCode from "../../models/PasswordResetCodeModel/PasswordResetCodeModel.js";
@@ -55,7 +55,7 @@ const authServices = {
   loginUser: async (userIdentifier, password) => {
     try {
       const userAccountDetails = await User.findOne({ email: userIdentifier });
-      console.table(userAccountDetails);
+      console.log(userAccountDetails);
 
       if (!userAccountDetails) {
         const error = new Error("login.invalid_credentials");
@@ -249,6 +249,36 @@ const authServices = {
       userId: userAccount._id,
       code: resetToken.code,
     });
+  },
+
+  refreshToken: async (refreshToken) => {
+    console.log("===========> refreshToken");
+    console.log(refreshToken);
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    console.log(decoded);
+    if (!decoded || !decoded.UserInfo) {
+      const error = new Error("Unauthorized");
+      error.statusCode = 401;
+      throw error;
+    }
+
+    const userAccountDetails = await User.findOne({ _id: decoded.UserInfo.id });
+    console.log(userAccountDetails);
+    if (!userAccountDetails) {
+      const error = new Error("Unauthorized");
+      error.statusCode = 401;
+      throw error;
+    }
+    console.log("---------------------");
+    console.log(userAccountDetails);
+    console.log("---------------------");
+    const accessToken = jwt.sign(
+      { UserInfo: { id: userAccountDetails.id } },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: process.env.ACCESS_TOKEN_SECRET_EXPIRATION }
+    );
+
+    return accessToken;
   },
 };
 

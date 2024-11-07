@@ -39,4 +39,6 @@ router.post(
   authControllers.resetPassword
 );
 
+router.get("/refresh-token", upload.none(), authControllers.refreshToken);
+
 export default router;

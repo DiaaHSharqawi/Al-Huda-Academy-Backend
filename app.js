@@ -6,6 +6,7 @@ import logger from "./config/logger.js";
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";
 import i18nextHttpMiddleware from "i18next-http-middleware";
+import verifyJwtTokenMiddleWare from "./src/api/v1/middlewares/verifyJwt.js";
 
 import authRoutes from "./src/api/v1/routes/authRoutes/authRoutes.js";
 import uploadFilesRoutes from "./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js";
@@ -40,6 +41,9 @@ app.use(express.urlencoded({ extended: true }));
 // Authentication route
 app.use("/api/auth", authRoutes);
 
+app.get("/api/", verifyJwtTokenMiddleWare, (req, res) => {
+  res.send("Hello World");
+});
 // Cloudinary route
 app.use("/api/uploadFile", uploadFilesRoutes);
 
