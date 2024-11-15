@@ -9,6 +9,9 @@ import i18nextHttpMiddleware from "i18next-http-middleware";
 import authRoutes from "./src/api/v1/routes/authRoutes/authRoutes.js";
 import uploadFilesRoutes from "./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js";
 import athkarRoutes from "./src/api/v1/routes/athkarRoutes/athkarRoutes.js";
+import Athkar from "./src/api/v1/models/AthkarModel/AthkarModel.js";
+
+import { translate } from "@vitalets/google-translate-api";
 
 // Load env variables from .env file
 dotenv.config();
@@ -66,5 +69,9 @@ app.listen(PORT_NUMBER, () => {
 // Mongo configurations
 mongoose
   .connect(process.env.MONGODB_URL)
-  .then(() => console.info(`MongoDB connected ${process.env.MONGODB_URL}`))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .then(() => {
+    console.info(`MongoDB connected ${process.env.MONGODB_URL}`);
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });

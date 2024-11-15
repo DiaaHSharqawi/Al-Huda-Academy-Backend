@@ -4,7 +4,7 @@ import athkarControllers from "../../controllers/athkarControllers/athkarControl
 
 const router = express.Router();
 
-router.get("/categories", athkarControllers.getAllCategorizedAthkar);
+router.get("/categories", athkarControllers.getCategorizedAthkars);
 
 router.get("/category/:categoryId", athkarControllers.getAthkarByCategory);
 

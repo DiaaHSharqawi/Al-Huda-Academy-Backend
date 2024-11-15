@@ -10,7 +10,10 @@ const athkarItemSchema = new mongoose.Schema({
 
 const athkarSchema = new mongoose.Schema({
   id: { type: Number, required: true },
-  category: { type: String, required: true },
+  category: {
+    ar: { type: String, required: true, default: "" },
+    en: { type: String, default: "" },
+  },
   audio: { type: String, required: true },
   filename: { type: String, required: true },
   array: { type: [athkarItemSchema], required: true },
