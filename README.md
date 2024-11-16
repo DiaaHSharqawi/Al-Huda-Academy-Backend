@@ -49,3 +49,6 @@ The Model-View-Controller (MVC) architecture is a design pattern used in API dev
 - **View**: Prepares the data and sends it back to the client, often as JSON, so it can be used by the client-side application.
 - **Controller**: Handles user requests, processes them, communicates with the model to get or update data, and passes the data to the view to send back as a response.
 
+## API-DOCUMENTATION
+![API-DOC](https://documenter.getpostman.com/view/33050087/2sAYBPktih)
+
