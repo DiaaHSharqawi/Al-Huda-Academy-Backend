@@ -40,18 +40,22 @@ const authControllers = {
 
     const registeredUser = await authServices.registerUser(userToRegisterData);
     console.info(registeredUser._id);
-    const accessToken = tokenUtils.generateAccessToken(
-      registeredUser._id.toString()
-    );
-    const refreshToken = tokenUtils.generateRefreshToken(
-      registeredUser._id.toString()
-    );
+    console.info(registeredUser);
+
+    const dataToEncrypt = {
+      id: registeredUser._id.toString(),
+      email: registeredUser.email,
+      fullName: registeredUser.fullName,
+      role: registeredUser.role,
+    };
+    const accessToken = tokenUtils.generateAccessToken(dataToEncrypt);
+    const refreshToken = tokenUtils.generateRefreshToken(dataToEncrypt);
     console.log(accessToken, refreshToken);
 
     res.status(201).json({
       success: true,
       message: req.t("register.register_successful"),
-      data: { user: registeredUser, accessToken, refreshToken },
+      data: { accessToken, refreshToken },
     });
   }),
 
@@ -63,12 +67,16 @@ const authControllers = {
     console.log("Login controller !");
     console.log(loginResult._id);
 
-    const accessToken = tokenUtils.generateAccessToken(
-      loginResult._id.toString()
-    );
-    const refreshToken = tokenUtils.generateRefreshToken(
-      loginResult._id.toString()
-    );
+    console.log(loginResult);
+
+    const dataToEncrypt = {
+      id: loginResult._id.toString(),
+      email: loginResult.email,
+      fullName: loginResult.fullName,
+      role: loginResult.role,
+    };
+    const accessToken = tokenUtils.generateAccessToken(dataToEncrypt);
+    const refreshToken = tokenUtils.generateRefreshToken(dataToEncrypt);
     const refreshTokenExpiration = process.env.REFRESH_TOKEN_SECRET_EXPIRATION;
 
     res.cookie("jwt", refreshToken, {
@@ -80,8 +88,7 @@ const authControllers = {
     res.status(200).json({
       success: true,
       message: req.t("login.login_successful"),
-      userData: loginResult,
-      accessToken,
+      data: { accessToken, refreshToken },
     });
   }),
 

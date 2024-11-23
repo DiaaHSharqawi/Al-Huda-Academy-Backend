@@ -9,9 +9,7 @@ import i18nextHttpMiddleware from "i18next-http-middleware";
 import authRoutes from "./src/api/v1/routes/authRoutes/authRoutes.js";
 import uploadFilesRoutes from "./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js";
 import athkarRoutes from "./src/api/v1/routes/athkarRoutes/athkarRoutes.js";
-import Athkar from "./src/api/v1/models/AthkarModel/AthkarModel.js";
-
-import { translate } from "@vitalets/google-translate-api";
+import familyLinkRoutes from "./src/api/v1/routes/familyLinkRoutes/familyLinkRoutes.js";
 
 // Load env variables from .env file
 dotenv.config();
@@ -49,6 +47,9 @@ app.use("/api/uploadFile", uploadFilesRoutes);
 // Athkar route
 app.use("/api/athkar", athkarRoutes);
 
+// Family Link route
+app.use("/api/family-link", familyLinkRoutes);
+
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -67,6 +68,7 @@ app.listen(PORT_NUMBER, () => {
 });
 
 // Mongo configurations
+console.log(process.env.MONGODB_URL);
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {

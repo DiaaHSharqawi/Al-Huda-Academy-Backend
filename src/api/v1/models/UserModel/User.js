@@ -14,7 +14,11 @@ const UserSchema = new mongoose.Schema(
       enum: ["male", "female"],
       required: true,
     },
-    role: { type: String, default: "student" },
+    role: {
+      type: String,
+      enum: ["participant", "supervisor", "admin"],
+      default: "participant",
+    },
     profileImage: {
       secure_url: { type: String, required: false },
     },

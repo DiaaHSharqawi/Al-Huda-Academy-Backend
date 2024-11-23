@@ -65,7 +65,8 @@
             "verification_code_cannot_be_empty": "Verification code cannot be empty.",
             "verification_code_is_required": "Verification code is required.",
             "verification_code_must_be_a_6_digit_number": "Verification code must be a 6-digit number.",
-            "new_password_must_be_at_least_6_characters_long": "New password must be at least 6 characters long."
+            "new_password_must_be_at_least_6_characters_long": "New password must be at least 6 characters long.",
+            "verification_code_already_sent": "Verification code has already been sent to your email. Please check your inbox or request a new code after a few minutes."
         }
 
     }
