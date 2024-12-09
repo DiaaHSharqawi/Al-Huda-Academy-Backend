@@ -1,14 +1,14 @@
-import asyncHandler from "express-async-handler";
-import dotenv from "dotenv";
+const asyncHandler = require("express-async-handler");
+const dotenv = require("dotenv");
 
-import athkarServices from "./../../services/athkarServices/athkarServices.js";
+const athkarServices = require("./../../services/athkarServices/athkarServices.js");
 
 dotenv.config();
 
 const athkarControllers = {
   getCategorizedAthkars: asyncHandler(async (req, res) => {
     const lang = req.headers["accept-language"]?.includes("ar") ? "ar" : "en";
-
+    console.dir(req.query, { depth: null });
     let { page, limit, ...filters } = req.query;
     page = parseInt(page ?? 1);
     limit = parseInt(limit ?? 10);
@@ -27,8 +27,8 @@ const athkarControllers = {
 
   getAthkarByCategory: asyncHandler(async (req, res) => {
     const lang = req.headers["accept-language"]?.includes("ar") ? "ar" : "en";
-
-    const { categoryId } = req.params;
+    console.dir(req.query, { depth: null });
+    const { categoryId } = req.query;
     console.log(`categoryId: ${categoryId}`);
 
     const athkars = await athkarServices.getAthkarByCategory(categoryId, lang);
@@ -39,4 +39,4 @@ const athkarControllers = {
   }),
 };
 
-export default athkarControllers;
+module.exports = athkarControllers;

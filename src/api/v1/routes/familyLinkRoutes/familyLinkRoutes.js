@@ -1,31 +1,35 @@
-import express from "express";
+const express = require("express");
 
-import familyLinkControllers from "./../../controllers/familyLinkControllers/familyLinkControllers.js";
+const validateSendChildVerificationCodeData = require("../../validations/authValidations/sendChildVerificationCodeValidations.js");
+const validateVerifyChildVerificationCodeData = require("../../validations/familyLinkValidations/vertifyChildVerificationCodeValidations.js");
+const validateAddChildToFamilyLinkData = require("../../validations/familyLinkValidations/addChildToFamilyLinkValidations.js");
 
-import validateSendChildVerificationCodeData from "../../validations/authValidations/sendChildVerificationCodeValidations.js";
-import validateVerifyChildVerificationCodeData from "../../validations/familyLinkValidations/vertifyChildVerificationCodeValidations.js";
-import validateAddChildToFamilyLinkData from "../../validations/familyLinkValidations/addChildToFamilyLinkValidations.js";
+// Controllers imports :
+const sendChildVerificationCodeController = require("./../../controllers/familyLinkControllers/sendChildVerificationCodeController.js");
+const vertifyChildVerificationCodeController = require("./../../controllers/familyLinkControllers/verifyChildVerificationCodeController.js");
+const addChildToFamilyLinkController = require("./../../controllers/familyLinkControllers/addChildToFamilyLinkController.js");
+const getChildsByUserIdController = require("./../../controllers/familyLinkControllers/getChildsByUserIdController.js");
 
 const router = express.Router();
 
 router.post(
   "/send-child-verification-code",
   validateSendChildVerificationCodeData,
-  familyLinkControllers.sendChildVerificationCode
+  sendChildVerificationCodeController
 );
 
 router.post(
   "/verify-child-verification-code",
   validateVerifyChildVerificationCodeData,
-  familyLinkControllers.vertifyChildVerificationCode
+  vertifyChildVerificationCodeController
 );
 
 router.post(
   "/add-child-to-family-link",
   validateAddChildToFamilyLinkData,
-  familyLinkControllers.addChildToFamilyLink
+  addChildToFamilyLinkController
 );
 
-router.get("/childs", familyLinkControllers.getChildsByUserId);
+router.post("/childs", getChildsByUserIdController);
 
-export default router;
+module.exports = router;

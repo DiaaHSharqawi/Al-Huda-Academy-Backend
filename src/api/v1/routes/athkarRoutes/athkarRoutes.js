@@ -1,11 +1,11 @@
-import express from "express";
+const express = require("express");
 
-import athkarControllers from "../../controllers/athkarControllers/athkarControllers.js";
+const athkarControllers = require("./../../controllers/athkarControllers/athkarControllers");
 
 const router = express.Router();
 
 router.get("/categories", athkarControllers.getCategorizedAthkars);
 
-router.get("/category/:categoryId", athkarControllers.getAthkarByCategory);
+router.get("/category", athkarControllers.getAthkarByCategory);
 
-export default router;
+module.exports = router;

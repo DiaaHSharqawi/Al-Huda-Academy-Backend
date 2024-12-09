@@ -1,14 +1,14 @@
-import Joi from "joi";
+const Joi = require("joi");
 
 const verifyChildVerificationCodeSchema = Joi.object({
-  senderIdentifier: Joi.string().required().messages({
+  senderUserEmail: Joi.string().required().messages({
     "string.empty":
-      "validations.senderIdentifier.sender_identifier_cannot_be_empty",
+      "validations.senderUserEmail.sender_user_email_cannot_be_empty",
     "string.required":
-      "validations.senderIdentifier.sender_identifier_is_required",
+      "validations.senderUserEmail.sender_user_email_is_required",
   }),
 
-  receiverIdentifier: Joi.string().email().required().messages({
+  receiverUserEmail: Joi.string().email().required().messages({
     "string.empty": "validations.email.email_cannot_be_empty",
     "string.email": "validations.email.must_be_a_valid_email_address",
     "string.required": "validations.email.email_is_required",
@@ -40,4 +40,4 @@ const validateVerifyChildVerificationCodeData = (req, res, next) => {
   next();
 };
 
-export default validateVerifyChildVerificationCodeData;
+module.exports = validateVerifyChildVerificationCodeData;

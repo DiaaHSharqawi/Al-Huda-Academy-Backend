@@ -53,4 +53,4 @@ const sendChildVerificationCodeMessageTemplate = `
 </html>
 `;
 
-export default sendChildVerificationCodeMessageTemplate;
+module.exports = sendChildVerificationCodeMessageTemplate;

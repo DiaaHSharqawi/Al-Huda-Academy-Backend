@@ -1,7 +1,11 @@
-import Athkar from "../../models/AthkarModel/AthkarModel.js";
+const Athkar = require("./../../models/AthkarModel/AthkarModel.js");
 
 const athkarServices = {
   getCategorizedAthkars: async (lang, pagination, filters) => {
+    console.log(`getCategorizedAthkars Service : lang: ${lang}`);
+    console.log(`getCategorizedAthkars Service : page: ${pagination.page}`);
+    console.log(`getCategorizedAthkars Service : limit: ${pagination.limit}`);
+    console.log(`getCategorizedAthkars Service : filters: ${filters}`);
     const querySearch = {};
 
     if (filters?.categoryName && filters.categoryName.trim() !== "") {
@@ -10,9 +14,22 @@ const athkarServices = {
         $options: "i",
       };
     }
-
     const { page, limit } = pagination;
+
+    try {
+      const ath = await Athkar.find({});
+      console.dir(ath, { depth: null });
+      console.log(`All Athkar Data:`);
+      console.dir(ath, { depth: null });
+    } catch (error) {
+      console.error("Error fetching Athkar data:", error);
+      throw error;
+    }
+
+    console.log(`querySearch`);
+    console.dir(querySearch, { depth: null });
     const totalAthkarsCategories = await Athkar.countDocuments(querySearch);
+    console.log(`totalAthkarsCategories: ${totalAthkarsCategories}`);
 
     const totalPages = Math.ceil(totalAthkarsCategories / limit);
     if (page > totalPages) {
@@ -62,6 +79,11 @@ const athkarServices = {
     })
       .select(`array category.${lang}`)
       .lean();
+
+    console.log(`getAthkarByCategory Service : lang: ${lang}`);
+    console.log(`getAthkarByCategory Service : athkars: ${athkars}`);
+    console.log(`getAthkarByCategory Service : athkars[0]: ${athkars[0]}`);
+
     console.log(`getAthkarByCategory Service : athkars: ${athkars}`);
     if (!athkars || athkars.length === 0) {
       const error = new Error("No athkar found");
@@ -77,4 +99,4 @@ const athkarServices = {
   },
 };
 
-export default athkarServices;
+module.exports = athkarServices;

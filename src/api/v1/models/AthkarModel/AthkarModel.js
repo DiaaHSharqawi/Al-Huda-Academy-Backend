@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const athkarItemSchema = new mongoose.Schema({
   id: { type: Number, required: true },
@@ -21,4 +21,4 @@ const athkarSchema = new mongoose.Schema({
 
 const Athkar = mongoose.model("Athkar", athkarSchema);
 
-export default Athkar;
+module.exports = Athkar;

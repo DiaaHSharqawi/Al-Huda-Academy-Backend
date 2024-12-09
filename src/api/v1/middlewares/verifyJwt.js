@@ -22,4 +22,4 @@ const verifyJwtTokenMiddleWare = async (req, res, next) => {
   });
 };
 
-export default verifyJwtTokenMiddleWare;
+module.exports = verifyJwtTokenMiddleWare;

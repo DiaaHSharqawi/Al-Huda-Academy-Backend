@@ -3,6 +3,10 @@
     "login_successful": "Login successful!",
     "invalid_credentials":"Invalid credentials. Please check your email and password, then try again."
     },
+    "user":{
+        "user_already_exist": "Email already exists. Please use a different email",
+        "user_not_found": "User not found"
+    },
     "register":{
     "email_already_registered": "This email is already registered. Please use a different email address or log in to your account.",
     "register_successful": "User registered successfully"

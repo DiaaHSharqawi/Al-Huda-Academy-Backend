@@ -1,4 +1,4 @@
-import Joi from "joi";
+const Joi = require("joi");
 
 const resetPasswordSchema = Joi.object({
   email: Joi.string().email().required().messages({
@@ -36,4 +36,4 @@ const resetPasswordValidationData = (req, res, next) => {
   next();
 };
 
-export default resetPasswordValidationData;
+module.exports = resetPasswordValidationData;

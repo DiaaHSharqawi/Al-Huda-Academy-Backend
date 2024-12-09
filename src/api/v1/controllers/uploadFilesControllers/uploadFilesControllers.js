@@ -1,16 +1,19 @@
-import uploadFilesServices from "../../services/uploadFilesServices/uploadFilesServices.js";
-import asyncHandler from "express-async-handler";
+const {
+  uploadFilesServices,
+} = require("../../services/uploadFilesServices/uploadFilesServices.js");
+const asyncHandler = require("express-async-handler");
 
 const uploadFilesControllers = {
-  uploadImageController: asyncHandler(async (req, res) => {
+  uploadImagesController: asyncHandler(async (req, res) => {
     console.info("im in uploadImageController ");
 
-    const fileDetails = await uploadFilesServices.uploadImageService(req, res);
+    const fileDetails = await uploadFilesServices.uploadImagesService(req, res);
 
-    res.json({
-      secure_url: fileDetails.secure_url,
+    res.status(201).json({
+      message: "Files uploaded successfully",
+      secure_urls: fileDetails,
     });
   }),
 };
 
-export default uploadFilesControllers;
+module.exports = uploadFilesControllers;

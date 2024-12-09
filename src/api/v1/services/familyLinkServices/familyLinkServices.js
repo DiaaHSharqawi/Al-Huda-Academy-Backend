@@ -1,15 +1,10 @@
-import User from "../../models/UserModel/User.js";
-import ChildVerificationCode from "../../models/ChildVerificationCodeModel/childVerificationCodeModel.js";
-import FamilyLink from "../../models/FamilyLinkModel/FamilyLinkModel.js";
+const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
+const handlebars = require("handlebars");
 
-import { customAlphabet } from "nanoid";
-import bcrypt from "bcrypt";
-import nodemailer from "nodemailer";
-import handlebars from "handlebars";
-
-import sendChildVerificationCodeMessageTemplate from "./../../views/sendChildVerificationCodeMessageTemplate.js";
-import axios from "axios";
-import dotenv from "dotenv";
+const sendChildVerificationCodeMessageTemplate = require("./../../views/sendChildVerificationCodeMessageTemplate.js");
+const axios = require("axios");
+const dotenv = require("dotenv");
 dotenv.config();
 
 const HASH_PASSWORD_SALT = parseInt(process.env.BCRYPT_SALT);
@@ -265,4 +260,4 @@ const familyLinkServices = {
     return childs;
   },
 };
-export default familyLinkServices;
+module.exports = familyLinkServices;

@@ -1,19 +1,33 @@
-import Joi from "joi";
-
+const Joi = require("joi");
 const addChildToFamilyLinkSchema = Joi.object({
-  parentId: Joi.string().required().messages({
-    "string.empty": "validations.parentId.parent_id_cannot_be_empty",
-    "string.required": "validations.parentId.parent_id_is_required",
+  parentEmail: Joi.string().email().required().messages({
+    "string.empty": "validations.userEmail.user_email_cannot_be_empty",
+    "string.email": "validations.userEmail.user_email_must_be_valid",
+    "any.required": "validations.userEmail.user_email_is_required",
   }),
 
-  childId: Joi.string().required().messages({
-    "string.empty": "validations.childId.child_id_cannot_be_empty",
-    "string.required": "validations.childId.child_id_is_required",
+  familyMemberEmail: Joi.string().email().required().messages({
+    "string.empty":
+      "validations.familyMemberEmail.family_member_email_cannot_be_empty",
+    "string.email":
+      "validations.familyMemberEmail.family_member_email_must_be_valid",
+    "any.required":
+      "validations.familyMemberEmail.family_member_email_is_required",
   }),
+
+  relationType: Joi.string()
+    .valid("father", "mother", "child", "sibling")
+    .required()
+    .messages({
+      "string.empty": "validations.relationType.relation_type_cannot_be_empty",
+      "any.only": "validations.relationType.relation_type_must_be_valid",
+      "any.required": "validations.relationType.relation_type_is_required",
+    }),
 });
 
 const validateAddChildToFamilyLinkData = (req, res, next) => {
   console.log("validateAddChildToFamilyLinkData");
+  console.dir(req.body, { depth: null });
   const { error } = addChildToFamilyLinkSchema.validate(req.body, {
     abortEarly: false,
   });
@@ -30,4 +44,4 @@ const validateAddChildToFamilyLinkData = (req, res, next) => {
   next();
 };
 
-export default validateAddChildToFamilyLinkData;
+module.exports = validateAddChildToFamilyLinkData;

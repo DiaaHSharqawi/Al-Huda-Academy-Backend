@@ -1,4 +1,4 @@
-import Joi from "joi";
+const Joi = require("joi");
 
 const sendPasswordResetCodeSchema = Joi.object({
   email: Joi.string().email().required().messages({
@@ -19,10 +19,10 @@ const validateSendPasswordResetCodeData = (req, res, next) => {
 
     return res.status(422).json({
       success: false,
-      message: errorMessages,
+      message: errorMessages.join(", "),
     });
   }
   next();
 };
 
-export default validateSendPasswordResetCodeData;
+module.exports = validateSendPasswordResetCodeData;

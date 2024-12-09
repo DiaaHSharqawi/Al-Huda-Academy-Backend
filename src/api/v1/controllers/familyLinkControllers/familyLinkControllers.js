@@ -1,6 +1,6 @@
-import asyncHandler from "express-async-handler";
-import familyLinkServices from "./../../services/familyLinkServices/familyLinkServices.js";
-import FamilyLink from "../../models/FamilyLinkModel/FamilyLinkModel.js";
+const asyncHandler = require("express-async-handler");
+const familyLinkServices = require("./../../services/familyLinkServices/familyLinkServices.js");
+const FamilyLink = require("../../models/FamilyLinkModel/FamilyLinkModel.js");
 
 const familyLinkControllers = {
   sendChildVerificationCode: asyncHandler(async (req, res) => {
@@ -20,13 +20,13 @@ const familyLinkControllers = {
 
   vertifyChildVerificationCode: asyncHandler(async (req, res) => {
     console.log("vertifyChildVerificationCode");
-    const { senderIdentifier, reciverIdentifier, verificationCode } = req.body;
+    const { senderIdentifier, receiverIdentifier, verificationCode } = req.body;
     console.log(
-      `senderIdentifer : ${senderIdentifier} , reciverIdentifer : ${reciverIdentifier} , verificationCode : ${verificationCode}`
+      `senderIdentifer : ${senderIdentifier} , reciverIdentifer : ${receiverIdentifier} , verificationCode : ${verificationCode}`
     );
     await familyLinkServices.vertifyChildVerificationCode(
       senderIdentifier,
-      reciverIdentifier,
+      receiverIdentifier,
       verificationCode
     );
     res.status(200).json({
@@ -60,4 +60,4 @@ const familyLinkControllers = {
   }),
 };
 
-export default familyLinkControllers;
+module.exports = familyLinkControllers;

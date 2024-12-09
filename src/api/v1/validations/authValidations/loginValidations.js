@@ -1,4 +1,4 @@
-import Joi from "joi";
+const Joi = require("joi");
 
 const loginSchema = Joi.object({
   email: Joi.string().email().required().messages({
@@ -28,4 +28,4 @@ const validateLoginData = (req, res, next) => {
   next();
 };
 
-export default validateLoginData;
+module.exports = validateLoginData;
