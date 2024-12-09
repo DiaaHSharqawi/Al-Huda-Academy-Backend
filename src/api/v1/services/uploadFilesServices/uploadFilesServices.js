@@ -1,44 +1,46 @@
-import cloudinary from "cloudinary";
-import { CloudinaryStorage } from "multer-storage-cloudinary";
-import multer from "multer";
-import dotenv from "dotenv";
-import logger from "../../../../../config/logger.js";
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multer = require("multer");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
-cloudinary.v2.config({
+// Cloudinary configuration
+cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// Create Cloudinary storage
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary.v2,
+  cloudinary: cloudinary,
   params: {
     folder: "uploads",
-    allowed_formats: ["jpeg", "jpg", "png", "gif"],
+    allowed_formats: ["jpeg", "jpg", "png", "gif", "webp"],
   },
 });
 
-export const upload = multer({
+// Configure multer with Cloudinary storage
+const upload = multer({
   storage: storage,
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
+// Upload service
 const uploadFilesServices = {
-  uploadImageService: async (req, res) => {
-    logger.info("im in uploadImageService ");
-    console.log(req.file);
+  uploadImagesService: async (req, res) => {
+    console.info("In uploadImagesService");
 
-    if (!req.file) {
-      throw new Error("No file uploaded");
+    if (!req.files || req.files.length === 0) {
+      const error = new Error("No files uploaded");
+      error.statusCode = 400;
+      throw error;
     }
 
-    return {
-      message: "File uploaded successfully",
-      secure_url: req.file.path,
-    };
+    const fileUrls = req.files.map((file) => file.path);
+    return fileUrls;
   },
 };
 
-export default uploadFilesServices;
+module.exports = { uploadFilesServices, upload };

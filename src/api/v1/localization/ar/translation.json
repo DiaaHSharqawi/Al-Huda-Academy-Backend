@@ -3,6 +3,10 @@
     "login_successful": "تم تسجيل الدخول بنجاح!",
     "invalid_credentials":"بيانات الدخول غير صحيحة. الرجاء التحقق من البريد الإلكتروني وكلمة المرور ثم حاول مرة أخرى."
     },
+   "user":{
+        "user_already_exist": "البريد الإلكتروني موجود بالفعل. يرجى استخدام عنوان بريد إلكتروني مختلف",
+        "user_not_found": "المستخدم غير موجود"
+    },
     "register":{
     "email_already_registered": "هذا البريد الإلكتروني مسجل بالفعل. الرجاء استخدام عنوان بريد إلكتروني مختلف أو تسجيل الدخول إلى حسابك.",
     "register_successful": "تم تسجيل المستخدم بنجاح"
@@ -64,7 +68,8 @@
             "verification_code_cannot_be_empty": "لا يمكن أن يكون رمز التحقق فارغًا.",
             "verification_code_is_required": "رمز التحقق مطلوب.",
             "verification_code_must_be_a_6_digit_number": "يجب أن يكون رمز التحقق رقمًا مكونًا من 6 أرقام.",
-            "new_password_must_be_at_least_6_characters_long": "يجب أن تتكون كلمة المرور الجديدة من 6 أحرف على الأقل."
+            "new_password_must_be_at_least_6_characters_long": "يجب أن تتكون كلمة المرور الجديدة من 6 أحرف على الأقل.",
+            "verification_code_already_sent": "تم إرسال رمز التحقق إلى بريدك الإلكتروني بالفعل. الرجاء التحقق من صندوق الوارد الخاص بك أو طلب رمز جديد بعد بضع دقائق."
         }
     
         

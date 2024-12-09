@@ -1,0 +1,25 @@
+import jwt from "jsonwebtoken";
+const verifyJwtTokenMiddleWare = async (req, res, next) => {
+  const authenticateHeader =
+    req.headers.authorization || req.headers.Authorization; // "Huda Token"
+
+  const isTokenExist = authenticateHeader?.startsWith("AL_HUDA ");
+  if (!isTokenExist) {
+    return res.status(401).json({
+      massage: "Unauthorized",
+    });
+  }
+  const token = authenticateHeader.split(" ")[1]; // ["AL_HUDA ","Token"]
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err)
+      return res.status(403).json({
+        // you cant access this page ==> tokenInRequest != tokenInServer
+        massage: "Forbidden",
+      });
+    // go to next middleWare :
+    next();
+  });
+};
+
+module.exports = verifyJwtTokenMiddleWare;

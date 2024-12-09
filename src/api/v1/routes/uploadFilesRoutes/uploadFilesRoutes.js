@@ -1,13 +1,16 @@
-import express from "express";
-import uploadFilesControllers from "./../../controllers/uploadFilesControllers/uploadFilesControllers.js";
+const express = require("express");
 
-import { upload } from "../../services/uploadFilesServices/uploadFilesServices.js";
+const uploadFilesControllers = require("./../../controllers/uploadFilesControllers/uploadFilesControllers.js");
+
+const {
+  upload,
+} = require("../../services/uploadFilesServices/uploadFilesServices.js");
 
 const router = express.Router();
 
 router.post(
   "/",
-  upload.single("profileImage"),
-  uploadFilesControllers.uploadImageController
+  upload.array("images"), // you can specify the number of files to be uploaded
+  uploadFilesControllers.uploadImagesController
 );
-export default router;
+module.exports = router;

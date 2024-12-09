@@ -23,4 +23,4 @@ const convertTimeToMilliseconds = (timeString) => {
   }
 };
 
-export default convertTimeToMilliseconds;
+module.exports = convertTimeToMilliseconds;
