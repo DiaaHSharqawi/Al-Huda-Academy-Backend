@@ -10,15 +10,15 @@ const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const i18nextHttpMiddleware = require("i18next-http-middleware");
 
+// API Routes:
 const userRoutes = require("./src/api/v1/routes/userRoutes/userRoutes.js");
 const authRoutes = require("./src/api/v1/routes/authRoutes/authRoutes.js");
 const rolesRoutes = require("./src/api/v1/routes/rolesRoutes/rolesRoutes.js");
 const athkarRoutes = require("./src/api/v1/routes/athkarRoutes/athkarRoutes.js");
-
 const uploadFilesRoutes = require("./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js");
-
-//const athkarRoutes = require("./src/api/v1/routes/athkarRoutes/athkarRoutes.js");
 const familyLinkRoutes = require("./src/api/v1/routes/familyLinkRoutes/familyLinkRoutes.js");
+const MemorizationGroupRoutes = require("./src/api/v1/routes/MemorizationGroupRoutes/MemorizationGroupRoute.js");
+const supervisorRoutes = require("./src/api/v1/routes/supervisorRoutes/supervisorRoutes.js");
 
 // Load env variables from .env file
 dotenv.config();
@@ -64,6 +64,12 @@ app.use("/api/athkar", athkarRoutes);
 // Family Link route
 app.use("/api/family-link", familyLinkRoutes);
 
+// Memorization Group route
+app.use("/api/memorization-group", MemorizationGroupRoutes);
+
+// Supervisor route :
+app.use("/api/supervisor", supervisorRoutes);
+
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {
   const statusCode = err.response?.status || err.statusCode || 500;
@@ -93,7 +99,6 @@ db.sequelize
     console.error("Database connection error:", err);
   });
 
-// Mongo configurations
 // MongoDB configurations
 mongoose
   .connect(process.env.MONGODB_URL, {})

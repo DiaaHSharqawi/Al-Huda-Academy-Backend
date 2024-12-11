@@ -19,11 +19,13 @@ const loginController = asyncHandler(async (req, res) => {
   console.dir(loginResult, { depth: null });
 
   const dataToEncrypt = {
-    id: loginResult.id,
+    userId: loginResult.id,
     email: loginResult.email,
     fullName: loginResult.fullName,
     role: loginResult.role,
   };
+  console.log("dataToEncrypt");
+  console.dir(dataToEncrypt, { depth: null });
 
   const accessToken = tokenUtils.generateAccessToken(dataToEncrypt);
   const refreshToken = tokenUtils.generateRefreshToken(dataToEncrypt);
