@@ -17,9 +17,8 @@ const rolesRoutes = require("./src/api/v1/routes/rolesRoutes/rolesRoutes.js");
 const athkarRoutes = require("./src/api/v1/routes/athkarRoutes/athkarRoutes.js");
 const uploadFilesRoutes = require("./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js");
 const familyLinkRoutes = require("./src/api/v1/routes/familyLinkRoutes/familyLinkRoutes.js");
-const MemorizationGroupRoutes = require("./src/api/v1/routes/MemorizationGroupRoutes/MemorizationGroupRoute.js");
 const supervisorRoutes = require("./src/api/v1/routes/supervisorRoutes/supervisorRoutes.js");
-
+const memorizationGroupRoutes = require("./src/api/v1/routes/memorizationGroupRoutes/memorizationGroupRoutes.js");
 // Load env variables from .env file
 dotenv.config();
 
@@ -65,7 +64,7 @@ app.use("/api/athkar", athkarRoutes);
 app.use("/api/family-link", familyLinkRoutes);
 
 // Memorization Group route
-app.use("/api/memorization-group", MemorizationGroupRoutes);
+app.use("/api/memorization-group", memorizationGroupRoutes);
 
 // Supervisor route :
 app.use("/api/supervisor", supervisorRoutes);
@@ -91,7 +90,10 @@ app.listen(PORT_NUMBER, () => {
 
 // Sequlize connection configurations
 db.sequelize
-  .sync({ alter: false })
+  .sync({
+    alter: false,
+    force: false,
+  })
   .then(() => {
     console.info("Database connected successfully");
   })

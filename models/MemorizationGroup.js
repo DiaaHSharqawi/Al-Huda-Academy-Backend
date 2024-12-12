@@ -4,11 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       group_name: {
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false,
       },
       group_description: {
         type: DataTypes.TEXT,
-        allowNull: true,
+        allowNull: false,
       },
       capacity: {
         type: DataTypes.INTEGER,
@@ -34,15 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       days: {
-        type: DataTypes.ENUM(
-          "Saturday",
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ),
+        type: DataTypes.JSON,
         allowNull: false,
       },
     },
@@ -58,15 +51,6 @@ module.exports = (sequelize, DataTypes) => {
     MemorizationGroup.belongsTo(models.Supervisor, {
       foreignKey: {
         name: "supervisor_id",
-        allowNull: false,
-      },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
-    });
-
-    MemorizationGroup.hasMany(models.Participant, {
-      foreignKey: {
-        name: "participant_id",
         allowNull: false,
       },
       onDelete: "CASCADE",
