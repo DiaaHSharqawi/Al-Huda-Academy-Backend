@@ -7,7 +7,7 @@ const createMemorizationGroupController = asyncHandler(async (req, res) => {
   console.log("createMemorizationGroupController");
 
   console.log("createMemorizationGroupData :");
-  // console.dir(createMemorizationGroupData, { depth: null });
+  console.dir(createMemorizationGroupData, { depth: null });
 
   const memorizationGroup = await createMemorizationGroupService(
     createMemorizationGroupData

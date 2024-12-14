@@ -20,7 +20,7 @@ const createMemorizationGroupSchema = Joi.object({
   }),
 
   start_time: Joi.string()
-    .pattern(/^(0[1-9]|1[0-2]):([0-5]\d) (AM|PM)$/)
+    .pattern(/^([0-1]?\d|2[0-3]):([0-5]?\d)$/)
     .required()
     .messages({
       "string.empty": "validations.startTime.start_time_cannot_be_empty",
@@ -29,7 +29,7 @@ const createMemorizationGroupSchema = Joi.object({
     }),
 
   end_time: Joi.string()
-    .pattern(/^(0[1-9]|1[0-2]):([0-5]\d) (AM|PM)$/)
+    .pattern(/^([0-1]?\d|2[0-3]):([0-5]?\d)$/)
     .required()
     .messages({
       "string.empty": "validations.endTime.end_time_cannot_be_empty",

@@ -20,6 +20,7 @@ const loginController = asyncHandler(async (req, res) => {
 
   const dataToEncrypt = {
     userId: loginResult.id,
+    memberId: loginResult.memberId,
     email: loginResult.email,
     fullName: loginResult.fullName,
     role: loginResult.role,

@@ -67,7 +67,7 @@ const loginService = async (userLoginData) => {
       userDetailsWithoutPassword.id
     );
     console.log(`getSupervisorByUserIdResponse : }`);
-    console.dir(getSupervisorByUserIdResponse, { depth: 1 });
+    console.dir(getSupervisorByUserIdResponse, { depth: null });
 
     if (getSupervisorByUserIdResponse.status !== 200) {
       console.log(
@@ -82,6 +82,9 @@ const loginService = async (userLoginData) => {
 
     userDetailsWithoutPassword.fullName =
       getSupervisorByUserIdResponse.data.supervisorDetails.fullName;
+
+    userDetailsWithoutPassword.memberId =
+      getSupervisorByUserIdResponse.data.supervisorDetails.id;
   }
 
   delete userDetailsWithoutPassword.roleId;
