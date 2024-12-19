@@ -11,7 +11,7 @@ const getRoleByRoleIdService = async (getRoleByRoleIdData) => {
 
   if (!roleDetails) {
     const error = new Error("Role not found");
-    error.status = 404;
+    error.statusCode = 404;
     throw error;
   }
 

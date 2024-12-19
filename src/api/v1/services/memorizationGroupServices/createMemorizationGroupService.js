@@ -1,5 +1,7 @@
-const db = require("./../../../../../models/index.js");
-const getMemorizationGroupByGroupName = require("./../../utils/getMemorizationGroupByGroupName.js");
+const db = require("../../../../../models/index.js");
+const getMemorizationGroupByGroupName = require("../../utils/memorizationGroup/getMemorizationGroupByGroupName.js");
+const getSupervisorBySupervisorId = require("../../utils/supervisor/getSupervisorBySupervisorId.js");
+
 const createMemorizationGroupService = async (createMemorizationGroupData) => {
   const { groupName } = createMemorizationGroupData;
 
@@ -16,11 +18,27 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
 
   if (getMemorizationGroupByGroupNameResponse.status !== 404) {
     const error = new Error("validations.groupName.group_name_already_exists");
-    error.status = 409;
+    error.statusCode = 409;
     throw error;
   }
   console.log("createMemorizationGroupData :");
   console.dir(createMemorizationGroupData, { depth: null });
+
+  const getSupervisorBySupervisorIdResponse = await getSupervisorBySupervisorId(
+    createMemorizationGroupData.supervisor_id
+  );
+  console.log("getSupervisorBySupervisorIdResponse :");
+  // console.dir(getSupervisorBySupervisorIdResponse, { depth: null });
+  if (getSupervisorBySupervisorIdResponse.status !== 200) {
+    const error = new Error(
+      `failed to create a memorizationGroup, ${getSupervisorBySupervisorIdResponse?.response?.data?.message}`
+    );
+    console.log("error :");
+    console.log(getSupervisorBySupervisorIdResponse.status);
+
+    error.statusCode = getSupervisorBySupervisorIdResponse.status;
+    throw error;
+  }
 
   const memorizationGroup = await db.MemorizationGroup.create({
     group_name: groupName,
@@ -30,6 +48,9 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
     start_time: createMemorizationGroupData.start_time,
     end_time: createMemorizationGroupData.end_time,
     days: createMemorizationGroupData.days,
+    participants_gender: createMemorizationGroupData.participants_gender,
+    participants_level: createMemorizationGroupData.participants_level,
+    group_goal: createMemorizationGroupData.group_goal,
     supervisor_id: createMemorizationGroupData.supervisor_id,
   });
 

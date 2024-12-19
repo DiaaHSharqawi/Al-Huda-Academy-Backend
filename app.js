@@ -19,6 +19,8 @@ const uploadFilesRoutes = require("./src/api/v1/routes/uploadFilesRoutes/uploadF
 const familyLinkRoutes = require("./src/api/v1/routes/familyLinkRoutes/familyLinkRoutes.js");
 const supervisorRoutes = require("./src/api/v1/routes/supervisorRoutes/supervisorRoutes.js");
 const memorizationGroupRoutes = require("./src/api/v1/routes/memorizationGroupRoutes/memorizationGroupRoutes.js");
+const participantRoutes = require("./src/api/v1/routes/participantRoutes/participantRoutes.js");
+const quranRoutes = require("./src/api/v1/routes/quranRoutes/quranRoutes.js");
 // Load env variables from .env file
 dotenv.config();
 
@@ -68,6 +70,12 @@ app.use("/api/memorization-group", memorizationGroupRoutes);
 
 // Supervisor route :
 app.use("/api/supervisor", supervisorRoutes);
+
+// Participant route
+app.use("/api/participant", participantRoutes);
+
+// Quran route
+app.use("/api/quran", quranRoutes);
 
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {

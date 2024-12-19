@@ -3,9 +3,9 @@ const CHAR_SET_NANOID = process.env.NANOID_CHAR_SET;
 
 const resetPasswordMessageTemplate = require("./../../../views/sendPasswordResetCodeMessageTemplate");
 
-const getUserByEmail = require("./../../../utils/getUserByEmail");
+const getUserByEmail = require("./../../../utils/user/getUserByEmail");
 const db = require("./../../../../../../models/index");
-const getPasswordResetToken = require("./../../../utils/getPasswordResetToken");
+const getPasswordResetToken = require("./../../../utils/auth/getPasswordResetToken");
 
 const customAlphabet = require("nanoid").customAlphabet;
 const bcrypt = require("bcrypt");

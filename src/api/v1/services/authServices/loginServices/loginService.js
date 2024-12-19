@@ -1,8 +1,10 @@
-const getUserByEmail = require("../../../utils/getUserByEmail");
-const getRoleByRoleId = require("../../../utils/getRoleByRoleId");
+const getUserByEmail = require("../../../utils/user/getUserByEmail");
+const getRoleByRoleId = require("../../../utils/role/getRoleByRoleId");
+
+const getSupervisorByUserId = require("../../../utils/supervisor/getSupervisorByUserId");
+const getParticipantByUserId = require("../../../utils/participant/getParticipantByUserId");
 
 const bcrypt = require("bcrypt");
-const getSupervisorByUserId = require("../../../utils/getSupervisorByUserId");
 
 const loginService = async (userLoginData) => {
   console.log(`\n ---------- Login Service ---------- \n`);
@@ -85,6 +87,28 @@ const loginService = async (userLoginData) => {
 
     userDetailsWithoutPassword.memberId =
       getSupervisorByUserIdResponse.data.supervisorDetails.id;
+  } else if (userDetailsWithoutPassword.role.roleName === "participant") {
+    const getParticipantByUserIdResponse = await getParticipantByUserId(
+      userDetailsWithoutPassword.id
+    );
+    console.log(`getParticipantByUserIdResponse : }`);
+    console.dir(getParticipantByUserIdResponse, { depth: null });
+
+    if (getParticipantByUserIdResponse.status !== 200) {
+      console.log(
+        `error : ${getParticipantByUserIdResponse?.response?.data?.message}`
+      );
+      const error = new Error(
+        ` ${getParticipantByUserIdResponse?.response?.data?.message}`
+      );
+      error.statusCode = getParticipantByUserIdResponse.status;
+      throw error;
+    }
+    userDetailsWithoutPassword.fullName =
+      getParticipantByUserIdResponse.data.participantDetails.fullName;
+
+    userDetailsWithoutPassword.memberId =
+      getParticipantByUserIdResponse.data.participantDetails.id;
   }
 
   delete userDetailsWithoutPassword.roleId;

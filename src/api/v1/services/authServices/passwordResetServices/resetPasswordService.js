@@ -1,5 +1,5 @@
-const getUserByEmail = require("./../../../utils/getUserByEmail.js");
-const getPasswordResetToken = require("./../../../utils/getPasswordResetToken.js");
+const getUserByEmail = require("./../../../utils/user/getUserByEmail.js");
+const getPasswordResetToken = require("./../../../utils/auth/getPasswordResetToken.js");
 
 const bcrypt = require("bcrypt");
 const db = require("./../../../../../../models/index.js");

@@ -74,6 +74,38 @@ const createMemorizationGroupSchema = Joi.object({
       "any.required": "validations.days.days_are_required",
       "any.only": "validations.days.days_must_be_valid_days_of_week",
     }),
+
+  participants_gender: Joi.string()
+    .valid("male", "female")
+    .required()
+    .messages({
+      "any.only":
+        "validations.participantsGender.participants_gender_must_be_valid",
+      "any.required":
+        "validations.participantsGender.participants_gender_is_required",
+    }),
+  participants_level: Joi.string()
+    .valid(
+      "junior",
+      "average",
+      "advanced",
+      "junior-average",
+      "average-advanced"
+    )
+    .required()
+    .messages({
+      "any.only":
+        "validations.participantsLevel.participants_level_must_be_valid",
+      "any.required":
+        "validations.participantsLevel.participants_level_is_required",
+    }),
+  group_goal: Joi.string()
+    .valid("memorization", "recitation", "revision")
+    .required()
+    .messages({
+      "any.only": "validations.groupGoal.group_goal_must_be_valid",
+      "any.required": "validations.groupGoal.group_goal_is_required",
+    }),
   supervisor_id: Joi.string().required().messages({
     "string.empty": "validations.supervisorId.supervisor_id_cannot_be_empty",
     "any.required": "validations.supervisorId.supervisor_id_is_required",

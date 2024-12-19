@@ -5,10 +5,10 @@ const asyncHandler = require("express-async-handler");
 
 const db = require("../../../../../../models/index");
 
-const getUserByEmail = require("../../../utils/getUserByEmail");
-const registerUser = require("../../../utils/registerUser");
-const getSecureImagesURL = require("./../../../utils/getSecureImagesURL");
-const tokenUtils = require("../../../utils/tokenUtils");
+const getUserByEmail = require("../../../utils/user/getUserByEmail");
+const registerUser = require("../../../utils/user/registerUser");
+const getSecureImagesURL = require("./../../../utils/images/getSecureImagesURL");
+const tokenUtils = require("../../../utils/token/tokenUtils");
 
 //const uploadImages = require("../../../utils/getSecureImagesURL");
 

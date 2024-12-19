@@ -1,4 +1,4 @@
-const getUserByEmail = require("./../../utils/getUserByEmail");
+const getUserByEmail = require("../../utils/user/getUserByEmail");
 const db = require("./../../../../../models/index");
 
 const addChildToFamilyLinkService = async (addChildToFamilyLinkData) => {

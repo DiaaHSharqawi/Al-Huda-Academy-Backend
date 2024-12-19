@@ -1,8 +1,8 @@
 const db = require("./../../../../../../models/index.js");
 
-const getUserByEmail = require("./../../../utils/getUserByEmail.js");
-const getHashedCredential = require("./../../../utils/getHashedCredential.js");
-const getRoleByRoleName = require("./../../../utils/getRoleByRoleName.js");
+const getUserByEmail = require("./../../../utils/user/getUserByEmail.js");
+const getHashedCredential = require("./../../../utils/auth/getHashedCredential.js");
+const getRoleByRoleName = require("./../../../utils/role/getRoleByRoleName.js");
 
 const userRegisterService = async (userData) => {
   const { email, password, roleName } = userData;

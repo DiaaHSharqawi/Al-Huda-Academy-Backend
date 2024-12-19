@@ -34,8 +34,26 @@ module.exports = (sequelize, DataTypes) => {
         ),
         allowNull: false,
       },
+      group_goal: {
+        type: DataTypes.ENUM("memorization", "recitation", "revision"),
+        allowNull: false,
+      },
       days: {
         type: DataTypes.JSON,
+        allowNull: false,
+      },
+      participants_gender: {
+        type: DataTypes.ENUM("male", "female"),
+        allowNull: false,
+      },
+      participants_level: {
+        type: DataTypes.ENUM(
+          "junior",
+          "average",
+          "advanced",
+          "junior-average",
+          "average-advanced"
+        ),
         allowNull: false,
       },
     },

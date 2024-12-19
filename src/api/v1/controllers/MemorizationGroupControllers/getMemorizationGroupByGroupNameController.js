@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const getMemorizationGroupByGroupNameService = require("./../../services/memorizationGroupService/getMemorizationGroupByGroupNameService");
+const getMemorizationGroupByGroupNameService = require("./../../services/memorizationGroupServices/getMemorizationGroupByGroupNameService");
 
 const getMemorizationGroupByGroupNameController = asyncHandler(
   async (req, res) => {

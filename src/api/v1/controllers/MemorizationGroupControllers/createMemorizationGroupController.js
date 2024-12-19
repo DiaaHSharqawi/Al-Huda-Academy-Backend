@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 
-const createMemorizationGroupService = require("./../../services/memorizationGroupService/createMemorizationGroupService");
+const createMemorizationGroupService = require("./../../services/memorizationGroupServices/createMemorizationGroupService");
 
 const createMemorizationGroupController = asyncHandler(async (req, res) => {
   const createMemorizationGroupData = req.body;

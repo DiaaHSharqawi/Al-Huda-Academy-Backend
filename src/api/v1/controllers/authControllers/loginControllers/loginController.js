@@ -2,8 +2,8 @@ const asyncHandler = require("express-async-handler");
 
 const loginService = require("../../../services/authServices/loginServices/loginService");
 
-const tokenUtils = require("../../../utils/tokenUtils");
-const convertTimeToMilliseconds = require("../../../utils/millisecondsConverter");
+const tokenUtils = require("../../../utils/token/tokenUtils");
+const convertTimeToMilliseconds = require("../../../utils/token/millisecondsConverter");
 
 const loginController = asyncHandler(async (req, res) => {
   console.info("Login Controller");
