@@ -10,16 +10,17 @@ const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const i18nextHttpMiddleware = require("i18next-http-middleware");
 
+// API Routes:
 const userRoutes = require("./src/api/v1/routes/userRoutes/userRoutes.js");
 const authRoutes = require("./src/api/v1/routes/authRoutes/authRoutes.js");
 const rolesRoutes = require("./src/api/v1/routes/rolesRoutes/rolesRoutes.js");
 const athkarRoutes = require("./src/api/v1/routes/athkarRoutes/athkarRoutes.js");
-
 const uploadFilesRoutes = require("./src/api/v1/routes/uploadFilesRoutes/uploadFilesRoutes.js");
-
-//const athkarRoutes = require("./src/api/v1/routes/athkarRoutes/athkarRoutes.js");
 const familyLinkRoutes = require("./src/api/v1/routes/familyLinkRoutes/familyLinkRoutes.js");
-
+const supervisorRoutes = require("./src/api/v1/routes/supervisorRoutes/supervisorRoutes.js");
+const memorizationGroupRoutes = require("./src/api/v1/routes/memorizationGroupRoutes/memorizationGroupRoutes.js");
+const participantRoutes = require("./src/api/v1/routes/participantRoutes/participantRoutes.js");
+const quranRoutes = require("./src/api/v1/routes/quranRoutes/quranRoutes.js");
 // Load env variables from .env file
 dotenv.config();
 
@@ -64,6 +65,18 @@ app.use("/api/athkar", athkarRoutes);
 // Family Link route
 app.use("/api/family-link", familyLinkRoutes);
 
+// Memorization Group route
+app.use("/api/memorization-group", memorizationGroupRoutes);
+
+// Supervisor route :
+app.use("/api/supervisor", supervisorRoutes);
+
+// Participant route
+app.use("/api/participant", participantRoutes);
+
+// Quran route
+app.use("/api/quran", quranRoutes);
+
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {
   const statusCode = err.response?.status || err.statusCode || 500;
@@ -85,7 +98,10 @@ app.listen(PORT_NUMBER, () => {
 
 // Sequlize connection configurations
 db.sequelize
-  .sync({ alter: false })
+  .sync({
+    alter: false,
+    force: false,
+  })
   .then(() => {
     console.info("Database connected successfully");
   })
@@ -93,7 +109,17 @@ db.sequelize
     console.error("Database connection error:", err);
   });
 
-// Mongo configurations
+/*db.sequelize
+  .query("SET FOREIGN_KEY_CHECKS = 0")
+  .then(() => db.sequelize.sync({ alter: false, force: false }))
+  .then(() => db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1"))
+  .then(() => {
+    console.info("Database connected successfully");
+  })
+  .catch((error) => {
+    console.error("Error connecting to the database:", error);
+  });*/
+
 // MongoDB configurations
 mongoose
   .connect(process.env.MONGODB_URL, {})

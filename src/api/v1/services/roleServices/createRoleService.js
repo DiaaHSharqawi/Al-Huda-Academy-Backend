@@ -1,5 +1,5 @@
 const db = require("./../../../../../models/index.js");
-const getRoleByRoleName = require("./../../utils/getRoleByRoleName.js");
+const getRoleByRoleName = require("./../../utils/role/getRoleByRoleName.js");
 const createRoleService = async (roleData) => {
   const { roleName } = roleData;
 

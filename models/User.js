@@ -37,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+    User.hasOne(models.Supervisor, { foreignKey: "userId" });
   };
   return User;
 };

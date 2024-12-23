@@ -1,5 +1,5 @@
-const addChildToFamilyLink = require("./../../utils/addChildToFamilyLink");
-const getUserByEmail = require("./../../utils/getUserByEmail");
+const addChildToFamilyLink = require("./../../utils/familyLink/addChildToFamilyLink");
+const getUserByEmail = require("./../../utils/user/getUserByEmail");
 
 const db = require("./../../../../../models/index");
 const bcrypt = require("bcrypt");

@@ -5,12 +5,15 @@ dotenv.config();
 
 const tokenUtils = {
   generateAccessToken: (dataToEncrypt) => {
+    console.log("dataToEncrypt");
+    console.dir(dataToEncrypt, { depth: null });
     const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
     const accessTokenExpiration = process.env.ACCESS_TOKEN_SECRET_EXPIRATION;
     const accessToken = jwt.sign(
       {
         UserInfo: {
-          id: dataToEncrypt.id,
+          id: dataToEncrypt.userId,
+          memberId: dataToEncrypt.memberId,
           email: dataToEncrypt.email,
           fullName: dataToEncrypt.fullName,
           role: dataToEncrypt.role,
@@ -32,7 +35,9 @@ const tokenUtils = {
     const refreshToken = jwt.sign(
       {
         UserInfo: {
-          id: dataToEncrypt.id,
+          id: dataToEncrypt.userId,
+          memberId: dataToEncrypt.memberId,
+
           email: dataToEncrypt.email,
           fullName: dataToEncrypt.fullName,
           role: dataToEncrypt.role,

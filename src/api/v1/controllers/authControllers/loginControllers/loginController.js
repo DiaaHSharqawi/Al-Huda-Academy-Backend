@@ -2,8 +2,8 @@ const asyncHandler = require("express-async-handler");
 
 const loginService = require("../../../services/authServices/loginServices/loginService");
 
-const tokenUtils = require("../../../utils/tokenUtils");
-const convertTimeToMilliseconds = require("../../../utils/millisecondsConverter");
+const tokenUtils = require("../../../utils/token/tokenUtils");
+const convertTimeToMilliseconds = require("../../../utils/token/millisecondsConverter");
 
 const loginController = asyncHandler(async (req, res) => {
   console.info("Login Controller");
@@ -19,11 +19,14 @@ const loginController = asyncHandler(async (req, res) => {
   console.dir(loginResult, { depth: null });
 
   const dataToEncrypt = {
-    id: loginResult.id,
+    userId: loginResult.id,
+    memberId: loginResult.memberId,
     email: loginResult.email,
     fullName: loginResult.fullName,
     role: loginResult.role,
   };
+  console.log("dataToEncrypt");
+  console.dir(dataToEncrypt, { depth: null });
 
   const accessToken = tokenUtils.generateAccessToken(dataToEncrypt);
   const refreshToken = tokenUtils.generateRefreshToken(dataToEncrypt);

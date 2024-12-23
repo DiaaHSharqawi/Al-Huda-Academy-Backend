@@ -1,4 +1,4 @@
-const getUserByEmail = require("./../../utils/getUserByEmail");
+const getUserByEmail = require("./../../utils/user/getUserByEmail.js");
 
 const dotenv = require("dotenv");
 dotenv.config();

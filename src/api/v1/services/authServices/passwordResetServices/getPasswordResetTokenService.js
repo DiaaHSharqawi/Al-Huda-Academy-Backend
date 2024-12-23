@@ -1,6 +1,6 @@
 const db = require("./../../../../../../models/index.js");
 
-const getUserByEmail = require("./../../../utils/getUserByEmail");
+const getUserByEmail = require("./../../../utils/user/getUserByEmail");
 const getresetPasswordTokenService = async (email) => {
   const getUserByEmailResponse = await getUserByEmail(email);
 
