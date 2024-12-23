@@ -1,18 +1,15 @@
 const db = require("./../../../../../models/index.js");
+const { Op } = require("sequelize");
 
-const searchMemorizationGroupService = async (searchParams) => {
-  console.log("searchParams:");
-  console.dir(searchParams, { depth: null });
-
+const buildWhereClause = async (searchParams) => {
   const whereClause = {};
 
-  // Dynamically build the where clause
   if (searchParams.id) {
     whereClause.id = searchParams.id;
   }
   if (searchParams.groupName) {
     whereClause.group_name = {
-      [db.Sequelize.Op.like]: `%${searchParams.groupName}%`,
+      [Op.like]: `%${searchParams.groupName}%`,
     };
   }
   if (searchParams.group_status) {
@@ -25,82 +22,143 @@ const searchMemorizationGroupService = async (searchParams) => {
     whereClause.participants_level = searchParams.participants_level;
   }
   if (searchParams.start_time) {
-    whereClause.start_time = { [db.Sequelize.Op.gte]: searchParams.start_time };
+    whereClause.start_time = { [Op.gte]: searchParams.start_time };
   }
   if (searchParams.end_time) {
-    whereClause.end_time = { [db.Sequelize.Op.lte]: searchParams.end_time };
+    whereClause.end_time = { [Op.lte]: searchParams.end_time };
   }
   if (searchParams.capacity) {
     whereClause.capacity = searchParams.capacity;
   }
   if (searchParams.group_goal) {
     whereClause.group_goal = {
-      [db.Sequelize.Op.like]: `%${searchParams.group_goal}%`,
+      [Op.like]: `%${searchParams.group_goal}%`,
     };
   }
   if (searchParams.days) {
-    try {
-      if (Array.isArray(searchParams.days)) {
-        const conditions = searchParams.days.map((day) => {
-          return db.Sequelize.where(
-            db.Sequelize.fn(
-              "JSON_CONTAINS",
-              db.Sequelize.col("days"),
-              JSON.stringify(day)
-            ),
-            1
-          );
-        });
-
-        // Combine conditions with AND operator
-        whereClause[db.Sequelize.Op.and] = conditions;
-      }
-    } catch (err) {
-      const error = new Error("Invalid days format. Ensure it's valid JSON.");
+    if (Array.isArray(searchParams.days)) {
+      whereClause[Op.and] = searchParams.days.map((day) =>
+        db.Sequelize.where(
+          db.Sequelize.fn(
+            "JSON_CONTAINS",
+            db.Sequelize.col("days"),
+            JSON.stringify(day)
+          ),
+          1
+        )
+      );
+    } else {
+      const error = new Error("Invalid days format. Ensure it's an array.");
       error.statusCode = 400;
       throw error;
     }
   }
 
-  console.log("whereClause:");
-  console.dir(whereClause, { depth: null });
+  if (searchParams.surahs) {
+    if (typeof searchParams.surahs === "string") {
+      searchParams.surahs = JSON.parse(searchParams.surahs);
+    }
+    if (!Array.isArray(searchParams.surahs)) {
+      const error = new Error("Invalid surahs format. Ensure it's an array.");
+      error.statusCode = 400;
+      throw error;
+    }
 
-  const page = parseInt(searchParams.page) || 1; // Default to 1 if not provided
-  const limit = parseInt(searchParams.limit) || 10; // Default to 10 if not provided
-  const offset = (page - 1) * limit; // Calculate the offset
+    const surahGroups = await db.SurahMemorizationGroup.findAll({
+      where: {
+        surahId: {
+          [Op.in]: searchParams.surahs,
+        },
+      },
+      attributes: ["groupId"],
+      group: ["groupId"],
+    });
 
-  const totalNumberOfMemorizationGroup = await db.MemorizationGroup.count(
-    whereClause
-  );
-  console.log(
-    `totalNumberOfMemorizationGroup: ${totalNumberOfMemorizationGroup}`
-  );
-
-  const totalPages = Math.ceil(totalNumberOfMemorizationGroup / limit);
-  console.log(`totalPages: ${totalPages}`);
-
-  if (page > totalPages) {
-    const error = new Error("Page number exceeds total available pages");
-    error.status = 404;
-    throw error;
+    if (surahGroups.length > 0) {
+      whereClause.id = {
+        [Op.in]: surahGroups.map((group) => group.groupId),
+      };
+    }
   }
 
-  // Execute the query
+  if (searchParams.juza) {
+    console.log("searchParams.juza:", searchParams.juza);
+
+    if (typeof searchParams.juza === "string") {
+      searchParams.juza = JSON.parse(searchParams.juza);
+    }
+    if (!Array.isArray(searchParams.juza)) {
+      const error = new Error("Invalid juza format. Ensure it's an array.");
+      error.statusCode = 400;
+      throw error;
+    }
+    const juzaGroups = await db.JuzaMemorizationGroup.findAll({
+      where: {
+        juzaId: {
+          [Op.in]: searchParams.juza,
+        },
+      },
+      attributes: ["groupId"],
+      group: ["groupId"],
+    });
+    if (juzaGroups.length > 0) {
+      whereClause.id = {
+        [Op.in]: juzaGroups.map((group) => group.groupId),
+      };
+    }
+  }
+  return whereClause;
+};
+
+const searchMemorizationGroupService = async (searchParams) => {
+  console.log("searchParams:", searchParams);
+
+  const whereClause = await buildWhereClause(searchParams); // Await the promise here
+
+  console.log("whereClause:", whereClause);
+
+  const page = parseInt(searchParams.page, 10) || 1;
+  const limit = parseInt(searchParams.limit, 10) || 10;
+  const offset = (page - 1) * limit;
+
+  const totalNumberOfMemorizationGroup = await db.MemorizationGroup.count({
+    where: whereClause,
+  });
+  const totalPages = Math.ceil(totalNumberOfMemorizationGroup / limit);
+
+  if (page > totalPages) {
+    throw new Error("Page number exceeds total available pages.");
+  }
+
   const memorizationGroups = await db.MemorizationGroup.findAll({
     where: whereClause,
-    limit: limit,
-    offset: offset,
+    attributes: [
+      "id",
+      "group_name",
+      "group_goal",
+      "participants_gender",
+      "participants_level",
+      "days",
+      "start_time",
+      "end_time",
+    ],
+    limit,
+    offset,
   });
 
   if (memorizationGroups.length === 0) {
-    const error = new Error(
-      "No memorization groups found matching the criteria"
-    );
-    error.statusCode = 404;
-    throw error;
+    throw new Error("No memorization groups found matching the criteria.");
   }
 
-  return memorizationGroups;
+  return {
+    memorizationGroups,
+    metaData: {
+      totalNumberOfMemorizationGroup,
+      totalPages,
+      page,
+      limit,
+    },
+  };
 };
 
 module.exports = searchMemorizationGroupService;

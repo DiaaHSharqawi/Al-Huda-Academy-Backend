@@ -35,7 +35,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       group_goal: {
-        type: DataTypes.ENUM("memorization", "recitation", "revision"),
+        type: DataTypes.ENUM(
+          "memorization",
+          "recitation",
+          "revision",
+          "تحفيظ",
+          "تلاوة",
+          "مراجعة"
+        ),
+
         allowNull: false,
       },
       days: {
@@ -43,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       participants_gender: {
-        type: DataTypes.ENUM("male", "female"),
+        type: DataTypes.ENUM("males", "females", "ذكور", "إناث"),
         allowNull: false,
       },
       participants_level: {
@@ -54,6 +62,10 @@ module.exports = (sequelize, DataTypes) => {
           "junior-average",
           "average-advanced"
         ),
+        allowNull: false,
+      },
+      supervisor_languages: {
+        type: DataTypes.JSON,
         allowNull: false,
       },
     },
@@ -74,6 +86,44 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    MemorizationGroup.belongsTo(models.TeachingMethods, {
+      foreignKey: {
+        name: "teaching_method_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsToMany(models.Surah, {
+      through: models.SurahMemorizationGroup,
+      foreignKey: {
+        name: "groupId",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "surahId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsToMany(models.Juza, {
+      through: models.JuzaMemorizationGroup,
+      foreignKey: {
+        name: "groupId",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "juzaId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
+
   return MemorizationGroup;
 };

@@ -4,9 +4,9 @@ const getSurahsService = require("./../../services/quranServices/getSurahsServic
 const getSurahsController = asynbHandler(async (req, res) => {
   console.info("Get Surahs Controller");
 
-  const getSurahsServiceData = req.query;
+  const getSurahsData = req.query;
 
-  const surahs = await getSurahsService(getSurahsServiceData);
+  const surahs = await getSurahsService(getSurahsData);
 
   res.json({ success: true, message: "Surahs fetched successfully", surahs });
 });

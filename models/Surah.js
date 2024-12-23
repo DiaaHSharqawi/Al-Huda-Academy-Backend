@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const Surah = sequelize.define(
     "Surah",
     {
-      number: {
+      id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -31,8 +31,24 @@ module.exports = (sequelize, DataTypes) => {
     {
       tableName: "surahs",
       timestamps: false,
+      dropTable: true,
     }
   );
+  Surah.associate = (models) => {
+    Surah.belongsToMany(models.MemorizationGroup, {
+      through: models.SurahMemorizationGroup,
+      foreignKey: {
+        name: "surahId",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "groupId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+  };
 
   return Surah;
 };

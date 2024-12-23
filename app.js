@@ -109,6 +109,17 @@ db.sequelize
     console.error("Database connection error:", err);
   });
 
+/*db.sequelize
+  .query("SET FOREIGN_KEY_CHECKS = 0")
+  .then(() => db.sequelize.sync({ alter: false, force: false }))
+  .then(() => db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1"))
+  .then(() => {
+    console.info("Database connected successfully");
+  })
+  .catch((error) => {
+    console.error("Error connecting to the database:", error);
+  });*/
+
 // MongoDB configurations
 mongoose
   .connect(process.env.MONGODB_URL, {})

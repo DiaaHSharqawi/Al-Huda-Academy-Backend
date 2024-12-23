@@ -1,43 +1,50 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    "User",
+  const TeachingMethods = sequelize.define(
+    "TeachingMethods",
     {
-      email: {
+      methodNameArabic: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: {
-          isEmail: true,
           notEmpty: true,
         },
       },
-      password: {
+      methodNameEnglish: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           notEmpty: true,
         },
+      },
+      descriptionArabic: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      descriptionEnglish: {
+        type: DataTypes.TEXT,
+        allowNull: true,
       },
       isActive: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
         defaultValue: true,
       },
     },
     {
+      tableName: "teaching_methods",
       timestamps: true,
     }
   );
 
-  User.associate = (models) => {
-    User.belongsTo(models.Role, {
+  TeachingMethods.associate = (models) => {
+    TeachingMethods.hasMany(models.MemorizationGroup, {
       foreignKey: {
-        name: "roleId",
+        name: "teaching_method_id",
         allowNull: false,
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
-    User.hasOne(models.Supervisor, { foreignKey: "userId" });
   };
-  return User;
+  return TeachingMethods;
 };

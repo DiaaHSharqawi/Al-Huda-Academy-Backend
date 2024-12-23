@@ -6,16 +6,17 @@ const getMemorizationGroupController = asyncHandler(async (req, res) => {
   console.log("getMemorizationGroupServiceData");
   console.dir(getMemorizationGroupServiceData, { depth: null });
 
-  const memorizationGroup = await getMemorizationGroupService(
+  const { memorizationGroups, metaData } = await getMemorizationGroupService(
     getMemorizationGroupServiceData
   );
-  console.log("memorizationGroup");
-  console.dir(memorizationGroup, { depth: null });
+  console.log("memorizationGroups");
+  //console.dir(memorizationGroups, { depth: null });
 
   res.status(200).json({
     success: true,
     message: "Memorization Group ",
-    memorizationGroup,
+    memorizationGroups,
+    metaData,
   });
 });
 module.exports = getMemorizationGroupController;

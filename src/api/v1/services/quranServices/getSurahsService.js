@@ -6,7 +6,7 @@ const getSurahsService = async (searchParams) => {
 
   const whereClause = {};
   if (searchParams.id) {
-    whereClause.number = searchParams.id;
+    whereClause.id = searchParams.id;
   }
   if (searchParams.surah_name) {
     whereClause.surah_name = {
