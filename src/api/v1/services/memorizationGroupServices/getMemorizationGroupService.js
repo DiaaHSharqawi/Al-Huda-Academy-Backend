@@ -7,6 +7,7 @@ const buildWhereClause = async (searchParams) => {
   if (searchParams.id) {
     whereClause.id = searchParams.id;
   }
+
   if (searchParams.groupName) {
     whereClause.group_name = {
       [Op.like]: `%${searchParams.groupName}%`,

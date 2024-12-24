@@ -48,6 +48,40 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    Surah.belongsToMany(models.MemorizationGroup, {
+      through: models.ExtractsFromQuranMemorizationGroup,
+      foreignKey: {
+        name: "surahId",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "groupId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Surah.hasMany(models.SurahMemorizationGroup, {
+      foreignKey: {
+        name: "surahId",
+        sourceKey: "id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Surah.hasMany(models.ExtractsFromQuranMemorizationGroup, {
+      foreignKey: {
+        name: "surahId",
+        sourceKey: "id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
 
   return Surah;

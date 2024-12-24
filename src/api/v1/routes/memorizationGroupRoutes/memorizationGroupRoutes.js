@@ -5,6 +5,7 @@ const createMemorizationGroupController = require("./../../controllers/memorizat
 const getMemorizationGroupByGroupNameController = require("./../../controllers/memorizationGroupControllers/getMemorizationGroupByGroupNameController");
 const getPendingGroupCreationRequestsController = require("./../../controllers/memorizationGroupControllers/getPendingGroupCreationRequestsController");
 const getMemorizationGroupController = require("./../../controllers/memorizationGroupControllers/getMemorizationGroupController");
+const getMemorizationGroupByGroupIdController = require("./../../controllers/memorizationGroupControllers/getMemorizationGroupByGroupIdController");
 
 // Validators imports :
 const validateGetMemorizationGroupByGroupName = require("./../../validations/memorizationGroupValidations/getMemorizationGroupByGroupNameValidations");
@@ -16,6 +17,8 @@ const upload = multer();
 const router = express.Router();
 
 router.get("/", getMemorizationGroupController);
+
+router.get("/id/:id", getMemorizationGroupByGroupIdController);
 
 router.post(
   "/create",

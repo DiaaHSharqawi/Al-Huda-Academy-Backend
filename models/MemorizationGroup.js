@@ -123,6 +123,20 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    MemorizationGroup.belongsToMany(models.Surah, {
+      through: models.ExtractsFromQuranMemorizationGroup,
+      foreignKey: {
+        name: "surahId",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "groupId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
 
   return MemorizationGroup;
