@@ -40,15 +40,11 @@ module.exports = (sequelize, DataTypes) => {
         name: "juzaId",
         allowNull: false,
       },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
     });
 
     JuzaMemorizationGroup.belongsTo(models.MemorizationGroup, {
       foreignKey: "groupId",
       targetKey: "id",
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
     });
   };
   return JuzaMemorizationGroup;

@@ -5,27 +5,67 @@
 const juzaMemorizationGroup = [
   {
     juzaId: 1,
-    groupId: 5,
-  },
-  {
-    juzaId: 1,
-    groupId: 6,
+    groupId: 1,
   },
   {
     juzaId: 2,
-    groupId: 7,
-  },
-  {
-    juzaId: 2,
-    groupId: 8,
+    groupId: 1,
   },
   {
     juzaId: 3,
-    groupId: 9,
+    groupId: 1,
   },
   {
-    juzaId: 3,
-    groupId: 10,
+    juzaId: 4,
+    groupId: 1,
+  },
+  {
+    juzaId: 5,
+    groupId: 2,
+  },
+  {
+    juzaId: 6,
+    groupId: 2,
+  },
+  {
+    juzaId: 7,
+    groupId: 2,
+  },
+  {
+    juzaId: 8,
+    groupId: 2,
+  },
+  {
+    juzaId: 9,
+    groupId: 3,
+  },
+  {
+    juzaId: 10,
+    groupId: 3,
+  },
+  {
+    juzaId: 11,
+    groupId: 3,
+  },
+  {
+    juzaId: 12,
+    groupId: 3,
+  },
+  {
+    juzaId: 13,
+    groupId: 4,
+  },
+  {
+    juzaId: 14,
+    groupId: 4,
+  },
+  {
+    juzaId: 15,
+    groupId: 4,
+  },
+  {
+    juzaId: 16,
+    groupId: 4,
   },
 ];
 

@@ -97,19 +97,19 @@ app.listen(PORT_NUMBER, () => {
 });
 
 // Sequlize connection configurations
-db.sequelize
+/*db.sequelize
   .sync({
     alter: false,
-    force: false,
+    force: true,
   })
   .then(() => {
     console.info("Database connected successfully");
   })
   .catch((err) => {
     console.error("Database connection error:", err);
-  });
+  });*/
 
-/*db.sequelize
+db.sequelize
   .query("SET FOREIGN_KEY_CHECKS = 0")
   .then(() => db.sequelize.sync({ alter: false, force: false }))
   .then(() => db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1"))
@@ -118,7 +118,7 @@ db.sequelize
   })
   .catch((error) => {
     console.error("Error connecting to the database:", error);
-  });*/
+  });
 
 // MongoDB configurations
 mongoose
