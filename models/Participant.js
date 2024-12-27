@@ -20,11 +20,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gender: {
-      type: DataTypes.STRING,
+    gender_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "genders",
+        key: "id",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
     },
-
     details: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -39,6 +44,15 @@ module.exports = (sequelize, DataTypes) => {
     Participant.belongsTo(models.User, {
       foreignKey: {
         name: "userId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Participant.belongsTo(models.Gender, {
+      foreignKey: {
+        name: "gender_id",
         allowNull: false,
       },
       onDelete: "CASCADE",

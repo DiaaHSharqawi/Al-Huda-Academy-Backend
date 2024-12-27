@@ -21,6 +21,13 @@ const supervisorRoutes = require("./src/api/v1/routes/supervisorRoutes/superviso
 const memorizationGroupRoutes = require("./src/api/v1/routes/memorizationGroupRoutes/memorizationGroupRoutes.js");
 const participantRoutes = require("./src/api/v1/routes/participantRoutes/participantRoutes.js");
 const quranRoutes = require("./src/api/v1/routes/quranRoutes/quranRoutes.js");
+const genderRoutes = require("./src/api/v1/routes/genderRoutes/genderRoutes.js");
+const groupGoalRoutes = require("./src/api/v1/routes/groupGoalRoutes/groupGoalRoutes.js");
+const languageRoutes = require("./src/api/v1/routes/languageRoutes/languageRoutes.js");
+const teachingMethodsRoutes = require("./src/api/v1/routes/teachingMethodsRoutes/teachingMethodsRoutes.js");
+const participantLevelRoutes = require("./src/api/v1/routes/participantLevelRoutes/participantLevelRoutes.js");
+const daysRoutes = require("./src/api/v1/routes/daysRoutes/daysRoutes.js");
+
 // Load env variables from .env file
 dotenv.config();
 
@@ -76,6 +83,24 @@ app.use("/api/participant", participantRoutes);
 
 // Quran route
 app.use("/api/quran", quranRoutes);
+
+// Gender route
+app.use("/api/gender", genderRoutes);
+
+// Group Goal route
+app.use("/api/group-goal", groupGoalRoutes);
+
+// Language route
+app.use("/api/language", languageRoutes);
+
+// Teaching Methods route
+app.use("/api/teaching-methods", teachingMethodsRoutes);
+
+// Participant Level route
+app.use("/api/participant-level", participantLevelRoutes);
+
+// Days route
+app.use("/api/days", daysRoutes);
 
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {

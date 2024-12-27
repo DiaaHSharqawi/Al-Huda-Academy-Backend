@@ -1,3 +1,4 @@
+const { model } = require("mongoose");
 const db = require("./../../../../../models/index.js");
 
 const Sequelize = require("sequelize");
@@ -18,12 +19,40 @@ const getMemorizationGroupByGroupIdService = async (
     },
     include: [
       {
+        model: db.Gender,
+      },
+      {
+        model: db.Day,
+        through: {
+          model: db.DayMemorizationGroup,
+        },
+      },
+      {
+        model: db.GroupStatus,
+      },
+      {
+        model: db.Day,
+        through: {
+          model: db.DayMemorizationGroup,
+        },
+      },
+      {
+        model: db.ParticipantLevel,
+      },
+      {
+        model: db.GroupGoal,
+      },
+      {
+        model: db.Language,
+        through: {
+          model: db.GroupLanguage,
+        },
+      },
+      {
         model: db.TeachingMethods,
-        attributes: ["id", "methodNameArabic", "methodNameEnglish"],
       },
       {
         model: db.Supervisor,
-        attributes: ["id", "fullName"],
       },
     ],
     logging: console.log,
@@ -36,73 +65,46 @@ const getMemorizationGroupByGroupIdService = async (
     throw error;
   }
 
-  if (
-    memorizationGroups.TeachingMethod.methodNameArabic ==
-      "القرآن-تقسيمة-السور" ||
-    memorizationGroups.TeachingMethod.methodNameEnglish ==
-      "Memorization of Parts of the Quran-Surah"
-  ) {
+  if (memorizationGroups.TeachingMethod.methodNameEnglish == "surahsQuran") {
+    console.log("Memorization of Surahs of the Quran");
+    console.log("id:", id);
     surahs = await db.SurahMemorizationGroup.findAll({
       where: {
         groupId: id,
       },
-      attributes: [
-        [Sequelize.col("Surah.id"), "id"],
-        [Sequelize.col("Surah.name"), "name"],
-        [Sequelize.col("Surah.englishName"), "englishName"],
-      ],
       include: [
         {
           model: db.Surah,
-          attributes: [],
         },
       ],
     });
-
-    memorizationGroups.setDataValue("surahs", surahs);
+    console.log("surahs:", surahs);
+    //memorizationGroups.setDataValue("surahs", surahs);
   } else if (
-    memorizationGroups.TeachingMethod.methodNameArabic ==
-      "أجزاء من القرآن-تقسيمة-الاجزاء" ||
-    memorizationGroups.TeachingMethod.methodNameEnglish ==
-      "Memorization of Parts of the Quran-Juz"
+    memorizationGroups.TeachingMethod.methodNameEnglish == "juzasQuran"
   ) {
     console.log("Memorization of Parts of the Quran");
     juzas = await db.JuzaMemorizationGroup.findAll({
       where: {
         groupId: id,
       },
-      attributes: [
-        [Sequelize.col("Juza.id"), "id"],
-        [Sequelize.col("Juza.arabic_part"), "arabic_part"],
-        [Sequelize.col("Juza.english_part"), "english_part"],
-      ],
       include: [
         {
           model: db.Juza,
-          attributes: [],
         },
       ],
     });
   } else if (
-    memorizationGroups.TeachingMethod.methodNameArabic == "مقتطفات من القرآن" ||
-    memorizationGroups.TeachingMethod.methodNameEnglish ==
-      "Extracts from the Quran"
+    memorizationGroups.TeachingMethod.methodNameEnglish == "extractsQuran"
   ) {
     extracts = await db.ExtractsFromQuranMemorizationGroup.findAll({
       where: {
         groupId: id,
       },
-      attributes: [
-        "ayat",
 
-        [Sequelize.col("Surah.id"), "surahId"],
-        [Sequelize.col("Surah.name"), "surahName"],
-        [Sequelize.col("Surah.englishName"), "surahEnglishName"],
-      ],
       include: [
         {
           model: db.Surah,
-          attributes: [],
         },
       ],
     });

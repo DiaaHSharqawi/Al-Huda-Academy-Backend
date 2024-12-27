@@ -23,49 +23,46 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TIME,
         allowNull: false,
       },
-      group_status: {
-        type: DataTypes.ENUM(
-          "Active",
-          "Inactive",
-          "Completed",
-          "Cancelled",
-          "Pending",
-          "Full"
-        ),
+      group_status_id: {
+        type: DataTypes.INTEGER,
+        foreignKey: {
+          tableName: "group_status",
+          sourceKey: "id",
+          allowNull: false,
+        },
         allowNull: false,
       },
-      group_goal: {
-        type: DataTypes.ENUM(
-          "memorization",
-          "recitation",
-          "revision",
-          "تحفيظ",
-          "تلاوة",
-          "مراجعة"
-        ),
-
+      group_goal_id: {
+        type: DataTypes.INTEGER,
+        foreignKey: {
+          name: "group_goal_id",
+          tableName: "group_goal",
+          allowNull: false,
+        },
         allowNull: false,
       },
-      days: {
-        type: DataTypes.JSON,
+      gender_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "genders",
+          key: "id",
+        },
+      },
+      participants_level_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "participant_level",
+          key: "id",
+        },
         allowNull: false,
       },
-      participants_gender: {
-        type: DataTypes.ENUM("males", "females", "ذكور", "إناث"),
-        allowNull: false,
-      },
-      participants_level: {
-        type: DataTypes.ENUM(
-          "junior",
-          "average",
-          "advanced",
-          "junior-average",
-          "average-advanced"
-        ),
-        allowNull: false,
-      },
-      supervisor_languages: {
-        type: DataTypes.JSON,
+      teaching_method_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "teaching_methods",
+          key: "id",
+        },
         allowNull: false,
       },
     },
@@ -132,6 +129,72 @@ module.exports = (sequelize, DataTypes) => {
       },
       otherKey: {
         name: "groupId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsToMany(models.Day, {
+      through: models.DayMemorizationGroup,
+      foreignKey: {
+        name: "group_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "day_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsToMany(models.Language, {
+      through: models.GroupLanguage,
+      foreignKey: {
+        name: "group_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "language_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsTo(models.Gender, {
+      foreignKey: {
+        name: "gender_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsTo(models.GroupStatus, {
+      foreignKey: {
+        name: "group_status_id",
+        tableName: "group_status",
+        sourceKey: "id",
+        allowNull: false,
+      },
+    });
+
+    MemorizationGroup.belongsTo(models.GroupGoal, {
+      foreignKey: {
+        name: "group_goal_id",
+        sourceKey: "id",
+        allowNull: false,
+      },
+
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsTo(models.ParticipantLevel, {
+      foreignKey: {
+        name: "participants_level_id",
         allowNull: false,
       },
       onDelete: "CASCADE",

@@ -22,9 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      gender: {
-        type: DataTypes.STRING,
+      gender_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: "genders",
+          key: "id",
+        },
       },
       numberOfMemorizedParts: {
         type: DataTypes.INTEGER,
@@ -42,10 +46,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      /*certificatesImages: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },*/
     },
     {
       timestamps: true,
@@ -59,6 +59,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
+    });
+
+    Supervisor.belongsTo(models.Gender, {
+      foreignKey: {
+        name: "gender_id",
+        allowNull: false,
+      },
     });
 
     Supervisor.hasMany(models.MemorizationGroup, {
