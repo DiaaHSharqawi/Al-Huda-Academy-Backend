@@ -11,7 +11,7 @@ const getSupervisorByUserIdService = async (
   });
 
   if (!supervisorData) {
-    const error = new Error("Supervisor not found");
+    const error = new Error("supervisor not found");
     error.statusCode = 404;
     throw error;
   }

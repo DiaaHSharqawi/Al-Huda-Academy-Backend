@@ -4,8 +4,8 @@
 
 const methods = [
   {
-    methodNameArabic: "كامل القرآن",
-    methodNameEnglish: "Memorization of the Complete Quran",
+    methodNameArabic: "كامل القرآن-سور",
+    methodNameEnglish: "allOfQuranSurahs",
     descriptionArabic: "تقنية لحفظ القرآن كاملاً.",
     descriptionEnglish: "Technique for memorizing the entire Quran.",
     isActive: true,
@@ -13,8 +13,17 @@ const methods = [
     updatedAt: new Date(),
   },
   {
-    methodNameArabic: "أجزاء من القرآن-تقسيمة-الاجزاء",
-    methodNameEnglish: "Memorization of Parts of the Quran-Juz",
+    methodNameArabic: "كامل القرآن-اجزاء",
+    methodNameEnglish: "allOfQuranjuzas",
+    descriptionArabic: "تقنية لحفظ القرآن كاملاً.",
+    descriptionEnglish: "Technique for memorizing the entire Quran.",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    methodNameArabic: "جزء من القرآن-اجزاء",
+    methodNameEnglish: "juzasQuran",
     descriptionArabic: "طريقة لحفظ أجزاء محددة من القرآن.",
     descriptionEnglish: "Method for memorizing specific parts.",
     isActive: true,
@@ -22,9 +31,9 @@ const methods = [
     updatedAt: new Date(),
   },
   {
-    methodNameArabic: "أجزاء من القرآن-تقسيمة-السور",
-    methodNameEnglish: "Memorization of Parts of the Quran-Surah",
-    descriptionArabic: "طريقة لحفظ أجزاء محددة.",
+    methodNameArabic: "جزء من القرآن-سور",
+    methodNameEnglish: "surahsQuran",
+    descriptionArabic: "طريقة لحفظ سور محددة.",
     descriptionEnglish: "Method for memorizing specific parts.",
     isActive: true,
     createdAt: new Date(),
@@ -32,7 +41,7 @@ const methods = [
   },
   {
     methodNameArabic: "مقتطفات من القرآن",
-    methodNameEnglish: "Extracts from the Quran",
+    methodNameEnglish: "extractsQuran",
     descriptionArabic: "استراتيجيات لحفظ مقتطفات.",
     descriptionEnglish: "Strategies for memorizing extracts.",
     isActive: true,

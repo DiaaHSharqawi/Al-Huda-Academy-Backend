@@ -10,7 +10,6 @@ const getMemorizationGroupController = asyncHandler(async (req, res) => {
     getMemorizationGroupServiceData
   );
   console.log("memorizationGroups");
-  //console.dir(memorizationGroups, { depth: null });
 
   res.status(200).json({
     success: true,

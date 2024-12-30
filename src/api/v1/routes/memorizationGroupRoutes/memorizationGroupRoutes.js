@@ -11,9 +11,6 @@ const getMemorizationGroupByGroupIdController = require("./../../controllers/mem
 const validateGetMemorizationGroupByGroupName = require("./../../validations/memorizationGroupValidations/getMemorizationGroupByGroupNameValidations");
 const validateCreateMemorizationGroup = require("./../../validations/memorizationGroupValidations/createMemorizationGroupValidations");
 
-const multer = require("multer");
-const upload = multer();
-
 const router = express.Router();
 
 router.get("/", getMemorizationGroupController);
@@ -22,14 +19,13 @@ router.get("/id/:id", getMemorizationGroupByGroupIdController);
 
 router.post(
   "/create",
-  upload.none(),
   validateCreateMemorizationGroup,
   createMemorizationGroupController
 );
 
 router.post(
   "/get-by-name",
-  upload.none(),
+
   validateGetMemorizationGroupByGroupName,
   getMemorizationGroupByGroupNameController
 );

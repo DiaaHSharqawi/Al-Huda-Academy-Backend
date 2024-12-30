@@ -2,121 +2,127 @@ const Joi = require("joi");
 
 const createMemorizationGroupSchema = Joi.object({
   groupName: Joi.string().required().messages({
-    "string.empty": "validations.groupName.group_name_cannot_be_empty",
-    "any.required": "validations.groupName.group_name_is_required",
+    "string.empty": "Group name cannot be empty",
+    "any.required": "Group name is required",
   }),
 
   group_description: Joi.string().required().messages({
-    "string.empty":
-      "validations.groupDescription.group_description_cannot_be_empty",
-    "any.required":
-      "validations.groupDescription.group_description_is_required",
+    "string.empty": "Group description cannot be empty",
+    "any.required": "Group description is required",
   }),
 
   capacity: Joi.number().integer().positive().required().messages({
-    "number.base": "validations.capacity.capacity_must_be_a_number",
-    "number.positive": "validations.capacity.capacity_must_be_positive",
-    "any.required": "validations.capacity.capacity_is_required",
+    "number.base": "Capacity must be a number",
+    "number.positive": "Capacity must be positive",
+    "any.required": "Capacity is required",
   }),
 
   start_time: Joi.string()
     .pattern(/^([0-1]?\d|2[0-3]):([0-5]?\d)$/)
     .required()
     .messages({
-      "string.empty": "validations.startTime.start_time_cannot_be_empty",
-      "string.pattern.base": "validations.startTime.start_time_must_be_valid",
-      "any.required": "validations.startTime.start_time_is_required",
+      "string.empty": "Start time cannot be empty",
+      "string.pattern.base": "Start time must be valid",
+      "any.required": "Start time is required",
     }),
 
   end_time: Joi.string()
     .pattern(/^([0-1]?\d|2[0-3]):([0-5]?\d)$/)
     .required()
     .messages({
-      "string.empty": "validations.endTime.end_time_cannot_be_empty",
-      "string.pattern.base": "validations.endTime.end_time_must_be_valid",
-      "any.required": "validations.endTime.end_time_is_required",
-    }),
-
-  group_status: Joi.string()
-    .valid("active", "inactive", "completed", "cancelled", "pending", "full")
-    .required()
-    .messages({
-      "any.only": "validations.groupStatus.group_status_must_be_valid",
-      "any.required": "validations.groupStatus.group_status_is_required",
+      "string.empty": "End time cannot be empty",
+      "string.pattern.base": "End time must be valid",
+      "any.required": "End time is required",
     }),
 
   days: Joi.array()
-    .items(
-      Joi.string()
-        .trim()
-        .valid(
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-          "السبت",
-          "الأحد",
-          "الاثنين",
-          "الثلاثاء",
-          "الأربعاء",
-          "الخميس",
-          "الجمعة"
-        )
-    )
+    .items(Joi.number().integer().min(1).max(7))
     .min(1)
     .required()
     .messages({
-      "array.base": "validations.days.days_must_be_an_array",
-      "array.min": "validations.days.days_cannot_be_empty",
-      "any.required": "validations.days.days_are_required",
-      "any.only": "validations.days.days_must_be_valid_days_of_week",
+      "array.base": "Days must be an array",
+      "array.min": "Days cannot be empty",
+      "any.required": "Days are required",
+      "number.min": "Days must be between 1 and 7",
+      "number.max": "Days must be between 1 and 7",
     }),
 
-  participants_gender: Joi.string()
-    .valid("male", "female")
-    .required()
-    .messages({
-      "any.only":
-        "validations.participantsGender.participants_gender_must_be_valid",
-      "any.required":
-        "validations.participantsGender.participants_gender_is_required",
-    }),
-  participants_level: Joi.string()
-    .valid(
-      "junior",
-      "average",
-      "advanced",
-      "junior-average",
-      "average-advanced"
-    )
-    .required()
-    .messages({
-      "any.only":
-        "validations.participantsLevel.participants_level_must_be_valid",
-      "any.required":
-        "validations.participantsLevel.participants_level_is_required",
-    }),
-  group_goal: Joi.string()
-    .valid("memorization", "recitation", "revision")
-    .required()
-    .messages({
-      "any.only": "validations.groupGoal.group_goal_must_be_valid",
-      "any.required": "validations.groupGoal.group_goal_is_required",
-    }),
-  supervisor_id: Joi.string().required().messages({
-    "string.empty": "validations.supervisorId.supervisor_id_cannot_be_empty",
-    "any.required": "validations.supervisorId.supervisor_id_is_required",
+  participants_gender_id: Joi.number().valid(1, 2).required().messages({
+    "any.only": "Participants gender must be valid",
+    "any.required": "Participants gender is required",
   }),
+  participants_level_id: Joi.number()
+    .integer()
+    .min(1)
+    .max(5)
+    .required()
+    .messages({
+      "number.base": "Participants level must be a number",
+      "number.min": "Participants level must be at least 1",
+      "number.max": "Participants level must be at most 5",
+      "any.required": "Participants level is required",
+    }),
+
+  group_goal_id: Joi.number().integer().min(1).max(3).required().messages({
+    "number.base": "Group goal must be a number",
+    "number.min": "Group goal must be at least 1",
+    "number.max": "Group goal must be at most 3",
+    "any.required": "Group goal is required",
+  }),
+
+  supervisor_id: Joi.number().integer().required().messages({
+    "number.base": "Supervisor ID must be a number",
+    "any.required": "Supervisor ID is required",
+  }),
+  teaching_method_id: Joi.number().integer().min(1).max(5).required().messages({
+    "number.base": "Teaching method must be a number",
+    "number.min": "Teaching method must be at least 1",
+    "number.max": "Teaching method must be at most 5",
+    "any.required": "Teaching method is required",
+  }),
+  surah_ids: Joi.array()
+    .items(Joi.number().integer().min(1).max(114))
+    .optional()
+    .messages({
+      "array.base": "Surahs must be an array",
+      "number.min": "Surahs must be between 1 and 114",
+      "number.max": "Surahs must be between 1 and 114",
+    })
+    .allow(null),
+  juza_ids: Joi.array()
+    .items(Joi.number().integer().min(1).max(30))
+    .optional()
+    .messages({
+      "array.base": "Juza IDs must be an array",
+      "number.min": "Juza IDs must be between 1 and 30",
+      "number.max": "Juza IDs must be between 1 and 30",
+    })
+    .allow(null),
+
+  extracts: Joi.array()
+    .optional()
+    .items(
+      Joi.object({}).keys({
+        surah_id: Joi.number().integer().min(1).max(114).required(),
+        ayat: Joi.string().required(),
+      })
+    )
+    .optional()
+    .allow(null),
 }).custom((value, helpers) => {
   const startTime = value.start_time;
   const endTime = value.end_time;
   if (startTime && endTime && startTime >= endTime) {
-    return helpers.message(
-      "validations.time.end_time_must_be_after_start_time"
-    );
+    return helpers.message("End time must be after start time");
+  }
+  if (
+    !(
+      value.surah_ids?.length > 0 ||
+      value.juza_ids?.length > 0 ||
+      (value.extracts && value.extracts.length > 0)
+    )
+  ) {
+    return helpers.message("Surah IDs, Juza IDs, or extracts must be provided");
   }
   return value;
 });
@@ -124,6 +130,7 @@ const createMemorizationGroupSchema = Joi.object({
 const validateCreateMemorizationGroup = (req, res, next) => {
   console.log("validateCreateMemorizationGroup");
   console.dir(req.body, { depth: null });
+
   const { error } = createMemorizationGroupSchema.validate(req.body, {
     abortEarly: false,
   });
