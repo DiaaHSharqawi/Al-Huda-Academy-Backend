@@ -4,8 +4,8 @@
 
 const methods = [
   {
-    methodNameArabic: "كامل القرآن",
-    methodNameEnglish: "allQuran",
+    methodNameArabic: "كامل القرآن-سور",
+    methodNameEnglish: "allOfQuranSurahs",
     descriptionArabic: "تقنية لحفظ القرآن كاملاً.",
     descriptionEnglish: "Technique for memorizing the entire Quran.",
     isActive: true,
@@ -13,7 +13,16 @@ const methods = [
     updatedAt: new Date(),
   },
   {
-    methodNameArabic: "أجزاء من القرآن-تقسيمة-الاجزاء",
+    methodNameArabic: "كامل القرآن-اجزاء",
+    methodNameEnglish: "allOfQuranjuzas",
+    descriptionArabic: "تقنية لحفظ القرآن كاملاً.",
+    descriptionEnglish: "Technique for memorizing the entire Quran.",
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    methodNameArabic: "جزء من القرآن-اجزاء",
     methodNameEnglish: "juzasQuran",
     descriptionArabic: "طريقة لحفظ أجزاء محددة من القرآن.",
     descriptionEnglish: "Method for memorizing specific parts.",
@@ -22,9 +31,9 @@ const methods = [
     updatedAt: new Date(),
   },
   {
-    methodNameArabic: "أجزاء من القرآن-تقسيمة-السور",
+    methodNameArabic: "جزء من القرآن-سور",
     methodNameEnglish: "surahsQuran",
-    descriptionArabic: "طريقة لحفظ أجزاء محددة.",
+    descriptionArabic: "طريقة لحفظ سور محددة.",
     descriptionEnglish: "Method for memorizing specific parts.",
     isActive: true,
     createdAt: new Date(),

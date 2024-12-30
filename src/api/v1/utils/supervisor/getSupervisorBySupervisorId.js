@@ -11,7 +11,7 @@ const getSupervisorBySupervisorId = async (supervisorId) => {
         supervisorId: supervisorId,
       }
     );
-    return response.data.supervisorDetails;
+    return response;
   } catch (error) {
     console.error(error);
     return error;
