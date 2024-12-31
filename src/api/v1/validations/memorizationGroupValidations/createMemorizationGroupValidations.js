@@ -115,7 +115,7 @@ const createMemorizationGroupSchema = Joi.object({
   if (startTime && endTime && startTime >= endTime) {
     return helpers.message("End time must be after start time");
   }
-  if (
+  /* if (
     !(
       value.surah_ids?.length > 0 ||
       value.juza_ids?.length > 0 ||
@@ -123,7 +123,7 @@ const createMemorizationGroupSchema = Joi.object({
     )
   ) {
     return helpers.message("Surah IDs, Juza IDs, or extracts must be provided");
-  }
+  }*/
   return value;
 });
 

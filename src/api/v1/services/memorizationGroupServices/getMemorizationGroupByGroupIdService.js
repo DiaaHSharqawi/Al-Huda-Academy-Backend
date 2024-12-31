@@ -65,7 +65,10 @@ const getMemorizationGroupByGroupIdService = async (
     throw error;
   }
 
-  if (memorizationGroups.TeachingMethod.methodNameEnglish == "surahsQuran") {
+  if (
+    memorizationGroups.TeachingMethod.id === "1" ||
+    memorizationGroups.TeachingMethod.id == "4"
+  ) {
     console.log("Memorization of Surahs of the Quran");
     console.log("id:", id);
     surahs = await db.SurahMemorizationGroup.findAll({
@@ -81,7 +84,8 @@ const getMemorizationGroupByGroupIdService = async (
     console.log("surahs:", surahs);
     //memorizationGroups.setDataValue("surahs", surahs);
   } else if (
-    memorizationGroups.TeachingMethod.methodNameEnglish == "juzasQuran"
+    memorizationGroups.TeachingMethod.id == "2" ||
+    memorizationGroups.TeachingMethod.id == "4"
   ) {
     console.log("Memorization of Parts of the Quran");
     juzas = await db.JuzaMemorizationGroup.findAll({
@@ -94,9 +98,7 @@ const getMemorizationGroupByGroupIdService = async (
         },
       ],
     });
-  } else if (
-    memorizationGroups.TeachingMethod.methodNameEnglish == "extractsQuran"
-  ) {
+  } else if (memorizationGroups.TeachingMethod.id == "5") {
     extracts = await db.ExtractsFromQuranMemorizationGroup.findAll({
       where: {
         groupId: id,

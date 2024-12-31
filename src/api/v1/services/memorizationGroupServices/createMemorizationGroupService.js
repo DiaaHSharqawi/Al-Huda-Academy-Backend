@@ -36,7 +36,7 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
 
     console.log("createMemorizationGroupData :");
     console.log("createMemorizationGroupData.supervisor_id :");
-    console.dir(createMemorizationGroupData.supervisor_id, { depth: null });
+    //    console.dir(createMemorizationGroupData.supervisor_id, { depth: null });
 
     const getSupervisorBySupervisorIdResponse =
       await getSupervisorBySupervisorId(
@@ -44,7 +44,7 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       );
 
     console.log("getSupervisorBySupervisorIdResponse :");
-    console.dir(getSupervisorBySupervisorIdResponse, { depth: null });
+    // console.dir(getSupervisorBySupervisorIdResponse, { depth: null });
 
     if (getSupervisorBySupervisorIdResponse.status !== 200) {
       const error = new Error(
@@ -85,18 +85,37 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       },
       { transaction }
     );
+    console.log("memorizationGroup added :");
+
+    const { days } = createMemorizationGroupData;
+    console.log("days :");
+    console.dir(days, { depth: 1 });
+
+    const groupDaysPromises = days.map((day) =>
+      db.DayMemorizationGroup.create(
+        {
+          day_id: day,
+          group_id: memorizationGroup.id,
+        },
+        { transaction }
+      )
+    );
+    await Promise.all(groupDaysPromises);
 
     const teachingMethodId = parseInt(
       createMemorizationGroupData.teaching_method_id,
       10
     );
     console.log("teachingMethodId :");
-    console.dir(teachingMethodId, { depth: null });
+    console.dir(teachingMethodId, { depth: 1 });
 
     const teachingMethodModel = teachingMethodsMapping(teachingMethodId);
 
     if (teachingMethodId === 1 || teachingMethodId === 4) {
-      const { surah_ids } = createMemorizationGroupData;
+      let { surah_ids } = createMemorizationGroupData;
+      if (!surah_ids && teachingMethodId === 1) {
+        surah_ids = Array.from({ length: 114 }, (_, i) => i + 1);
+      }
       const surahPromises = surah_ids.map((surah_id) =>
         teachingMethodModel.create(
           {
@@ -108,7 +127,10 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       );
       await Promise.all(surahPromises);
     } else if (teachingMethodId === 2 || teachingMethodId === 3) {
-      const { juza_ids } = createMemorizationGroupData;
+      let { juza_ids } = createMemorizationGroupData;
+      if (!juza_ids && teachingMethodId === 2) {
+        juza_ids = Array.from({ length: 30 }, (_, i) => i + 1);
+      }
       const juzaPromises = juza_ids.map((juza_id) =>
         teachingMethodModel.create(
           {

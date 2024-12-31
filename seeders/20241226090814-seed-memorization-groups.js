@@ -69,7 +69,7 @@ const groups = [
     gender_id: 1,
     participants_level_id: 3, // advanced
     supervisor_id: 2,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
     createdAt: new Date(),
   },
   {
@@ -83,7 +83,7 @@ const groups = [
     gender_id: 2,
     participants_level_id: 1, // junior
     supervisor_id: 3,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
     createdAt: new Date(),
   },
   {
@@ -97,7 +97,7 @@ const groups = [
     gender_id: 2,
     participants_level_id: 2, // average
     supervisor_id: 1,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
     createdAt: new Date(),
   },
   {
@@ -111,7 +111,7 @@ const groups = [
     gender_id: 1,
     participants_level_id: 1, // junior
     supervisor_id: 2,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
     createdAt: new Date(),
   },
   {
@@ -125,7 +125,7 @@ const groups = [
     gender_id: 2,
     participants_level_id: 3, // advanced
     supervisor_id: 3,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
     createdAt: new Date(),
   },
   {
@@ -139,7 +139,7 @@ const groups = [
     gender_id: 1,
     participants_level_id: 2, // average
     supervisor_id: 1,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
     createdAt: new Date(),
   },
   {
@@ -153,7 +153,7 @@ const groups = [
     gender_id: 2,
     participants_level_id: 1, // junior
     supervisor_id: 2,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
     createdAt: new Date(),
   },
   {
@@ -167,7 +167,7 @@ const groups = [
     gender_id: 1,
     participants_level_id: 3, // advanced
     supervisor_id: 3,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
     createdAt: new Date(),
   },
   {
@@ -181,7 +181,7 @@ const groups = [
     gender_id: 2,
     participants_level_id: 2, // average
     supervisor_id: 1,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
     createdAt: new Date(),
   },
   {
@@ -195,7 +195,7 @@ const groups = [
     gender_id: 1,
     participants_level_id: 1, // junior
     supervisor_id: 2,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
     createdAt: new Date(),
   },
 ];
