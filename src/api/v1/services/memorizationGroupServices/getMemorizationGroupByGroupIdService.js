@@ -58,7 +58,7 @@ const getMemorizationGroupByGroupIdService = async (
     logging: console.log,
   });
 
-  console.log("memorizationGroups:", memorizationGroups);
+  // console.log("memorizationGroups:", memorizationGroups);
   if (!memorizationGroups) {
     const error = new Error("Memorization group not found.");
     error.statusCode = 404;
@@ -66,10 +66,10 @@ const getMemorizationGroupByGroupIdService = async (
   }
 
   if (
-    memorizationGroups.TeachingMethod.id === "1" ||
-    memorizationGroups.TeachingMethod.id == "4"
+    memorizationGroups.TeachingMethod.id === 1 ||
+    memorizationGroups.TeachingMethod.id == 4
   ) {
-    console.log("Memorization of Surahs of the Quran");
+    console.log("Memorization of Surahs of the Quran ----");
     console.log("id:", id);
     surahs = await db.SurahMemorizationGroup.findAll({
       where: {
@@ -84,8 +84,8 @@ const getMemorizationGroupByGroupIdService = async (
     console.log("surahs:", surahs);
     //memorizationGroups.setDataValue("surahs", surahs);
   } else if (
-    memorizationGroups.TeachingMethod.id == "2" ||
-    memorizationGroups.TeachingMethod.id == "4"
+    memorizationGroups.TeachingMethod.id == 2 ||
+    memorizationGroups.TeachingMethod.id == 4
   ) {
     console.log("Memorization of Parts of the Quran");
     juzas = await db.JuzaMemorizationGroup.findAll({
@@ -98,7 +98,7 @@ const getMemorizationGroupByGroupIdService = async (
         },
       ],
     });
-  } else if (memorizationGroups.TeachingMethod.id == "5") {
+  } else if (memorizationGroups.TeachingMethod.id == 5) {
     extracts = await db.ExtractsFromQuranMemorizationGroup.findAll({
       where: {
         groupId: id,
@@ -117,6 +117,8 @@ const getMemorizationGroupByGroupIdService = async (
   memorizationGroups.setDataValue("juzas", juzas);
   memorizationGroups.setDataValue("extracts", extracts);
 
+  console.log("memorizationGroups:");
+  console.log(typeof memorizationGroups.TeachingMethod.id);
   return memorizationGroups;
 };
 module.exports = getMemorizationGroupByGroupIdService;

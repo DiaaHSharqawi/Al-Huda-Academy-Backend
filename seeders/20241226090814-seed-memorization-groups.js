@@ -162,7 +162,7 @@ const groups = [
     capacity: 18,
     start_time: "14:00:00",
     end_time: "16:00:00",
-    group_status_id: 6,
+    group_status_id: 5,
     group_goal_id: 1,
     gender_id: 1,
     participants_level_id: 3, // advanced
@@ -176,7 +176,7 @@ const groups = [
     capacity: 12,
     start_time: "17:00:00",
     end_time: "19:00:00",
-    group_status_id: 1,
+    group_status_id: 5,
     group_goal_id: 3,
     gender_id: 2,
     participants_level_id: 2, // average
@@ -190,7 +190,7 @@ const groups = [
     capacity: 20,
     start_time: "08:00:00",
     end_time: "10:00:00",
-    group_status_id: 2,
+    group_status_id: 5,
     group_goal_id: 1,
     gender_id: 1,
     participants_level_id: 1, // junior
@@ -200,10 +200,19 @@ const groups = [
   },
 ];
 
+const generateGroupsWithTimestamps = (baseDate) => {
+  return groups.map((group, index) => ({
+    ...group,
+    createdAt: new Date(baseDate.getTime() + index * 1000), // 1 second apart
+  }));
+};
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     try {
-      await queryInterface.bulkInsert("memorization_group", groups);
+      const baseDate = new Date(); // Start from now
+      const updatedGroups = generateGroupsWithTimestamps(baseDate);
+
+      await queryInterface.bulkInsert("memorization_group", updatedGroups);
     } catch (error) {
       console.error("Error seeding memorization_group", error);
     }

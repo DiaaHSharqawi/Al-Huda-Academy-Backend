@@ -27,6 +27,7 @@ const languageRoutes = require("./src/api/v1/routes/languageRoutes/languageRoute
 const teachingMethodsRoutes = require("./src/api/v1/routes/teachingMethodsRoutes/teachingMethodsRoutes.js");
 const participantLevelRoutes = require("./src/api/v1/routes/participantLevelRoutes/participantLevelRoutes.js");
 const daysRoutes = require("./src/api/v1/routes/daysRoutes/daysRoutes.js");
+const adminRoutes = require("./src/api/v1/routes/adminRoutes/adminRoutes.js");
 
 // Load env variables from .env file
 dotenv.config();
@@ -101,6 +102,9 @@ app.use("/api/participant-level", participantLevelRoutes);
 
 // Days route
 app.use("/api/days", daysRoutes);
+
+// Admin route
+app.use("/api/admin", adminRoutes);
 
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {
