@@ -30,18 +30,11 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      numberOfMemorizedParts: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      numberOfMemorizedSurahs: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       details: {
         type: DataTypes.TEXT,
         allowNull: true,
       },
+
       profileImage: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -76,6 +69,21 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    Supervisor.belongsToMany(models.Juza, {
+      through: models.SupervisorAjzaa,
+      foreignKey: {
+        name: "supervisor_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "juza_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
+
   return Supervisor;
 };

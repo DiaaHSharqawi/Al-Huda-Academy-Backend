@@ -10,6 +10,15 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true,
         },
       },
+      roleNameAr: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
+      },
+
       isActive: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,

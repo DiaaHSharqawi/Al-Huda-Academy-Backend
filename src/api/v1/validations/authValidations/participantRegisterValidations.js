@@ -32,30 +32,44 @@ const participantRegisterSchema = Joi.object({
     "string.empty": "validations.country.country_cannot_be_empty",
     "any.required": "validations.country.country_is_required",
   }),
-  gender: Joi.string().valid("male", "female", "other").required().messages({
-    "string.empty": "validations.gender.gender_cannot_be_empty",
-    "any.only": "validations.gender.gender_must_be_one_of_male_female_other",
-    "any.required": "validations.gender.gender_is_required",
+  gender_id: Joi.string().required().messages({
+    "string.empty": "validations.gender_id.gender_cannot_be_empty",
+    "any.only": "validations.gender_id.gender_must_be_one_of_male_female_other",
+    "any.required": "validations.gender_id.gender_is_required",
   }),
-  numberOfMemorizedSurahs: Joi.number().min(0).max(114).required().messages({
-    "number.base": "validations.numberOfMemorizedSurahs.must_be_a_valid_number",
+  quranMemorizingAmountsId: Joi.number().min(1).max(7).required().messages({
+    "number.base":
+      "validations.quranMemorizingAmountsId.must_be_a_valid_number",
     "number.min":
-      "validations.numberOfMemorizedSurahs.must_be_between_0_and_114",
+      "validations.quranMemorizingAmountsId.must_be_between_1_and_7",
     "number.max":
-      "validations.numberOfMemorizedSurahs.must_be_between_0_and_114",
+      "validations.quranMemorizingAmountsId.must_be_between_1_and_7",
     "any.required":
-      "validations.numberOfMemorizedSurahs.number_of_memorized_surahs_is_required",
-  }),
-  numberOfMemorizedParts: Joi.number().min(0).max(30).required().messages({
-    "number.base": "validations.numberOfMemorizedParts.must_be_a_valid_number",
-    "number.min": "validations.numberOfMemorizedParts.must_be_between_0_and_30",
-    "number.max": "validations.numberOfMemorizedParts.must_be_between_0_and_30",
-    "any.required":
-      "validations.numberOfMemorizedParts.number_of_memorized_parts_is_required",
+      "validations.quranMemorizingAmountsId.memorized_quran_memorizing_amounts_id_is_required",
   }),
   details: Joi.string().optional().allow("").messages({
     "string.empty": "validations.details.details_can_be_empty",
   }),
+  juza_ids: Joi.array()
+    .optional()
+    .items(Joi.number().integer().min(1).max(30))
+    .optional()
+    .messages({
+      "array.base": "Juza IDs must be an array",
+      "number.min": "Juza IDs must be between 1 and 30",
+      "number.max": "Juza IDs must be between 1 and 30",
+    }),
+  selectedMemorizingOption: Joi.string()
+    .valid("none", "all", "parts")
+    .required()
+    .messages({
+      "string.empty":
+        "validations.selectedMemorizingOption.selected_memorizing_option_cannot_be_empty",
+      "any.only":
+        "validations.selectedMemorizingOption.selected_memorizing_option_must_be_one_of_none_all_custom",
+      "any.required":
+        "validations.selectedMemorizingOption.selected_memorizing_option_is_required",
+    }),
 });
 
 const validateParticipantRegisterData = (req, res, next) => {
@@ -69,6 +83,9 @@ const validateParticipantRegisterData = (req, res, next) => {
       message: "Please upload a profile image",
     });
   }
+  console.log("validateParticipantRegisterData");
+  console.dir(req.body.juza_ids, { depth: null });
+
   const { error } = participantRegisterSchema.validate(req.body, {
     abortEarly: false,
   });

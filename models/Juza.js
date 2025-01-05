@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
         primaryKey: true,
       },
       arabic_part: {
@@ -30,6 +29,34 @@ module.exports = (sequelize, DataTypes) => {
       },
       otherKey: {
         name: "groupId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Juza.belongsToMany(models.Supervisor, {
+      through: models.SupervisorAjzaa,
+      foreignKey: {
+        name: "juza_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "supervisor_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Juza.belongsToMany(models.Participant, {
+      through: models.ParticipantAjzaa,
+      foreignKey: {
+        name: "juza_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "participant_id",
         allowNull: false,
       },
       onDelete: "CASCADE",

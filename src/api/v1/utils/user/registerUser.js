@@ -1,6 +1,6 @@
 const axios = require("axios");
 const registerUser = async (userData) => {
-  const { email, password, roleName } = userData;
+  const { email, password, role_id } = userData;
 
   try {
     console.log(`registerUser Utils`);
@@ -11,7 +11,7 @@ const registerUser = async (userData) => {
       {
         email: email,
         password: password,
-        roleName: roleName,
+        roleId: role_id.toString(),
       }
     );
 

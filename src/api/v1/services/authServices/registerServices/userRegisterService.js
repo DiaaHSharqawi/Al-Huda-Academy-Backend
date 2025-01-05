@@ -2,10 +2,10 @@ const db = require("./../../../../../../models/index.js");
 
 const getUserByEmail = require("./../../../utils/user/getUserByEmail.js");
 const getHashedCredential = require("./../../../utils/auth/getHashedCredential.js");
-const getRoleByRoleName = require("./../../../utils/role/getRoleByRoleName.js");
+const getRoleByRoleId = require("./../../../utils/role/getRoleByRoleId.js");
 
 const userRegisterService = async (userData) => {
-  const { email, password, roleName } = userData;
+  const { email, password, roleId } = userData;
 
   console.log(`userRegisterService`);
   console.log(`email : ${email}, password : ${password}`);
@@ -22,14 +22,14 @@ const userRegisterService = async (userData) => {
     throw error;
   }
 
-  const getRoleByNameResponse = await getRoleByRoleName(roleName);
+  const getRoleByRoleIdResponse = await getRoleByRoleId(roleId);
 
-  if (getRoleByNameResponse.status === 404) {
+  if (getRoleByRoleIdResponse.status === 404) {
     const error = new Error("Role does not exist");
     error.statusCode = 404;
     throw error;
   }
-  const roleId = getRoleByNameResponse.data.role.id;
+  //const roleId = getRoleByRoleIdResponse.data.role.id;
 
   const user = await db.User.create({
     email: email,
