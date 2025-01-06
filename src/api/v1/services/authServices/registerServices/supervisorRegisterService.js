@@ -64,6 +64,7 @@ const supervisorRegisterService = async (supervisorToRegister) => {
     email: email,
     password: password,
     role_id: 2,
+    isActive: false,
   };
   const registerUserResponse = await registerUser(userToRegister);
 

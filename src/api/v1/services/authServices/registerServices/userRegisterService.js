@@ -7,6 +7,8 @@ const getRoleByRoleId = require("./../../../utils/role/getRoleByRoleId.js");
 const userRegisterService = async (userData) => {
   const { email, password, roleId } = userData;
 
+  let { isActive } = userData;
+
   console.log(`userRegisterService`);
   console.log(`email : ${email}, password : ${password}`);
 
@@ -31,10 +33,13 @@ const userRegisterService = async (userData) => {
   }
   //const roleId = getRoleByRoleIdResponse.data.role.id;
 
+  isActive = isActive ?? true;
+
   const user = await db.User.create({
     email: email,
     password: hashedPassword,
     roleId: roleId,
+    isActive: isActive,
   });
 
   return user;

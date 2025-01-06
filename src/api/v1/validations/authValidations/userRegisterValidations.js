@@ -15,6 +15,10 @@ const userRegisterSchema = Joi.object({
     "string.empty": "validations.roleId.role_id_cannot_be_empty",
     "any.required": "validations.roleId.role_id_is_required",
   }),
+  isActive: Joi.boolean().optional().messages({
+    "boolean.base": "validations.isActive.is_active_must_be_a_boolean",
+    "any.required": "validations.isActive.is_active_is_required",
+  }),
 });
 
 const validateUserRegisterData = (req, res, next) => {
