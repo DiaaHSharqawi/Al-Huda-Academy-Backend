@@ -12,7 +12,8 @@ const participants = [
     country: "مصر",
     gender_id: 1,
     details: "مشارك نشط في الفعاليات.",
-    profileImage: "path/to/profile/image1.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736076591/uploads/epev7yrytqvkjgutcelq.png",
     userId: 1,
     quranMemorizingAmountsId: 1,
     createdAt: new Date(),
@@ -26,7 +27,8 @@ const participants = [
     country: "مصر",
     gender_id: 2,
     details: "تتمتع بخبرة في العمل الجماعي.",
-    profileImage: "path/to/profile/image2.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736067710/uploads/tsxpj5edkvamesyn9l5q.png",
     userId: 2,
     quranMemorizingAmountsId: 2,
     createdAt: new Date(),
@@ -40,7 +42,8 @@ const participants = [
     country: "السعودية",
     gender_id: 1,
     details: "شارك في عدة مشاريع.",
-    profileImage: "path/to/profile/image3.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736076591/uploads/epev7yrytqvkjgutcelq.png",
     userId: 3,
     quranMemorizingAmountsId: 3,
     createdAt: new Date(),
@@ -54,7 +57,8 @@ const participants = [
     country: "السعودية",
     gender_id: 1,
     details: "مشارك في الفعاليات الثقافية.",
-    profileImage: "path/to/profile/image4.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736076591/uploads/epev7yrytqvkjgutcelq.png",
     userId: 4,
     quranMemorizingAmountsId: 4,
     createdAt: new Date(),
@@ -68,7 +72,8 @@ const participants = [
     country: "السعودية",
     gender_id: 2,
     details: "تتمتع بخبرة في التعليم.",
-    profileImage: "path/to/profile/image5.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736067710/uploads/tsxpj5edkvamesyn9l5q.png",
     userId: 5,
     quranMemorizingAmountsId: 5,
     createdAt: new Date(),

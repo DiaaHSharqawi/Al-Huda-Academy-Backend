@@ -1,7 +1,4 @@
-const { where } = require("sequelize");
 const db = require("../../../../../models/index.js");
-const { required } = require("joi");
-const { t } = require("i18next");
 
 const getSupervisorRequestRegistrationDetailsService = async (
   supervisorRequestRegistrationDetailsData

@@ -11,7 +11,8 @@ const supervisors = [
     country: "المملكة العربية السعودية",
     gender_id: 1,
     details: "مشرف ذو خبرة طويلة في تعليم القرآن الكريم وإدارة مجموعات الحفظ.",
-    profileImage: "mohamed_ahmed.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736076591/uploads/epev7yrytqvkjgutcelq.png",
     userId: 4,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -24,7 +25,8 @@ const supervisors = [
     country: "المملكة العربية السعودية",
     gender_id: 2,
     details: "مشرفة متخصصة في تعليم التلاوة والتجويد للطالبات.",
-    profileImage: "aisha_abdullah.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736067710/uploads/tsxpj5edkvamesyn9l5q.png",
     userId: 5,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -37,7 +39,8 @@ const supervisors = [
     country: "المملكة العربية السعودية",
     gender_id: 1,
     details: "مشرف يتميز بأسلوبه المبتكر في تعليم الطلاب وتحفيزهم.",
-    profileImage: "khaled_youssef.jpg",
+    profileImage:
+      "https://res.cloudinary.com/dvqxt060a/image/upload/v1736076591/uploads/epev7yrytqvkjgutcelq.png",
     userId: 6,
     createdAt: new Date(),
     updatedAt: new Date(),
