@@ -70,6 +70,15 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "CASCADE",
     });
 
+    Supervisor.hasMany(models.SupervisorCertificate, {
+      foreignKey: {
+        name: "supervisorId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
     Supervisor.belongsToMany(models.Juza, {
       through: models.SupervisorAjzaa,
       foreignKey: {
