@@ -4,19 +4,25 @@ const express = require("express");
 const getRequestsForCreatingGroupsController = require("../../controllers/adminControllers/getRequestsForCreatingGroupsController.js");
 const getAllSupervisorRequestRegistrationController = require("../../controllers/adminControllers/getAllSupervisorRequestRegistrationController.js");
 const getSupervisorRequestRegistrationDetailsController = require("../../controllers/adminControllers/getSupervisorRequestRegistrationDetailsController.js");
+const acceptSupervisorRequestRegistrationController = require("../../controllers/adminControllers/acceptSupervisorRequestRegistrationController.js");
 
 const router = express.Router();
 
 router.get("/groups/requests/pending", getRequestsForCreatingGroupsController);
 
 router.get(
-  "/supervisor/requests/pending",
+  "/supervisor/requests/registration/pending",
   getAllSupervisorRequestRegistrationController
 );
 
 router.get(
-  "/supervisor/requests/pending/:supervisorId",
+  "/supervisor/requests/registration/pending/:supervisorId",
   getSupervisorRequestRegistrationDetailsController
+);
+
+router.post(
+  "/supervisor/requests/registration/pending/:supervisorId/accept",
+  acceptSupervisorRequestRegistrationController
 );
 
 module.exports = router;

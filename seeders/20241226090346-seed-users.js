@@ -10,6 +10,7 @@ const users = [
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 1,
+    accountStatusId: 1,
   },
   {
     email: "p2@gmail.com",
@@ -18,6 +19,7 @@ const users = [
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 1,
+    accountStatusId: 1,
   },
   {
     email: "p3@gmail.com",
@@ -26,6 +28,7 @@ const users = [
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 1,
+    accountStatusId: 1,
   },
   {
     email: "s1@gmail.com",
@@ -34,6 +37,7 @@ const users = [
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 2,
+    accountStatusId: 1,
   },
   {
     email: "s2@gmail.com",
@@ -42,6 +46,7 @@ const users = [
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 2,
+    accountStatusId: 1,
   },
   {
     email: "s3@gmail.com",
@@ -50,6 +55,7 @@ const users = [
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 2,
+    accountStatusId: 1,
   },
   {
     email: "admin@gmail.com",
@@ -58,6 +64,7 @@ const users = [
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 3,
+    accountStatusId: 2,
   },
 ];
 

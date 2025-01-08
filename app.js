@@ -29,6 +29,8 @@ const participantLevelRoutes = require("./src/api/v1/routes/participantLevelRout
 const daysRoutes = require("./src/api/v1/routes/daysRoutes/daysRoutes.js");
 const adminRoutes = require("./src/api/v1/routes/adminRoutes/adminRoutes.js");
 const quranMemorizingAmountRoutes = require("./src/api/v1/routes/quranMemorizingAmountRoutes/quranMemorizingAmountRoutes.js");
+const accountStatusRoutes = require("./src/api/v1/routes/accountStatusRoutes/accountStatusRoutes.js");
+const notificationsRoutes = require("./src/api/v1/routes/notificationsRoutes/notificationsRoutes.js");
 
 // Load env variables from .env file
 dotenv.config();
@@ -109,6 +111,12 @@ app.use("/api/admin", adminRoutes);
 
 // Quran Memorizing Amount route
 app.use("/api/quran-memorizing-amount", quranMemorizingAmountRoutes);
+
+// Account Status route
+app.use("/api/account-status", accountStatusRoutes);
+
+// Notifications route
+app.use("/api/notifications", notificationsRoutes);
 
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {

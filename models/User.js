@@ -37,7 +37,17 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
     User.hasOne(models.Supervisor, { foreignKey: "userId" });
+
+    User.belongsTo(models.AccountStatus, {
+      foreignKey: {
+        name: "accountStatusId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
   return User;
 };
