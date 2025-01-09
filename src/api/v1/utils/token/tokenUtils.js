@@ -17,6 +17,7 @@ const tokenUtils = {
           email: dataToEncrypt.email,
           fullName: dataToEncrypt.fullName,
           role: dataToEncrypt.role,
+          accountStatus: dataToEncrypt.accountStatus,
         },
       },
       accessTokenSecret,
@@ -37,10 +38,10 @@ const tokenUtils = {
         UserInfo: {
           id: dataToEncrypt.userId,
           memberId: dataToEncrypt.memberId,
-
           email: dataToEncrypt.email,
           fullName: dataToEncrypt.fullName,
           role: dataToEncrypt.role,
+          accountStatus: dataToEncrypt.accountStatus,
         },
       },
       refreshTokenSecret,

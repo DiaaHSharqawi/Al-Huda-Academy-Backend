@@ -25,6 +25,10 @@ module.exports = {
           englishName: "deleted",
           arabicName: "محذوف",
         },
+        {
+          englishName: "under review",
+          arabicName: "قيد المراجعة",
+        },
       ]);
     } catch (error) {
       console.error("Error inserting data into AccountStatuses:", error);
