@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true,
         },
       },
-      isActive: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
-      },
     },
     {
       timestamps: true,

@@ -5,6 +5,7 @@ const getRequestsForCreatingGroupsController = require("../../controllers/adminC
 const getAllSupervisorRequestRegistrationController = require("../../controllers/adminControllers/getAllSupervisorRequestRegistrationController.js");
 const getSupervisorRequestRegistrationDetailsController = require("../../controllers/adminControllers/getSupervisorRequestRegistrationDetailsController.js");
 const acceptSupervisorRequestRegistrationController = require("../../controllers/adminControllers/acceptSupervisorRequestRegistrationController.js");
+const rejectSupervisorRequestRegistrationController = require("../../controllers/adminControllers/rejectSupervisorRequestRegistrationController.js");
 
 const router = express.Router();
 
@@ -23,6 +24,11 @@ router.get(
 router.post(
   "/supervisor/requests/registration/pending/:supervisorId/accept",
   acceptSupervisorRequestRegistrationController
+);
+
+router.post(
+  "/supervisor/requests/registration/pending/:supervisorId/reject",
+  rejectSupervisorRequestRegistrationController
 );
 
 module.exports = router;

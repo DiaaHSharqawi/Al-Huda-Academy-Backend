@@ -62,10 +62,24 @@ const participantRegisterService = async (participantToRegister) => {
     throw error;
   }
 
+  const activeAccountStatus = await db.AccountStatus.findOne({
+    where: { englishName: "active" },
+  });
+
+  if (!activeAccountStatus) {
+    const error = new Error("Account Status does not exist");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  console.log(`activeAccountStatus`);
+  console.dir(activeAccountStatus, { depth: null });
+
   const userToRegister = {
     email: email,
     password: password,
     role_id: 1,
+    accountStatusId: activeAccountStatus.id,
   };
   const registerUserResponse = await registerUser(userToRegister);
   console.log(`registerUserResponse`);

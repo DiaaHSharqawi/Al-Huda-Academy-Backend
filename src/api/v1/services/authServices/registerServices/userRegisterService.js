@@ -5,9 +5,7 @@ const getHashedCredential = require("./../../../utils/auth/getHashedCredential.j
 const getRoleByRoleId = require("./../../../utils/role/getRoleByRoleId.js");
 
 const userRegisterService = async (userData) => {
-  const { email, password, roleId } = userData;
-
-  let { isActive } = userData;
+  const { email, password, roleId, accountStatusId } = userData;
 
   console.log(`userRegisterService`);
   console.log(`email : ${email}, password : ${password}`);
@@ -33,13 +31,28 @@ const userRegisterService = async (userData) => {
   }
   //const roleId = getRoleByRoleIdResponse.data.role.id;
 
-  isActive = isActive ?? true;
+  const accountStatus = await db.AccountStatus.findOne({
+    where: {
+      id: accountStatusId,
+    },
+  });
+
+  if (!accountStatus) {
+    const error = new Error("Account Status does not exist");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  console.log(`roleId : ${roleId}`);
+  console.log(`accountStatusId : ${accountStatusId}`);
+
+  console.dir(accountStatus, { depth: null });
 
   const user = await db.User.create({
     email: email,
     password: hashedPassword,
     roleId: roleId,
-    isActive: isActive,
+    accountStatusId: accountStatus.id,
   });
 
   return user;

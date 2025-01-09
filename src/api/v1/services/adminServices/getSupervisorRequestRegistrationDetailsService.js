@@ -21,7 +21,7 @@ const getSupervisorRequestRegistrationDetailsService = async (
     include: [
       {
         model: db.User,
-        attributes: ["email", "isActive", "createdAt"],
+        attributes: ["email", "createdAt"],
       },
       {
         model: db.Juza,

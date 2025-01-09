@@ -6,7 +6,6 @@ const users = [
   {
     email: "p1@gmail.com",
     password: "$2b$10$DjyPOPqdPUZIzZ.7cq0cze9bhrwVbD3cV0rKSnit3xmJ1NeVpYkX6",
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 1,
@@ -15,7 +14,6 @@ const users = [
   {
     email: "p2@gmail.com",
     password: "$2b$10$DjyPOPqdPUZIzZ.7cq0cze9bhrwVbD3cV0rKSnit3xmJ1NeVpYkX6",
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 1,
@@ -24,7 +22,6 @@ const users = [
   {
     email: "p3@gmail.com",
     password: "$2b$10$DjyPOPqdPUZIzZ.7cq0cze9bhrwVbD3cV0rKSnit3xmJ1NeVpYkX6",
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 1,
@@ -33,7 +30,6 @@ const users = [
   {
     email: "s1@gmail.com",
     password: "$2b$10$DjyPOPqdPUZIzZ.7cq0cze9bhrwVbD3cV0rKSnit3xmJ1NeVpYkX6",
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 2,
@@ -42,7 +38,6 @@ const users = [
   {
     email: "s2@gmail.com",
     password: "$2b$10$DjyPOPqdPUZIzZ.7cq0cze9bhrwVbD3cV0rKSnit3xmJ1NeVpYkX6",
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 2,
@@ -51,7 +46,6 @@ const users = [
   {
     email: "s3@gmail.com",
     password: "$2b$10$DjyPOPqdPUZIzZ.7cq0cze9bhrwVbD3cV0rKSnit3xmJ1NeVpYkX6",
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 2,
@@ -60,7 +54,6 @@ const users = [
   {
     email: "admin@gmail.com",
     password: "$2b$10$DjyPOPqdPUZIzZ.7cq0cze9bhrwVbD3cV0rKSnit3xmJ1NeVpYkX6",
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
     roleId: 3,

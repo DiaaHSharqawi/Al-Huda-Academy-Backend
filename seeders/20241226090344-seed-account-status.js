@@ -14,8 +14,8 @@ module.exports = {
           arabicName: "نشط",
         },
         {
-          englishName: "suspended",
-          arabicName: "موقوف",
+          englishName: "rejected",
+          arabicName: "مرفوض",
         },
         {
           englishName: "deactivated",

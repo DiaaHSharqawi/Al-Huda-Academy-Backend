@@ -1,5 +1,8 @@
 const { Op } = require("sequelize");
 const db = require("../../../../../models/index.js");
+const { model } = require("mongoose");
+const { where } = require("../../models/AthkarModel/AthkarModel.js");
+const { required } = require("joi");
 
 const getAllSupervisorRequestRegistrationService = async (
   searchParams = {}
@@ -16,21 +19,20 @@ const getAllSupervisorRequestRegistrationService = async (
 
   const supervisorWhere = {};
 
-  const userWhere = {
-    isActive: false,
-  };
-  if (searchParams.email) {
-    userWhere.email = {
-      [Op.like]: `%${searchParams.email}%`,
-    };
-  }
-
   const totalNumberOfSupervisorRequestsRegistration = await db.Supervisor.count(
     {
       include: [
         {
           model: db.User,
-          where: userWhere,
+          include: [
+            {
+              model: db.AccountStatus,
+              where: {
+                englishName: "pending",
+              },
+            },
+          ],
+          required: true,
         },
       ],
     }
@@ -54,11 +56,18 @@ const getAllSupervisorRequestRegistrationService = async (
     include: [
       {
         model: db.User,
-        attributes: ["email", "isActive"],
-        where: userWhere,
+        attributes: ["email"],
+        include: [
+          {
+            model: db.AccountStatus,
+            where: {
+              englishName: "pending",
+            },
+          },
+        ],
+        required: true,
       },
     ],
-    where: supervisorWhere,
     offset: offset,
     limit: limit,
     order: [["createdAt", sortOrder]],

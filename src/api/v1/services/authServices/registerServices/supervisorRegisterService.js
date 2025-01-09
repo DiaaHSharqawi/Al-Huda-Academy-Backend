@@ -60,11 +60,24 @@ const supervisorRegisterService = async (supervisorToRegister) => {
     throw error;
   }
 
+  const pendingAccountStatus = await db.AccountStatus.findOne({
+    where: { englishName: "pending" },
+  });
+
+  if (!pendingAccountStatus) {
+    const error = new Error("Account Status does not exist");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  console.log(`pendingAccountStatus`);
+  console.dir(pendingAccountStatus, { depth: null });
+
   const userToRegister = {
     email: email,
     password: password,
     role_id: 2,
-    isActive: false,
+    accountStatusId: pendingAccountStatus.id,
   };
   const registerUserResponse = await registerUser(userToRegister);
 

@@ -1,5 +1,7 @@
 const db = require("../../../../../models/index.js");
 
+const sendNotificationsUtil = require("../../utils/notifications/sendNotificationsUtil.js");
+
 const acceptSupervisorRequestRegistrationService = async (
   supervisorId,
   acceptSupervisorRequestRegistrationData
@@ -23,6 +25,8 @@ const acceptSupervisorRequestRegistrationService = async (
     ],
     required: false,
   });
+
+  console.log("supervisor", supervisor);
 
   if (!supervisor) {
     const error = new Error("Supervisor not found");
@@ -50,6 +54,9 @@ const acceptSupervisorRequestRegistrationService = async (
     throw error;
   }
 
+  console.log("supervisor.User.id", supervisor.User.id);
+  console.log("accountStatusId", accountStatusId);
+
   await db.User.update(
     {
       accountStatusId: accountStatusId,
@@ -58,6 +65,31 @@ const acceptSupervisorRequestRegistrationService = async (
       where: { id: supervisor.User.id },
     }
   );
+
+  const acceptSupervisorRequestRegistrationNotificationMessage = {
+    title: "تم قبول طلب التسجيل",
+    message: "تم قبول طلب تسجيلك كمشرف لتحفيظ القرآن الكريم",
+    filters: [
+      {
+        field: "tag",
+        key: "user",
+        relation: "=",
+        value: supervisor.userId,
+      },
+    ],
+  };
+
+  const sendNotificationsResponse = await sendNotificationsUtil(
+    acceptSupervisorRequestRegistrationNotificationMessage
+  );
+
+  if (sendNotificationsResponse.status !== 200) {
+    const error = new Error(
+      `Failed to send notification, ${sendNotificationsResponse?.response?.data?.message}`
+    );
+    error.statusCode = sendNotificationsResponse.status;
+    throw error;
+  }
 };
 
 module.exports = acceptSupervisorRequestRegistrationService;
