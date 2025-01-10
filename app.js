@@ -30,6 +30,7 @@ const daysRoutes = require("./src/api/v1/routes/daysRoutes/daysRoutes.js");
 const adminRoutes = require("./src/api/v1/routes/adminRoutes/adminRoutes.js");
 const quranMemorizingAmountRoutes = require("./src/api/v1/routes/quranMemorizingAmountRoutes/quranMemorizingAmountRoutes.js");
 const accountStatusRoutes = require("./src/api/v1/routes/accountStatusRoutes/accountStatusRoutes.js");
+const groupStatusRoutes = require("./src/api/v1/routes/groupStatusRoutes/groupStatusRoutes.js");
 const notificationsRoutes = require("./src/api/v1/routes/notificationsRoutes/notificationsRoutes.js");
 
 // Load env variables from .env file
@@ -117,6 +118,9 @@ app.use("/api/account-status", accountStatusRoutes);
 
 // Notifications route
 app.use("/api/notifications", notificationsRoutes);
+
+// Group Status route
+app.use("/api/group-status", groupStatusRoutes);
 
 // Express-Async-Handler MiddleWare
 app.use((err, req, res, next) => {

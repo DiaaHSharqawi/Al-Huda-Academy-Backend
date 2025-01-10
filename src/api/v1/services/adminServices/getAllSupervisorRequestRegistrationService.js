@@ -1,8 +1,4 @@
-const { Op } = require("sequelize");
 const db = require("../../../../../models/index.js");
-const { model } = require("mongoose");
-const { where } = require("../../models/AthkarModel/AthkarModel.js");
-const { required } = require("joi");
 
 const getAllSupervisorRequestRegistrationService = async (
   searchParams = {}

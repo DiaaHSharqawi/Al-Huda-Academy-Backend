@@ -91,6 +91,20 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    Participant.belongsToMany(models.MemorizationGroup, {
+      through: models.GroupJoinRequest,
+      foreignKey: {
+        name: "participant_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "group_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
 
   return Participant;
