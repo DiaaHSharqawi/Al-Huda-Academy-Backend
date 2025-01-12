@@ -1,4 +1,3 @@
-const { or } = require("sequelize");
 const db = require("./../../../../../models/index.js");
 
 const getSupervisorGroupDashboardService = async (groupId) => {

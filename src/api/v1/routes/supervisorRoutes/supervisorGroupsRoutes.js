@@ -18,7 +18,7 @@ router.post("/", getAllSupervisorGroupsController);
 
 router.get("/:groupId/dashboard", getSupervisorGroupDashboardController);
 
-router.post(
+router.get(
   "/:groupId/join-requests",
   verifyJwtTokenMiddleWare,
   verifySupervisorGroupAuthorization,

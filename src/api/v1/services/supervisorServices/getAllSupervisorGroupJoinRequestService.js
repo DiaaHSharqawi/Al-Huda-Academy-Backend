@@ -1,6 +1,10 @@
 const db = require("./../../../../../models/index.js");
+const { Op } = require("sequelize");
 
-const getAllSupervisorGroupJoinRequestService = async (groupId) => {
+const getAllSupervisorGroupJoinRequestService = async (
+  groupId,
+  searchParams = {}
+) => {
   console.log("\n------ getAllSupervisorGroupJoinRequestService ------\n");
 
   const pendingJoinRequestStatus = await db.GroupJoinRequestStatus.findOne({
@@ -15,6 +19,45 @@ const getAllSupervisorGroupJoinRequestService = async (groupId) => {
     throw error;
   }
 
+  const page = parseInt(searchParams.page, 10) || 1;
+  const limit = parseInt(searchParams.limit, 10) || 10;
+  const offset = (page - 1) * limit;
+
+  console.log(`page: ${page}, limit: ${limit}, offset: ${offset}`);
+
+  const groupJoinRequestsTotalNumber = await db.GroupJoinRequest.count({
+    where: {
+      group_id: groupId,
+      join_request_status_id: pendingJoinRequestStatus.id,
+    },
+    include: [
+      {
+        model: db.Participant,
+        attributes: ["fullName", "profileImage"],
+        where: searchParams.fullName
+          ? {
+              fullName: {
+                [Op.like]: `%${searchParams.fullName}%`,
+              },
+            }
+          : null,
+      },
+    ],
+  });
+
+  const totalPages = Math.ceil(groupJoinRequestsTotalNumber / limit);
+
+  console.log("page:", page);
+  console.log("totalPages:", totalPages);
+
+  if (page > totalPages && totalPages > 0) {
+    const error = new Error("Page number exceeds total available pages.");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  console.log("groupJoinRequestsTotalNumber:", groupJoinRequestsTotalNumber);
+
   const groupJoinRequests = await db.GroupJoinRequest.findAll({
     where: {
       group_id: groupId,
@@ -24,8 +67,17 @@ const getAllSupervisorGroupJoinRequestService = async (groupId) => {
       {
         model: db.Participant,
         attributes: ["fullName", "profileImage"],
+        where: searchParams.fullName
+          ? {
+              fullName: {
+                [Op.like]: `%${searchParams.fullName}%`,
+              },
+            }
+          : null,
       },
     ],
+    offset: offset,
+    limit: limit,
   });
 
   if (!groupJoinRequests) {
@@ -34,7 +86,14 @@ const getAllSupervisorGroupJoinRequestService = async (groupId) => {
     throw error;
   }
 
-  return groupJoinRequests;
+  return {
+    groupJoinRequests,
+    groupJoinRequestsMetaData: {
+      currentPage: page,
+      totalPages: totalPages,
+      totalRecords: groupJoinRequestsTotalNumber,
+    },
+  };
 };
 
 module.exports = getAllSupervisorGroupJoinRequestService;
