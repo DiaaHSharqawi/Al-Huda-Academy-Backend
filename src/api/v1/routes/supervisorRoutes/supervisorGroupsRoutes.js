@@ -4,28 +4,25 @@ const multer = require("multer");
 const router = express.Router();
 
 // Controllers imports :
-const getSupervisorByUserIdController = require("./../../controllers/supervisorControllers/getSupervisorController");
-const getSupervisorBySupervisorIdController = require("./../../controllers/supervisorControllers/getSupervisorBySupervisorIdController");
-
 const getAllSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupJoinRequestController");
 const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
+const getSupervisorGroupDashboardController = require("./../../controllers/supervisorControllers/getSupervisorGroupDashboardController");
 
 // Middlewares imports :
 const verifyJwtTokenMiddleWare = require("./../../middlewares/verifyJwt.js");
 const verifySupervisorGroupAuthorization = require("./../../middlewares/verifySupervisorGroupAuthorization.js");
 
-// Supervisor SubRoutes
-const supervisorGroupsRoutes = require("./supervisorGroupsRoutes.js");
+// SupervisorGroups Routes /supervisor/groups
 
-// Supervisor Routes
+router.post("/", getAllSupervisorGroupsController);
 
-router.use("/groups", supervisorGroupsRoutes);
-
-router.post("/get-supervisor-by-user-id", getSupervisorByUserIdController);
+router.get("/:groupId/dashboard", getSupervisorGroupDashboardController);
 
 router.post(
-  "/get-supervisor-by-supervisor-id",
-  getSupervisorBySupervisorIdController
+  "/:groupId/join-requests",
+  verifyJwtTokenMiddleWare,
+  verifySupervisorGroupAuthorization,
+  getAllSupervisorGroupJoinRequestController
 );
 
 module.exports = router;

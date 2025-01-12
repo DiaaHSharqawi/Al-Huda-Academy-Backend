@@ -52,6 +52,16 @@ const tokenUtils = {
 
     return refreshToken;
   },
+
+  decodeToken: (token, secret) => {
+    try {
+      const decoded = jwt.verify(token, secret);
+      return decoded;
+    } catch (err) {
+      console.error("Invalid or expired token:", err.message);
+      return null;
+    }
+  },
 };
 
 module.exports = tokenUtils;

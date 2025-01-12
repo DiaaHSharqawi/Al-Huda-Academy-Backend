@@ -3,18 +3,10 @@ const getAllSupervisorGroupJoinRequestService = require("./../../services/superv
 
 const getAllSupervisorGroupJoinRequestController = asyncHandler(
   async (req, res) => {
-    const getAllSupervisorGroupJoinRequestData = req.body;
-
-    console.log(
-      "getAllSupervisorGroupJoinRequestData",
-      getAllSupervisorGroupJoinRequestData
-    );
-
     const groupId = req.params.groupId;
 
     const groupJoinRequests = await getAllSupervisorGroupJoinRequestService(
-      groupId,
-      getAllSupervisorGroupJoinRequestData
+      groupId
     );
 
     res.status(200).json({

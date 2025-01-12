@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes) => {
   const GroupJoinRequest = sequelize.define(
     "GroupJoinRequest",
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       group_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -26,15 +31,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      requestDate: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-        allowNull: false,
-      },
-      responseDate: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
+
       responseMessage: {
         type: DataTypes.TEXT,
         allowNull: true,

@@ -1,4 +1,5 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
+
 const verifyJwtTokenMiddleWare = async (req, res, next) => {
   const authenticateHeader =
     req.headers.authorization || req.headers.Authorization; // "Huda Token"
@@ -6,6 +7,7 @@ const verifyJwtTokenMiddleWare = async (req, res, next) => {
   const isTokenExist = authenticateHeader?.startsWith("AL_HUDA ");
   if (!isTokenExist) {
     return res.status(401).json({
+      success: false,
       massage: "Unauthorized",
     });
   }
@@ -15,6 +17,7 @@ const verifyJwtTokenMiddleWare = async (req, res, next) => {
     if (err)
       return res.status(403).json({
         // you cant access this page ==> tokenInRequest != tokenInServer
+        success: false,
         massage: "Forbidden",
       });
     // go to next middleWare :
