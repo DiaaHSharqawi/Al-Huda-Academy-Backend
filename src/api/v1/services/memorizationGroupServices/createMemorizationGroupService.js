@@ -66,6 +66,21 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       supervisor_id: createMemorizationGroupData.supervisor_id,
     });
 
+    const activeGroupStatus = await db.GroupStatus.findOne({
+      where: {
+        status_name_en: "active",
+      },
+    });
+
+    console.log("activeGroupStatus :");
+    console.dir(activeGroupStatus, { depth: 1 });
+
+    if (!activeGroupStatus) {
+      const error = new Error("failed to find the active group status");
+      error.statusCode = 404;
+      throw error;
+    }
+
     const memorizationGroup = await db.MemorizationGroup.create(
       {
         group_name: groupName,
@@ -74,11 +89,12 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
         group_status_id: createMemorizationGroupData.group_status_id,
         start_time: createMemorizationGroupData.start_time,
         end_time: createMemorizationGroupData.end_time,
-        group_status_id: 5,
+        group_status_id: activeGroupStatus.id,
         group_goal_id: createMemorizationGroupData.group_goal_id,
         teaching_method_id: createMemorizationGroupData.teaching_method_id,
         gender_id: createMemorizationGroupData.participants_gender_id,
-
+        group_completion_rate_id:
+          createMemorizationGroupData.group_completion_rate_id,
         supervisor_id: createMemorizationGroupData.supervisor_id,
       },
       { transaction }

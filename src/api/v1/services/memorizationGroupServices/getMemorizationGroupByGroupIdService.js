@@ -41,6 +41,9 @@ const getMemorizationGroupByGroupIdService = async (
         model: db.GroupGoal,
       },
       {
+        model: db.QuranMemorizingAmount,
+      },
+      {
         model: db.Language,
         through: {
           model: db.GroupLanguage,

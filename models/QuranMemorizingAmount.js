@@ -32,6 +32,15 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    QuranMemorizingAmount.hasMany(models.MemorizationGroup, {
+      foreignKey: {
+        name: "group_completion_rate_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
   return QuranMemorizingAmount;
 };

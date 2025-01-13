@@ -69,6 +69,10 @@ const createMemorizationGroupSchema = Joi.object({
     "number.max": "Teaching method must be at most 5",
     "any.required": "Teaching method is required",
   }),
+  group_completion_rate_id: Joi.number().integer().required().messages({
+    "number.base": "Group completion rate must be a number",
+    "any.required": "Group completion rate is required",
+  }),
   surah_ids: Joi.array()
     .items(Joi.number().integer().min(1).max(114))
     .optional()

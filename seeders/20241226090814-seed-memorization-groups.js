@@ -13,6 +13,7 @@ const groups = [
     gender_id: 1,
     supervisor_id: 1,
     teaching_method_id: 2,
+    group_completion_rate_id: 1,
     createdAt: new Date(),
   },
   {
@@ -26,6 +27,7 @@ const groups = [
     gender_id: 2,
     supervisor_id: 2,
     teaching_method_id: 2,
+    group_completion_rate_id: 2,
     createdAt: new Date(),
   },
   {
@@ -39,6 +41,7 @@ const groups = [
     gender_id: 2,
     supervisor_id: 3,
     teaching_method_id: 2,
+    group_completion_rate_id: 3,
     createdAt: new Date(),
   },
   {
@@ -52,6 +55,7 @@ const groups = [
     gender_id: 1,
     supervisor_id: 1,
     teaching_method_id: 2,
+    group_completion_rate_id: 4,
     createdAt: new Date(),
   },
   {
@@ -65,6 +69,7 @@ const groups = [
     gender_id: 1,
     supervisor_id: 2,
     teaching_method_id: 4,
+    group_completion_rate_id: 5,
     createdAt: new Date(),
   },
   {
@@ -78,6 +83,7 @@ const groups = [
     gender_id: 2,
     supervisor_id: 3,
     teaching_method_id: 4,
+    group_completion_rate_id: 6,
     createdAt: new Date(),
   },
   {
@@ -91,6 +97,7 @@ const groups = [
     gender_id: 2,
     supervisor_id: 1,
     teaching_method_id: 4,
+    group_completion_rate_id: 7,
     createdAt: new Date(),
   },
   {
@@ -104,6 +111,7 @@ const groups = [
     gender_id: 1,
     supervisor_id: 2,
     teaching_method_id: 4,
+    group_completion_rate_id: 1,
     createdAt: new Date(),
   },
   {
@@ -117,6 +125,7 @@ const groups = [
     gender_id: 2,
     supervisor_id: 3,
     teaching_method_id: 4,
+    group_completion_rate_id: 2,
     createdAt: new Date(),
   },
   {
@@ -130,6 +139,7 @@ const groups = [
     gender_id: 1,
     supervisor_id: 1,
     teaching_method_id: 5,
+    group_completion_rate_id: 3,
     createdAt: new Date(),
   },
   {
@@ -143,6 +153,7 @@ const groups = [
     gender_id: 2,
     supervisor_id: 2,
     teaching_method_id: 5,
+    group_completion_rate_id: 4,
     createdAt: new Date(),
   },
   {
@@ -156,6 +167,7 @@ const groups = [
     gender_id: 1,
     supervisor_id: 3,
     teaching_method_id: 5,
+    group_completion_rate_id: 5,
     createdAt: new Date(),
   },
   {
@@ -169,6 +181,7 @@ const groups = [
     gender_id: 2,
     supervisor_id: 1,
     teaching_method_id: 5,
+    group_completion_rate_id: 6,
     createdAt: new Date(),
   },
   {
@@ -182,6 +195,7 @@ const groups = [
     gender_id: 1,
     supervisor_id: 2,
     teaching_method_id: 5,
+    group_completion_rate_id: 7,
     createdAt: new Date(),
   },
 ];

@@ -49,7 +49,14 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-
+      group_completion_rate_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "quran_memorizing_amounts",
+          key: "id",
+        },
+      },
       teaching_method_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -164,6 +171,15 @@ module.exports = (sequelize, DataTypes) => {
       },
       otherKey: {
         name: "participant_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsTo(models.QuranMemorizingAmount, {
+      foreignKey: {
+        name: "group_completion_rate_id",
         allowNull: false,
       },
       onDelete: "CASCADE",
