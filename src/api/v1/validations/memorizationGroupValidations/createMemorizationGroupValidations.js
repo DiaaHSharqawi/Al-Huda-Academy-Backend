@@ -51,17 +51,6 @@ const createMemorizationGroupSchema = Joi.object({
     "any.only": "Participants gender must be valid",
     "any.required": "Participants gender is required",
   }),
-  participants_level_id: Joi.number()
-    .integer()
-    .min(1)
-    .max(5)
-    .required()
-    .messages({
-      "number.base": "Participants level must be a number",
-      "number.min": "Participants level must be at least 1",
-      "number.max": "Participants level must be at most 5",
-      "any.required": "Participants level is required",
-    }),
 
   group_goal_id: Joi.number().integer().min(1).max(3).required().messages({
     "number.base": "Group goal must be a number",

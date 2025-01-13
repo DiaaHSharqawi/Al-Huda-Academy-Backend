@@ -62,7 +62,6 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       start_time: createMemorizationGroupData.start_time,
       end_time: createMemorizationGroupData.end_time,
       gender_id: createMemorizationGroupData.participants_gender_id,
-      participants_level_id: createMemorizationGroupData.participants_level_id,
       group_goal_id: createMemorizationGroupData.group_goal_id,
       supervisor_id: createMemorizationGroupData.supervisor_id,
     });
@@ -79,8 +78,7 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
         group_goal_id: createMemorizationGroupData.group_goal_id,
         teaching_method_id: createMemorizationGroupData.teaching_method_id,
         gender_id: createMemorizationGroupData.participants_gender_id,
-        participants_level_id:
-          createMemorizationGroupData.participants_level_id,
+
         supervisor_id: createMemorizationGroupData.supervisor_id,
       },
       { transaction }

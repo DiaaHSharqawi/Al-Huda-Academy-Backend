@@ -19,13 +19,7 @@ const buildWhereClause = async (searchParams) => {
   if (searchParams.gender_id) {
     whereClause.gender_id = searchParams.gender_id;
   }
-  if (searchParams.participants_level_id) {
-    console.log(
-      "searchParams.participants_level_id:",
-      searchParams.participants_level_id
-    );
-    whereClause.participants_level_id = searchParams.participants_level_id;
-  }
+
   if (searchParams.start_time) {
     whereClause.start_time = { [Op.gte]: searchParams.start_time };
   }
@@ -264,9 +258,7 @@ const searchMemorizationGroupService = async (searchParams) => {
           attributes: [],
         },
       },
-      {
-        model: db.ParticipantLevel,
-      },
+
       {
         model: db.GroupGoal,
       },

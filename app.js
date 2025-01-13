@@ -25,7 +25,6 @@ const genderRoutes = require("./src/api/v1/routes/genderRoutes/genderRoutes.js")
 const groupGoalRoutes = require("./src/api/v1/routes/groupGoalRoutes/groupGoalRoutes.js");
 const languageRoutes = require("./src/api/v1/routes/languageRoutes/languageRoutes.js");
 const teachingMethodsRoutes = require("./src/api/v1/routes/teachingMethodsRoutes/teachingMethodsRoutes.js");
-const participantLevelRoutes = require("./src/api/v1/routes/participantLevelRoutes/participantLevelRoutes.js");
 const daysRoutes = require("./src/api/v1/routes/daysRoutes/daysRoutes.js");
 const adminRoutes = require("./src/api/v1/routes/adminRoutes/adminRoutes.js");
 const quranMemorizingAmountRoutes = require("./src/api/v1/routes/quranMemorizingAmountRoutes/quranMemorizingAmountRoutes.js");
@@ -100,9 +99,6 @@ app.use("/api/language", languageRoutes);
 
 // Teaching Methods route
 app.use("/api/teaching-methods", teachingMethodsRoutes);
-
-// Participant Level route
-app.use("/api/participant-level", participantLevelRoutes);
 
 // Days route
 app.use("/api/days", daysRoutes);

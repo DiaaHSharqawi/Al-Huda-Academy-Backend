@@ -3,14 +3,6 @@ const db = require("../../../../../models/index.js");
 const buildWhereClause = async (searchParams) => {
   const whereClause = {};
 
-  if (searchParams.participants_level_id) {
-    console.log(
-      "searchParams.participants_level_id:",
-      searchParams.participants_level_id
-    );
-    whereClause.participants_level_id = searchParams.participants_level_id;
-  }
-
   if (searchParams.gender_id) {
     whereClause.gender_id = searchParams.gender_id;
   }

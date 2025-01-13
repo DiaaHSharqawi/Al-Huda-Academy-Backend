@@ -49,14 +49,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      participants_level_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "participant_level",
-          key: "id",
-        },
-        allowNull: false,
-      },
+
       teaching_method_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -202,15 +195,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
 
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
-    });
-
-    MemorizationGroup.belongsTo(models.ParticipantLevel, {
-      foreignKey: {
-        name: "participants_level_id",
-        allowNull: false,
-      },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });

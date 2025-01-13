@@ -36,9 +36,7 @@ const getMemorizationGroupByGroupIdService = async (
           model: db.DayMemorizationGroup,
         },
       },
-      {
-        model: db.ParticipantLevel,
-      },
+
       {
         model: db.GroupGoal,
       },

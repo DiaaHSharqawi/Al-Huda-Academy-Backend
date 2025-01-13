@@ -66,7 +66,7 @@ const getAllSupervisorGroupJoinRequestService = async (
     include: [
       {
         model: db.Participant,
-        attributes: ["fullName", "profileImage"],
+        attributes: ["fullName", "profileImage", "dateOfBirth"],
         where: searchParams.fullName
           ? {
               fullName: {
@@ -74,6 +74,11 @@ const getAllSupervisorGroupJoinRequestService = async (
               },
             }
           : null,
+        include: [
+          {
+            model: db.QuranMemorizingAmount,
+          },
+        ],
       },
     ],
     offset: offset,
