@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const verifyJwtTokenMiddleWare = async (req, res, next) => {
+const verifyJwtTokenMiddleware = async (req, res, next) => {
   const authenticateHeader =
     req.headers.authorization || req.headers.Authorization; // "Huda Token"
 
@@ -20,9 +20,9 @@ const verifyJwtTokenMiddleWare = async (req, res, next) => {
         success: false,
         massage: "Forbidden",
       });
-    // go to next middleWare :
+    // go to next Middleware :
     next();
   });
 };
 
-module.exports = verifyJwtTokenMiddleWare;
+module.exports = verifyJwtTokenMiddleware;

@@ -35,8 +35,8 @@ const acceptSupervisorRequestRegistrationService = async (
   }
 
   console.log(supervisor.User.AccountStatus.englishName);
-  if (supervisor.User.AccountStatus.englishName !== "pending") {
-    const error = new Error("Account status is not pending");
+  if (supervisor.User.AccountStatus.englishName !== "under review") {
+    const error = new Error("supervisor account status is not under review");
     error.statusCode = 404;
     throw error;
   }

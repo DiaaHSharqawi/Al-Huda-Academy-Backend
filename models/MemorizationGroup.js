@@ -177,6 +177,20 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "CASCADE",
     });
 
+    MemorizationGroup.belongsToMany(models.Participant, {
+      through: models.GroupMembership,
+      foreignKey: {
+        name: "group_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "participant_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
     MemorizationGroup.belongsTo(models.QuranMemorizingAmount, {
       foreignKey: {
         name: "group_completion_rate_id",

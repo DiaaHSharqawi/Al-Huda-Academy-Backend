@@ -11,8 +11,8 @@ const getAllSupervisorGroupJoinRequestController = require("./../../controllers/
 const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
 
 // Middlewares imports :
-const verifyJwtTokenMiddleWare = require("./../../middlewares/verifyJwt.js");
-const verifySupervisorGroupAuthorization = require("./../../middlewares/verifySupervisorGroupAuthorization.js");
+const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
+//const verifySupervisorGroupAuthorizationMiddleware = require("../../middlewares/verifySupervisorGroupAuthorizationMiddleware.js");
 
 // Supervisor SubRoutes
 const supervisorGroupsRoutes = require("./supervisorGroupsRoutes.js");

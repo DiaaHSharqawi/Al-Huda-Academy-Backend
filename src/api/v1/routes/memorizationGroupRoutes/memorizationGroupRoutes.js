@@ -6,6 +6,7 @@ const getMemorizationGroupByGroupNameController = require("./../../controllers/m
 const getPendingGroupCreationRequestsController = require("./../../controllers/memorizationGroupControllers/getPendingGroupCreationRequestsController");
 const getMemorizationGroupController = require("./../../controllers/memorizationGroupControllers/getMemorizationGroupController");
 const getMemorizationGroupByGroupIdController = require("./../../controllers/memorizationGroupControllers/getMemorizationGroupByGroupIdController");
+const getAllGroupDetailsController = require("./../../controllers/memorizationGroupControllers/getAllGroupDetailsController");
 
 // Validators imports :
 const validateGetMemorizationGroupByGroupName = require("./../../validations/memorizationGroupValidations/getMemorizationGroupByGroupNameValidations");
@@ -14,6 +15,8 @@ const validateCreateMemorizationGroup = require("./../../validations/memorizatio
 const router = express.Router();
 
 router.get("/", getMemorizationGroupController);
+
+router.get("/all", getAllGroupDetailsController);
 
 router.get("/id/:id", getMemorizationGroupByGroupIdController);
 

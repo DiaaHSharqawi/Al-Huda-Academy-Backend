@@ -8,7 +8,7 @@ const db = require("./models/index.js");
 
 const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
-const i18nextHttpMiddleware = require("i18next-http-middleware");
+const i18nextHttpMiddleware = require("i18next-http-Middleware");
 
 // API Routes:
 const userRoutes = require("./src/api/v1/routes/userRoutes/userRoutes.js");
@@ -49,7 +49,7 @@ i18next
 
 const app = express(); // local: http://localhost:3000
 
-// Use i18next middleware
+// Use i18next Middleware
 app.use(i18nextHttpMiddleware.handle(i18next));
 
 // Cors policy
@@ -118,7 +118,7 @@ app.use("/api/notifications", notificationsRoutes);
 // Group Status route
 app.use("/api/group-status", groupStatusRoutes);
 
-// Express-Async-Handler MiddleWare
+// Express-Async-Handler Middleware
 app.use((err, req, res, next) => {
   const statusCode = err.response?.status || err.statusCode || 500;
   const message =

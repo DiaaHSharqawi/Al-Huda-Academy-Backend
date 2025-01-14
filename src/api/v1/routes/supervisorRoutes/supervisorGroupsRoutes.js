@@ -7,9 +7,15 @@ const getAllSupervisorGroupJoinRequestController = require("./../../controllers/
 const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
 const getSupervisorGroupDashboardController = require("./../../controllers/supervisorControllers/getSupervisorGroupDashboardController");
 
+const acceptSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/acceptGroupJoinRequestController.js");
+const rejectSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/rejectGroupJoinRequestController.js");
+
 // Middlewares imports :
-const verifyJwtTokenMiddleWare = require("./../../middlewares/verifyJwt.js");
-const verifySupervisorGroupAuthorization = require("./../../middlewares/verifySupervisorGroupAuthorization.js");
+const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
+const verifyGroupExistenceMiddleware = require("./../../middlewares/groups/verifyGroupExistence.js");
+const verifySupervisorExistenceMiddleware = require("./../../middlewares/supervisor/verifySupervisorExistenceMiddleware.js");
+const verifySupervisorGroupAuthorizationMiddleware = require("./../../middlewares/verifySupervisorGroupAuthorizationMiddleWare.js");
+const verifyParticipantExistenceMiddleware = require("./../../middlewares/participant/verifyParticipantExistenceMiddleware.js");
 
 // SupervisorGroups Routes /supervisor/groups
 
@@ -19,9 +25,31 @@ router.get("/:groupId/dashboard", getSupervisorGroupDashboardController);
 
 router.get(
   "/:groupId/join-requests",
-  verifyJwtTokenMiddleWare,
-  verifySupervisorGroupAuthorization,
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware, // group details
+  verifySupervisorExistenceMiddleware, // supervisor details
+  verifySupervisorGroupAuthorizationMiddleware,
   getAllSupervisorGroupJoinRequestController
+);
+
+router.post(
+  "/:groupId/join-requests/:participantId/accept",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware, // group details
+  verifySupervisorExistenceMiddleware, // supervisor details
+  verifySupervisorGroupAuthorizationMiddleware,
+  verifyParticipantExistenceMiddleware, // participant details
+  acceptSupervisorGroupJoinRequestController
+);
+
+router.post(
+  "/:groupId/join-requests/:participantId/reject",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware, // group details
+  verifySupervisorExistenceMiddleware, // supervisor details
+  verifySupervisorGroupAuthorizationMiddleware,
+  verifyParticipantExistenceMiddleware, // participant details
+  rejectSupervisorGroupJoinRequestController
 );
 
 module.exports = router;
