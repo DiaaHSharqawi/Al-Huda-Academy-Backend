@@ -7,14 +7,17 @@ const sendRequestToJoinGroupController = require("./../../controllers/participan
 
 // Middlewares imports :
 const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
-const verifyParticipantAuthorization = require("./../../middlewares/verifyParticipantAuthorizationMiddleware.js");
+const verifyParticipantExistenceMiddleware = require("./../../middlewares/participant/verifyParticipantExistenceMiddleware.js");
+//const verifyParticipantAuthorization = require("./../../middlewares/verifyParticipantAuthorizationMiddleware.js");
 
-// participantGroupsRoutes  /participant/groups
+// participantGroupsRoutes:
+// participant/groups
 
 router.post(
   "/:groupId/send-request-to-join-group",
   verifyJwtTokenMiddleware,
-  verifyParticipantAuthorization,
+  //verifyParticipantAuthorization,
+  verifyParticipantExistenceMiddleware,
   sendRequestToJoinGroupController
 );
 

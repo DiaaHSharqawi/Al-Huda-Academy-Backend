@@ -13,6 +13,16 @@ const rejectGroupJoinRequestService = async (
   const { supervisorId } = supervisorDetails;
   const { participantId } = participantDetails;
 
+  const participantMembership = await db.GroupMembership.findOne({
+    where: { group_id: groupId, participant_id: participantId },
+  });
+
+  if (participantMembership) {
+    const error = new Error("Participant already a member of the group");
+    error.statusCode = 409;
+    throw error;
+  }
+
   const joinRequest = await db.GroupJoinRequest.findOne({
     where: { group_id: groupId, participant_id: participantId },
   });
@@ -78,15 +88,13 @@ const rejectGroupJoinRequestService = async (
   const rejectGroupJoinRequestNotificationMessage = {
     title: `تم رفض طلب الانضمام للمجموعة ${groupDetails.groupName}`,
     message: `تم رفض طلب انضمامك لمجموعة تحفيظ القرآن الكريم ${responseMessage}`,
-    filters: [
-      {
-        field: "tag",
-        key: "user",
-        relation: "=",
-        value: participantDetails.userId,
-      },
-    ],
+    externalIds: [participantDetails.userId.toString()],
   };
+
+  console.log(
+    "rejectGroupJoinRequestNotificationMessage",
+    rejectGroupJoinRequestNotificationMessage
+  );
 
   const sendNotificationsResponse = await sendNotificationsUtil(
     rejectGroupJoinRequestNotificationMessage

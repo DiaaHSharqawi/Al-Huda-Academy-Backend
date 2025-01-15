@@ -63,14 +63,7 @@ const rejectSupervisorRequestRegistrationService = async (
   const acceptSupervisorRequestRegistrationNotificationMessage = {
     title: "تم قبول طلب التسجيل",
     message: "تم قبول طلب تسجيلك كمشرف لتحفيظ القرآن الكريم",
-    filters: [
-      {
-        field: "tag",
-        key: "user",
-        relation: "=",
-        value: supervisor.userId,
-      },
-    ],
+    externalIds: supervisor.userId,
   };
 
   const sendNotificationsResponse = await sendNotificationsUtil(

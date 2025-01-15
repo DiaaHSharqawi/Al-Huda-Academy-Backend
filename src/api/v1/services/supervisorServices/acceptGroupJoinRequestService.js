@@ -12,6 +12,16 @@ const acceptGroupJoinRequestService = async (
   const { supervisorId } = supervisorDetails;
   const { participantId } = participantDetails;
 
+  const participantMembership = await db.GroupMembership.findOne({
+    where: { group_id: groupId, participant_id: participantId },
+  });
+
+  if (participantMembership) {
+    const error = new Error("Participant already a member of the group");
+    error.statusCode = 409;
+    throw error;
+  }
+
   const joinRequest = await db.GroupJoinRequest.findOne({
     where: { group_id: groupId, participant_id: participantId },
   });
@@ -84,16 +94,9 @@ const acceptGroupJoinRequestService = async (
   }
 
   const acceptGroupJoinRequestNotificationMessage = {
-    title: `تم قبول طلب الانضمام للمجموعة ${groupDetails.groupName}`,
-    message: "تم قبول طلب انضمامك لمجموعة تحفيظ القرآن الكريم",
-    filters: [
-      {
-        field: "tag",
-        key: "user",
-        relation: "=",
-        value: participantDetails.userId,
-      },
-    ],
+    title: `تم قبول طلب الانضمام لـ ${groupDetails.groupName}`,
+    message: "تمت الموافقة على طلب الانضمام لمجموعة تحفيظ القرآن الكريم",
+    externalIds: [participantDetails.userId.toString()],
   };
 
   const sendNotificationsResponse = await sendNotificationsUtil(
