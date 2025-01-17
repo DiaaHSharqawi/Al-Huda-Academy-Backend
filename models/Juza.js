@@ -14,6 +14,22 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      start_surah: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      end_surah: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      start_ayah: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      end_ayah: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       tableName: "juza",
@@ -61,6 +77,26 @@ module.exports = (sequelize, DataTypes) => {
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
+    });
+
+    Juza.belongsTo(models.Surah, {
+      foreignKey: {
+        name: "start_surah",
+        allowNull: false,
+      },
+      as: "StartSurah",
+      constraints: false,
+    });
+
+    Juza.belongsTo(models.Surah, {
+      foreignKey: {
+        name: "end_surah",
+        allowNull: false,
+      },
+      as: "EndSurah",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+      constraints: false,
     });
   };
 

@@ -1,5 +1,6 @@
 const db = require("./../../../../../models/index.js");
 const { Op } = require("sequelize");
+const axios = require("axios");
 
 const buildWhereClause = async (searchParams) => {
   const whereClause = {};
@@ -215,19 +216,146 @@ const buildWhereClause = async (searchParams) => {
   return whereClause;
 };
 
-const searchMemorizationGroupService = async (searchParams) => {
+const searchMemorizationGroupService = async (
+  searchParams,
+  participantDetails
+) => {
+  const { participantId } = participantDetails;
+
+  console.log("participantDetails:", participantDetails);
+
   console.log("searchParams:", searchParams);
+
+  searchParams.gender_id = participantDetails.gender_id;
 
   const whereClause = await buildWhereClause(searchParams);
 
   console.log("whereClause:", whereClause);
 
+  const participantGroupMembership = await db.GroupMembership.findAll({
+    where: {
+      participant_id: participantId,
+    },
+    attributes: ["group_id"],
+  });
+
+  const participantGroupIds = participantGroupMembership.map(
+    (membership) => membership.group_id
+  );
+
+  const participantGroupJoinRequests = await db.GroupJoinRequest.findAll({
+    where: {
+      participant_id: participantId,
+    },
+    attributes: ["group_id"],
+  });
+
+  const participantGroupJoinRequestIds = participantGroupJoinRequests.map(
+    (request) => request.group_id
+  );
+
+  const participantAjzaa = await db.ParticipantAjzaa.findAll({
+    where: {
+      participant_id: participantId,
+    },
+    include: [
+      {
+        model: db.Juza,
+        attributes: ["start_surah", "end_surah"],
+      },
+    ],
+    limit: 1,
+    raw: false,
+  });
+  console.dir(participantAjzaa.Juza);
+  console.dir(participantAjzaa, { depth: 4 });
+
+  const participantSurahsAjzaaId = new Set(
+    participantAjzaa.map((participant) => {
+      const startSurah = participant.dataValues.Juza.dataValues.start_surah;
+      const endSurah = participant.dataValues.Juza.dataValues.end_surah;
+      return [startSurah, endSurah];
+    })
+  );
+
+  console.log(
+    "participantSurahsAjzaaId:",
+    Array.from(...participantSurahsAjzaaId)
+  );
+
+  const participantAjzaaIds = participantAjzaa.map((ajzaa) => ajzaa.juza_id);
+  console.log("participantAjzaaIds:", participantAjzaaIds);
+
+  let recommendedGroups = [];
+
+  const recommendedAzjaaGroups = await axios.post(
+    "http://127.0.0.1:50002/ajzaaGroups/recommendations",
+    {
+      gender_id: participantDetails.gender_id,
+      completion_rate_id: participantDetails.quranMemorizingAmountsId,
+      juza_ids: participantAjzaaIds,
+    }
+  );
+
+  const { recommended_groups } = recommendedAzjaaGroups.data;
+  console.log("recommended_groups:", recommended_groups);
+
+  recommendedGroups.push(...recommended_groups);
+
+  console.log("participantSurahsAjzaaId", participantSurahsAjzaaId);
+
+  console.log({
+    gender_id: participantDetails.gender_id,
+    completion_rate_id: participantDetails.quranMemorizingAmountsId,
+    surah_ids: Array.from(...participantSurahsAjzaaId),
+  });
+
+  const recommendedSurahGroups = await axios.post(
+    "http://127.0.0.1:50002/surahs/recommendations",
+    {
+      gender_id: participantDetails.gender_id,
+      completion_rate_id: participantDetails.quranMemorizingAmountsId,
+      surah_ids: Array.from(...participantSurahsAjzaaId),
+    }
+  );
+
+  console.log("recommendedSurahGroups", recommendedSurahGroups.data);
+
+  recommendedGroups.push(...recommendedSurahGroups.data.recommended_surahs);
+
+  const recommendedExtractGroups = await axios.post(
+    "http://127.0.0.1:50002/extract/recommendations",
+    {
+      gender_id: participantDetails.gender_id,
+      completion_rate_id: participantDetails.quranMemorizingAmountsId,
+      surah_ids: Array.from(...participantSurahsAjzaaId),
+    }
+  );
+
+  console.log("recommendedExtractGroups", recommendedExtractGroups.data);
+
+  recommendedGroups.push(...recommendedExtractGroups.data.recommended_extracts);
+
+  console.log("=====================");
+  console.log("final recommended groups : ", recommendedGroups);
+
   const page = parseInt(searchParams.page, 10) || 1;
   const limit = parseInt(searchParams.limit, 10) || 10;
   const offset = (page - 1) * limit;
 
+  console.log("participantGroupIds:", participantGroupIds);
+  console.log(
+    "participantGroupJoinRequestIds:",
+    participantGroupJoinRequestIds
+  );
+
   const totalNumberOfMemorizationGroup = await db.MemorizationGroup.count({
-    where: whereClause,
+    where: {
+      ...whereClause,
+      id: {
+        [Op.notIn]: [...participantGroupIds, ...participantGroupJoinRequestIds],
+      },
+    },
   });
   const totalPages = Math.ceil(totalNumberOfMemorizationGroup / limit);
 
@@ -236,7 +364,12 @@ const searchMemorizationGroupService = async (searchParams) => {
   }
 
   const memorizationGroups = await db.MemorizationGroup.findAll({
-    where: whereClause,
+    where: {
+      ...whereClause,
+      id: {
+        [Op.notIn]: [...participantGroupIds, ...participantGroupJoinRequestIds],
+      },
+    },
     include: [
       {
         model: db.Gender,
@@ -273,6 +406,18 @@ const searchMemorizationGroupService = async (searchParams) => {
         },
       },
     ],
+    attributes: {
+      include: [
+        // Add a computed "recommendedFlag" attribute
+        [
+          db.Sequelize.literal(`CASE 
+            WHEN id IN (${recommendedGroups.join(",")}) THEN TRUE 
+            ELSE FALSE 
+          END`),
+          "recommended_flag",
+        ],
+      ],
+    },
     limit,
     offset,
     required: false,

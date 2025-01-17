@@ -63,6 +63,24 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "CASCADE",
     });
 
+    Surah.hasOne(models.Juza, {
+      allowNull: false,
+      references: {
+        foreignKey: "end_surah",
+        targetKey: "id",
+      },
+      constraints: false,
+    });
+
+    Surah.hasOne(models.Juza, {
+      allowNull: false,
+      references: {
+        foreignKey: "start_surah",
+        targetKey: "id",
+      },
+      constraints: false,
+    });
+
     Surah.hasMany(models.SurahMemorizationGroup, {
       foreignKey: {
         name: "surahId",

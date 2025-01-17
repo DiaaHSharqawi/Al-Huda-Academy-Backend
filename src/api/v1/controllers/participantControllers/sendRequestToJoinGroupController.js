@@ -11,6 +11,8 @@ const sendRequestToJoinGroupController = asyncHandler(async (req, res) => {
     process.env.ACCESS_TOKEN_SECRET
   );
 
+  console.log("decodedToken", decodedToken);
+
   const { groupId } = req.params;
 
   const participantId = decodedToken.UserInfo.memberId;

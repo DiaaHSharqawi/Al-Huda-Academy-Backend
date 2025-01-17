@@ -12,9 +12,18 @@ const getAllGroupDetailsController = require("./../../controllers/memorizationGr
 const validateGetMemorizationGroupByGroupName = require("./../../validations/memorizationGroupValidations/getMemorizationGroupByGroupNameValidations");
 const validateCreateMemorizationGroup = require("./../../validations/memorizationGroupValidations/createMemorizationGroupValidations");
 
+// Middleware imports :
+const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware");
+const verifyParticipantExistenceMiddleware = require("./../../middlewares/participant/verifyParticipantExistenceMiddleware");
+
 const router = express.Router();
 
-router.get("/", getMemorizationGroupController);
+router.get(
+  "/",
+  verifyJwtTokenMiddleware,
+  verifyParticipantExistenceMiddleware,
+  getMemorizationGroupController
+);
 
 router.get("/all", getAllGroupDetailsController);
 

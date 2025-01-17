@@ -1,4 +1,3 @@
-const db = require("../../../../../models/index.js");
 const axios = require("axios");
 
 const ONESIGNAL_URL = "https://onesignal.com/api/v1/notifications";
@@ -45,8 +44,6 @@ const sendNotificationService = async (notificationData) => {
     console.error(error.response.data);
     throw new Error("Failed to send notification");
   }
-
-  return oneSignalResponse.data;
 };
 
 module.exports = sendNotificationService;
