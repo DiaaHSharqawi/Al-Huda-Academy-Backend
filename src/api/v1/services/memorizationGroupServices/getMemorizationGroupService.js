@@ -240,7 +240,7 @@ const searchMemorizationGroupService = async (
   });
 
   const participantGroupIds = participantGroupMembership.map(
-    (membership) => membership.group_id
+    (members) => members.group_id
   );
 
   const participantGroupJoinRequests = await db.GroupJoinRequest.findAll({
@@ -264,7 +264,6 @@ const searchMemorizationGroupService = async (
         attributes: ["start_surah", "end_surah"],
       },
     ],
-    limit: 1,
     raw: false,
   });
   console.dir(participantAjzaa.Juza);

@@ -7,6 +7,8 @@ const getAllSupervisorGroupJoinRequestController = require("./../../controllers/
 const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
 const getSupervisorGroupDashboardController = require("./../../controllers/supervisorControllers/getSupervisorGroupDashboardController");
 
+const getAllGroupMembersController = require("../../controllers/supervisorControllers/getAllGroupMembersController.js");
+
 const acceptSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/acceptGroupJoinRequestController.js");
 const rejectSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/rejectGroupJoinRequestController.js");
 
@@ -20,6 +22,15 @@ const verifyParticipantExistenceMiddleware = require("./../../middlewares/partic
 // SupervisorGroups Routes /supervisor/groups
 
 router.post("/", getAllSupervisorGroupsController);
+
+router.get(
+  "/:groupId/members",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware,
+  verifySupervisorExistenceMiddleware,
+  verifySupervisorGroupAuthorizationMiddleware,
+  getAllGroupMembersController
+);
 
 router.get("/:groupId/dashboard", getSupervisorGroupDashboardController);
 
