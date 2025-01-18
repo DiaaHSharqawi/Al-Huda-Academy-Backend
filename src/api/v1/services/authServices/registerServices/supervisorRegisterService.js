@@ -19,6 +19,7 @@ const supervisorRegisterService = async (supervisorToRegister) => {
     password,
     profileImage,
     certificatesImages,
+    selectedMemorizingOption,
     ...supervisorData
   } = supervisorToRegister;
 
@@ -59,10 +60,24 @@ const supervisorRegisterService = async (supervisorToRegister) => {
     throw error;
   }
 
+  const underReviewAccountStatus = await db.AccountStatus.findOne({
+    where: { englishName: "under review" },
+  });
+
+  if (!underReviewAccountStatus) {
+    const error = new Error("Account Status does not exist");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  console.log(`underReviewAccountStatus`);
+  console.dir(underReviewAccountStatus, { depth: null });
+
   const userToRegister = {
     email: email,
     password: password,
-    roleName: "supervisor",
+    role_id: 2,
+    accountStatusId: underReviewAccountStatus.id,
   };
   const registerUserResponse = await registerUser(userToRegister);
 
@@ -95,17 +110,52 @@ const supervisorRegisterService = async (supervisorToRegister) => {
     error.statusCode = 422;
   }
 
-  const supervisorUserId = registerUserResponse.data.userRegisterResult.id;
+  let supervisorUserId = registerUserResponse.data.userRegisterResult.id;
+  let supervisorId;
 
-  const supervisor = await db.Supervisor.create({
-    userId: supervisorUserId,
-    ...supervisorData,
-    profileImage: profileImageUploadResponse.secure_urls[0],
-  });
-  console.log(`supervisor`);
-  console.dir(supervisor, { depth: null });
+  const transaction = await db.sequelize.transaction();
 
-  const supervisorId = supervisor.dataValues.id;
+  try {
+    const supervisor = await db.Supervisor.create(
+      {
+        userId: supervisorUserId,
+        ...supervisorData,
+        profileImage: profileImageUploadResponse.secure_urls[0],
+      },
+      { transaction }
+    );
+    console.log(`supervisor`);
+    console.dir(supervisor, { depth: null });
+
+    let registeredJuzaIds = [];
+
+    if (selectedMemorizingOption !== "none") {
+      if (selectedMemorizingOption === "all") {
+        registeredJuzaIds = [...Array(30).keys()].map((juzaId) => juzaId + 1);
+      } else if (supervisorData.juza_ids) {
+        registeredJuzaIds = supervisorData.juza_ids;
+      }
+    }
+    console.log(`registeredJuzaIds`);
+    console.dir(registeredJuzaIds, { depth: null });
+
+    const supervisorJuzaaIds = registeredJuzaIds.map((juzaaId) => {
+      return {
+        supervisor_id: supervisor.dataValues.id,
+        juza_id: juzaaId,
+      };
+    });
+
+    await db.SupervisorAjzaa.bulkCreate(supervisorJuzaaIds, { transaction });
+
+    supervisorId = supervisor.dataValues.id;
+
+    await transaction.commit();
+  } catch (error) {
+    await transaction.rollback();
+    throw error;
+  }
+
   console.log(`supervisorId`);
   console.log(supervisorId);
   console.log(`certificatesImages`);

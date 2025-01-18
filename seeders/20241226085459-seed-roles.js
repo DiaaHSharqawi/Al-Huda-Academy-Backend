@@ -8,6 +8,7 @@ module.exports = {
         {
           id: 1,
           roleName: "participant",
+          roleNameAr: "طالب",
           isActive: true,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -15,6 +16,7 @@ module.exports = {
         {
           id: 2,
           roleName: "supervisor",
+          roleNameAr: "مشرف",
           isActive: true,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -22,6 +24,7 @@ module.exports = {
         {
           id: 3,
           roleName: "admin",
+          roleNameAr: "مسؤول",
           isActive: true,
           createdAt: new Date(),
           updatedAt: new Date(),

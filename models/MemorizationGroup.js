@@ -49,13 +49,13 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      participants_level_id: {
+      group_completion_rate_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
-          model: "participant_level",
+          model: "quran_memorizing_amounts",
           key: "id",
         },
-        allowNull: false,
       },
       teaching_method_id: {
         type: DataTypes.INTEGER,
@@ -163,6 +163,43 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "CASCADE",
     });
 
+    MemorizationGroup.belongsToMany(models.Participant, {
+      through: models.GroupJoinRequest,
+      foreignKey: {
+        name: "group_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "participant_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsToMany(models.Participant, {
+      through: models.GroupMembership,
+      foreignKey: {
+        name: "group_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "participant_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    MemorizationGroup.belongsTo(models.QuranMemorizingAmount, {
+      foreignKey: {
+        name: "group_completion_rate_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
     MemorizationGroup.belongsTo(models.Gender, {
       foreignKey: {
         name: "gender_id",
@@ -188,15 +225,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
 
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
-    });
-
-    MemorizationGroup.belongsTo(models.ParticipantLevel, {
-      foreignKey: {
-        name: "participants_level_id",
-        allowNull: false,
-      },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });

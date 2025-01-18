@@ -14,8 +14,13 @@ const tokenUtils = require("../../../utils/token/tokenUtils");
 
 const participantRegisterService = async (participantToRegister) => {
   console.log(`\n ---------- participant Register Service ---------- \n`);
-  const { email, password, profileImage, ...participantData } =
-    participantToRegister;
+  const {
+    email,
+    password,
+    profileImage,
+    selectedMemorizingOption,
+    ...participantData
+  } = participantToRegister;
 
   console.log(`email : ${email}, password : ${password}`);
 
@@ -57,10 +62,24 @@ const participantRegisterService = async (participantToRegister) => {
     throw error;
   }
 
+  const activeAccountStatus = await db.AccountStatus.findOne({
+    where: { englishName: "active" },
+  });
+
+  if (!activeAccountStatus) {
+    const error = new Error("Account Status does not exist");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  console.log(`activeAccountStatus`);
+  console.dir(activeAccountStatus, { depth: null });
+
   const userToRegister = {
     email: email,
     password: password,
-    roleName: "participant",
+    role_id: 1,
+    accountStatusId: activeAccountStatus.id,
   };
   const registerUserResponse = await registerUser(userToRegister);
   console.log(`registerUserResponse`);
@@ -91,19 +110,55 @@ const participantRegisterService = async (participantToRegister) => {
     throw error;
   }
 
-  const participantUserId = registerUserResponse.data.userRegisterResult.id;
-  console.dir(participantData, { depth: null });
-  const participant = await db.Participant.create({
-    userId: participantUserId,
-    ...participantData,
-    profileImage: profileImageUploadResponse.secure_urls[0],
-  });
-  console.log(`participant`);
-  console.dir(participant, { depth: null });
+  const transaction = await db.sequelize.transaction();
+  let participantUserId;
+  let participantId;
 
-  const participantId = participant.dataValues.id;
-  console.log(`participantId`);
-  console.log(participantId);
+  try {
+    participantUserId = registerUserResponse.data.userRegisterResult.id;
+    console.log(`participantUserId`);
+    console.log(participantUserId);
+
+    console.dir(participantData, { depth: null });
+    const participant = await db.Participant.create(
+      {
+        userId: participantUserId,
+        ...participantData,
+        profileImage: profileImageUploadResponse.secure_urls[0],
+      },
+      { transaction }
+    );
+
+    let registeredJuzaIds = [];
+
+    if (selectedMemorizingOption !== "none") {
+      if (selectedMemorizingOption === "all") {
+        registeredJuzaIds = [...Array(30).keys()].map((juzaId) => juzaId + 1);
+      } else if (participantData.juza_ids) {
+        registeredJuzaIds = participantData.juza_ids;
+      }
+    }
+    console.log(`registeredJuzaIds`);
+    console.dir(registeredJuzaIds, { depth: null });
+
+    const participantJuzaaIds = registeredJuzaIds.map((juzaaId) => {
+      return {
+        participant_id: participant.dataValues.id,
+        juza_id: juzaaId,
+      };
+    });
+
+    await db.ParticipantAjzaa.bulkCreate(participantJuzaaIds, { transaction });
+
+    await transaction.commit();
+
+    participantId = participant.dataValues.id;
+    console.log(`participantId`);
+    console.log(participantId);
+  } catch (error) {
+    await transaction.rollback();
+    throw error;
+  }
 
   const dataToEncrypt = {
     userId: participantUserId,

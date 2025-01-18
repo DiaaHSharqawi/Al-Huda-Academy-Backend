@@ -51,17 +51,6 @@ const createMemorizationGroupSchema = Joi.object({
     "any.only": "Participants gender must be valid",
     "any.required": "Participants gender is required",
   }),
-  participants_level_id: Joi.number()
-    .integer()
-    .min(1)
-    .max(5)
-    .required()
-    .messages({
-      "number.base": "Participants level must be a number",
-      "number.min": "Participants level must be at least 1",
-      "number.max": "Participants level must be at most 5",
-      "any.required": "Participants level is required",
-    }),
 
   group_goal_id: Joi.number().integer().min(1).max(3).required().messages({
     "number.base": "Group goal must be a number",
@@ -79,6 +68,10 @@ const createMemorizationGroupSchema = Joi.object({
     "number.min": "Teaching method must be at least 1",
     "number.max": "Teaching method must be at most 5",
     "any.required": "Teaching method is required",
+  }),
+  group_completion_rate_id: Joi.number().integer().required().messages({
+    "number.base": "Group completion rate must be a number",
+    "any.required": "Group completion rate is required",
   }),
   surah_ids: Joi.array()
     .items(Joi.number().integer().min(1).max(114))
@@ -115,7 +108,7 @@ const createMemorizationGroupSchema = Joi.object({
   if (startTime && endTime && startTime >= endTime) {
     return helpers.message("End time must be after start time");
   }
-  if (
+  /* if (
     !(
       value.surah_ids?.length > 0 ||
       value.juza_ids?.length > 0 ||
@@ -123,7 +116,7 @@ const createMemorizationGroupSchema = Joi.object({
     )
   ) {
     return helpers.message("Surah IDs, Juza IDs, or extracts must be provided");
-  }
+  }*/
   return value;
 });
 

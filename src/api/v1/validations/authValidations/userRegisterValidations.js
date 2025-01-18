@@ -11,9 +11,14 @@ const userRegisterSchema = Joi.object({
     "string.min": "validations.password.password_must_be_at_least_6_characters",
     "any.required": "validations.password.password_is_required",
   }),
-  roleName: Joi.string().required().messages({
-    "string.empty": "validations.roleName.role_name_cannot_be_empty",
-    "any.required": "validations.roleName.role_name_is_required",
+  roleId: Joi.string().required().messages({
+    "string.empty": "validations.roleId.role_id_cannot_be_empty",
+    "any.required": "validations.roleId.role_id_is_required",
+  }),
+  accountStatusId: Joi.string().required().messages({
+    "string.empty":
+      "validations.accountStatusId.account_status_id_cannot_be_empty",
+    "any.required": "validations.accountStatusId.account_status_id_is_required",
   }),
 });
 

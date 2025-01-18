@@ -36,11 +36,12 @@ const getMemorizationGroupByGroupIdService = async (
           model: db.DayMemorizationGroup,
         },
       },
-      {
-        model: db.ParticipantLevel,
-      },
+
       {
         model: db.GroupGoal,
+      },
+      {
+        model: db.QuranMemorizingAmount,
       },
       {
         model: db.Language,
@@ -58,15 +59,18 @@ const getMemorizationGroupByGroupIdService = async (
     logging: console.log,
   });
 
-  console.log("memorizationGroups:", memorizationGroups);
+  // console.log("memorizationGroups:", memorizationGroups);
   if (!memorizationGroups) {
     const error = new Error("Memorization group not found.");
     error.statusCode = 404;
     throw error;
   }
 
-  if (memorizationGroups.TeachingMethod.methodNameEnglish == "surahsQuran") {
-    console.log("Memorization of Surahs of the Quran");
+  if (
+    memorizationGroups.TeachingMethod.id === 1 ||
+    memorizationGroups.TeachingMethod.id == 4
+  ) {
+    console.log("Memorization of Surahs of the Quran ----");
     console.log("id:", id);
     surahs = await db.SurahMemorizationGroup.findAll({
       where: {
@@ -81,7 +85,8 @@ const getMemorizationGroupByGroupIdService = async (
     console.log("surahs:", surahs);
     //memorizationGroups.setDataValue("surahs", surahs);
   } else if (
-    memorizationGroups.TeachingMethod.methodNameEnglish == "juzasQuran"
+    memorizationGroups.TeachingMethod.id == 2 ||
+    memorizationGroups.TeachingMethod.id == 4
   ) {
     console.log("Memorization of Parts of the Quran");
     juzas = await db.JuzaMemorizationGroup.findAll({
@@ -94,9 +99,7 @@ const getMemorizationGroupByGroupIdService = async (
         },
       ],
     });
-  } else if (
-    memorizationGroups.TeachingMethod.methodNameEnglish == "extractsQuran"
-  ) {
+  } else if (memorizationGroups.TeachingMethod.id == 5) {
     extracts = await db.ExtractsFromQuranMemorizationGroup.findAll({
       where: {
         groupId: id,
@@ -115,6 +118,8 @@ const getMemorizationGroupByGroupIdService = async (
   memorizationGroups.setDataValue("juzas", juzas);
   memorizationGroups.setDataValue("extracts", extracts);
 
+  console.log("memorizationGroups:");
+  console.log(typeof memorizationGroups.TeachingMethod.id);
   return memorizationGroups;
 };
 module.exports = getMemorizationGroupByGroupIdService;

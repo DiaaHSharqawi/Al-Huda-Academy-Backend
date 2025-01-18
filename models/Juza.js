@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
         primaryKey: true,
       },
       arabic_part: {
@@ -13,6 +12,22 @@ module.exports = (sequelize, DataTypes) => {
       },
       english_part: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      start_surah: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      end_surah: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      start_ayah: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      end_ayah: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
@@ -34,6 +49,54 @@ module.exports = (sequelize, DataTypes) => {
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
+    });
+
+    Juza.belongsToMany(models.Supervisor, {
+      through: models.SupervisorAjzaa,
+      foreignKey: {
+        name: "juza_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "supervisor_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Juza.belongsToMany(models.Participant, {
+      through: models.ParticipantAjzaa,
+      foreignKey: {
+        name: "juza_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "participant_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Juza.belongsTo(models.Surah, {
+      foreignKey: {
+        name: "start_surah",
+        allowNull: false,
+      },
+      as: "StartSurah",
+      constraints: false,
+    });
+
+    Juza.belongsTo(models.Surah, {
+      foreignKey: {
+        name: "end_surah",
+        allowNull: false,
+      },
+      as: "EndSurah",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+      constraints: false,
     });
   };
 

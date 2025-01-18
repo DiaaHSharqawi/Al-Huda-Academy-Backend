@@ -36,7 +36,7 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
 
     console.log("createMemorizationGroupData :");
     console.log("createMemorizationGroupData.supervisor_id :");
-    console.dir(createMemorizationGroupData.supervisor_id, { depth: null });
+    //    console.dir(createMemorizationGroupData.supervisor_id, { depth: null });
 
     const getSupervisorBySupervisorIdResponse =
       await getSupervisorBySupervisorId(
@@ -44,7 +44,7 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       );
 
     console.log("getSupervisorBySupervisorIdResponse :");
-    console.dir(getSupervisorBySupervisorIdResponse, { depth: null });
+    // console.dir(getSupervisorBySupervisorIdResponse, { depth: null });
 
     if (getSupervisorBySupervisorIdResponse.status !== 200) {
       const error = new Error(
@@ -62,10 +62,24 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       start_time: createMemorizationGroupData.start_time,
       end_time: createMemorizationGroupData.end_time,
       gender_id: createMemorizationGroupData.participants_gender_id,
-      participants_level_id: createMemorizationGroupData.participants_level_id,
       group_goal_id: createMemorizationGroupData.group_goal_id,
       supervisor_id: createMemorizationGroupData.supervisor_id,
     });
+
+    const activeGroupStatus = await db.GroupStatus.findOne({
+      where: {
+        status_name_en: "active",
+      },
+    });
+
+    console.log("activeGroupStatus :");
+    console.dir(activeGroupStatus, { depth: 1 });
+
+    if (!activeGroupStatus) {
+      const error = new Error("failed to find the active group status");
+      error.statusCode = 404;
+      throw error;
+    }
 
     const memorizationGroup = await db.MemorizationGroup.create(
       {
@@ -75,28 +89,47 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
         group_status_id: createMemorizationGroupData.group_status_id,
         start_time: createMemorizationGroupData.start_time,
         end_time: createMemorizationGroupData.end_time,
-        group_status_id: 5,
+        group_status_id: activeGroupStatus.id,
         group_goal_id: createMemorizationGroupData.group_goal_id,
         teaching_method_id: createMemorizationGroupData.teaching_method_id,
         gender_id: createMemorizationGroupData.participants_gender_id,
-        participants_level_id:
-          createMemorizationGroupData.participants_level_id,
+        group_completion_rate_id:
+          createMemorizationGroupData.group_completion_rate_id,
         supervisor_id: createMemorizationGroupData.supervisor_id,
       },
       { transaction }
     );
+    console.log("memorizationGroup added :");
+
+    const { days } = createMemorizationGroupData;
+    console.log("days :");
+    console.dir(days, { depth: 1 });
+
+    const groupDaysPromises = days.map((day) =>
+      db.DayMemorizationGroup.create(
+        {
+          day_id: day,
+          group_id: memorizationGroup.id,
+        },
+        { transaction }
+      )
+    );
+    await Promise.all(groupDaysPromises);
 
     const teachingMethodId = parseInt(
       createMemorizationGroupData.teaching_method_id,
       10
     );
     console.log("teachingMethodId :");
-    console.dir(teachingMethodId, { depth: null });
+    console.dir(teachingMethodId, { depth: 1 });
 
     const teachingMethodModel = teachingMethodsMapping(teachingMethodId);
 
     if (teachingMethodId === 1 || teachingMethodId === 4) {
-      const { surah_ids } = createMemorizationGroupData;
+      let { surah_ids } = createMemorizationGroupData;
+      if (!surah_ids && teachingMethodId === 1) {
+        surah_ids = Array.from({ length: 114 }, (_, i) => i + 1);
+      }
       const surahPromises = surah_ids.map((surah_id) =>
         teachingMethodModel.create(
           {
@@ -108,7 +141,10 @@ const createMemorizationGroupService = async (createMemorizationGroupData) => {
       );
       await Promise.all(surahPromises);
     } else if (teachingMethodId === 2 || teachingMethodId === 3) {
-      const { juza_ids } = createMemorizationGroupData;
+      let { juza_ids } = createMemorizationGroupData;
+      if (!juza_ids && teachingMethodId === 2) {
+        juza_ids = Array.from({ length: 30 }, (_, i) => i + 1);
+      }
       const juzaPromises = juza_ids.map((juza_id) =>
         teachingMethodModel.create(
           {

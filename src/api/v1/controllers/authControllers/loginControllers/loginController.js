@@ -24,6 +24,7 @@ const loginController = asyncHandler(async (req, res) => {
     email: loginResult.email,
     fullName: loginResult.fullName,
     role: loginResult.role,
+    accountStatus: loginResult.AccountStatus,
   };
   console.log("dataToEncrypt");
   console.dir(dataToEncrypt, { depth: null });

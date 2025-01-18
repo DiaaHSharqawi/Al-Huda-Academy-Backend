@@ -8,7 +8,7 @@ const db = require("./models/index.js");
 
 const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
-const i18nextHttpMiddleware = require("i18next-http-middleware");
+const i18nextHttpMiddleware = require("i18next-http-Middleware");
 
 // API Routes:
 const userRoutes = require("./src/api/v1/routes/userRoutes/userRoutes.js");
@@ -25,8 +25,12 @@ const genderRoutes = require("./src/api/v1/routes/genderRoutes/genderRoutes.js")
 const groupGoalRoutes = require("./src/api/v1/routes/groupGoalRoutes/groupGoalRoutes.js");
 const languageRoutes = require("./src/api/v1/routes/languageRoutes/languageRoutes.js");
 const teachingMethodsRoutes = require("./src/api/v1/routes/teachingMethodsRoutes/teachingMethodsRoutes.js");
-const participantLevelRoutes = require("./src/api/v1/routes/participantLevelRoutes/participantLevelRoutes.js");
 const daysRoutes = require("./src/api/v1/routes/daysRoutes/daysRoutes.js");
+const adminRoutes = require("./src/api/v1/routes/adminRoutes/adminRoutes.js");
+const quranMemorizingAmountRoutes = require("./src/api/v1/routes/quranMemorizingAmountRoutes/quranMemorizingAmountRoutes.js");
+const accountStatusRoutes = require("./src/api/v1/routes/accountStatusRoutes/accountStatusRoutes.js");
+const groupStatusRoutes = require("./src/api/v1/routes/groupStatusRoutes/groupStatusRoutes.js");
+const notificationsRoutes = require("./src/api/v1/routes/notificationsRoutes/notificationsRoutes.js");
 
 // Load env variables from .env file
 dotenv.config();
@@ -45,7 +49,7 @@ i18next
 
 const app = express(); // local: http://localhost:3000
 
-// Use i18next middleware
+// Use i18next Middleware
 app.use(i18nextHttpMiddleware.handle(i18next));
 
 // Cors policy
@@ -96,13 +100,25 @@ app.use("/api/language", languageRoutes);
 // Teaching Methods route
 app.use("/api/teaching-methods", teachingMethodsRoutes);
 
-// Participant Level route
-app.use("/api/participant-level", participantLevelRoutes);
-
 // Days route
 app.use("/api/days", daysRoutes);
 
-// Express-Async-Handler MiddleWare
+// Admin route
+app.use("/api/admin", adminRoutes);
+
+// Quran Memorizing Amount route
+app.use("/api/quran-memorizing-amount", quranMemorizingAmountRoutes);
+
+// Account Status route
+app.use("/api/account-status", accountStatusRoutes);
+
+// Notifications route
+app.use("/api/notifications", notificationsRoutes);
+
+// Group Status route
+app.use("/api/group-status", groupStatusRoutes);
+
+// Express-Async-Handler Middleware
 app.use((err, req, res, next) => {
   const statusCode = err.response?.status || err.statusCode || 500;
   const message =

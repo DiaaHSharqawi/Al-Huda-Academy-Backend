@@ -6,8 +6,11 @@ const getMemorizationGroupController = asyncHandler(async (req, res) => {
   console.log("getMemorizationGroupServiceData");
   console.dir(getMemorizationGroupServiceData, { depth: null });
 
+  const { participantDetails } = req.data;
+
   const { memorizationGroups, metaData } = await getMemorizationGroupService(
-    getMemorizationGroupServiceData
+    getMemorizationGroupServiceData,
+    participantDetails
   );
   console.log("memorizationGroups");
 

@@ -11,9 +11,9 @@ const groups = [
     group_status_id: 1,
     group_goal_id: 1,
     gender_id: 1,
-    participants_level_id: 1, // junior
     supervisor_id: 1,
     teaching_method_id: 2,
+    group_completion_rate_id: 1,
     createdAt: new Date(),
   },
   {
@@ -25,9 +25,9 @@ const groups = [
     group_status_id: 2,
     group_goal_id: 2,
     gender_id: 2,
-    participants_level_id: 3, // advanced
     supervisor_id: 2,
     teaching_method_id: 2,
+    group_completion_rate_id: 2,
     createdAt: new Date(),
   },
   {
@@ -39,9 +39,9 @@ const groups = [
     group_status_id: 3,
     group_goal_id: 1,
     gender_id: 2,
-    participants_level_id: 4, // junior-average
     supervisor_id: 3,
     teaching_method_id: 2,
+    group_completion_rate_id: 3,
     createdAt: new Date(),
   },
   {
@@ -53,9 +53,9 @@ const groups = [
     group_status_id: 4,
     group_goal_id: 1,
     gender_id: 1,
-    participants_level_id: 2, // average
     supervisor_id: 1,
     teaching_method_id: 2,
+    group_completion_rate_id: 4,
     createdAt: new Date(),
   },
   {
@@ -67,9 +67,9 @@ const groups = [
     group_status_id: 5,
     group_goal_id: 3,
     gender_id: 1,
-    participants_level_id: 3, // advanced
     supervisor_id: 2,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
+    group_completion_rate_id: 5,
     createdAt: new Date(),
   },
   {
@@ -81,9 +81,9 @@ const groups = [
     group_status_id: 6,
     group_goal_id: 1,
     gender_id: 2,
-    participants_level_id: 1, // junior
     supervisor_id: 3,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
+    group_completion_rate_id: 6,
     createdAt: new Date(),
   },
   {
@@ -95,9 +95,9 @@ const groups = [
     group_status_id: 1,
     group_goal_id: 3,
     gender_id: 2,
-    participants_level_id: 2, // average
     supervisor_id: 1,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
+    group_completion_rate_id: 7,
     createdAt: new Date(),
   },
   {
@@ -109,9 +109,9 @@ const groups = [
     group_status_id: 2,
     group_goal_id: 1,
     gender_id: 1,
-    participants_level_id: 1, // junior
     supervisor_id: 2,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
+    group_completion_rate_id: 1,
     createdAt: new Date(),
   },
   {
@@ -123,9 +123,9 @@ const groups = [
     group_status_id: 3,
     group_goal_id: 3,
     gender_id: 2,
-    participants_level_id: 3, // advanced
     supervisor_id: 3,
-    teaching_method_id: 3,
+    teaching_method_id: 4,
+    group_completion_rate_id: 2,
     createdAt: new Date(),
   },
   {
@@ -137,9 +137,9 @@ const groups = [
     group_status_id: 4,
     group_goal_id: 1,
     gender_id: 1,
-    participants_level_id: 2, // average
     supervisor_id: 1,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
+    group_completion_rate_id: 3,
     createdAt: new Date(),
   },
   {
@@ -151,9 +151,9 @@ const groups = [
     group_status_id: 5,
     group_goal_id: 3,
     gender_id: 2,
-    participants_level_id: 1, // junior
     supervisor_id: 2,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
+    group_completion_rate_id: 4,
     createdAt: new Date(),
   },
   {
@@ -162,12 +162,12 @@ const groups = [
     capacity: 18,
     start_time: "14:00:00",
     end_time: "16:00:00",
-    group_status_id: 6,
+    group_status_id: 5,
     group_goal_id: 1,
     gender_id: 1,
-    participants_level_id: 3, // advanced
     supervisor_id: 3,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
+    group_completion_rate_id: 5,
     createdAt: new Date(),
   },
   {
@@ -176,12 +176,12 @@ const groups = [
     capacity: 12,
     start_time: "17:00:00",
     end_time: "19:00:00",
-    group_status_id: 1,
+    group_status_id: 5,
     group_goal_id: 3,
     gender_id: 2,
-    participants_level_id: 2, // average
     supervisor_id: 1,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
+    group_completion_rate_id: 6,
     createdAt: new Date(),
   },
   {
@@ -190,20 +190,29 @@ const groups = [
     capacity: 20,
     start_time: "08:00:00",
     end_time: "10:00:00",
-    group_status_id: 2,
+    group_status_id: 5,
     group_goal_id: 1,
     gender_id: 1,
-    participants_level_id: 1, // junior
     supervisor_id: 2,
-    teaching_method_id: 4,
+    teaching_method_id: 5,
+    group_completion_rate_id: 7,
     createdAt: new Date(),
   },
 ];
 
+const generateGroupsWithTimestamps = (baseDate) => {
+  return groups.map((group, index) => ({
+    ...group,
+    createdAt: new Date(baseDate.getTime() + index * 1000), // 1 second apart
+  }));
+};
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     try {
-      await queryInterface.bulkInsert("memorization_group", groups);
+      const baseDate = new Date(); // Start from now
+      const updatedGroups = generateGroupsWithTimestamps(baseDate);
+
+      await queryInterface.bulkInsert("memorization_group", updatedGroups);
     } catch (error) {
       console.error("Error seeding memorization_group", error);
     }

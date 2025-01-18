@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true,
         },
       },
-      isActive: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
-      },
     },
     {
       timestamps: true,
@@ -37,7 +33,17 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
     User.hasOne(models.Supervisor, { foreignKey: "userId" });
+
+    User.belongsTo(models.AccountStatus, {
+      foreignKey: {
+        name: "accountStatusId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
   return User;
 };

@@ -2,27 +2,37 @@ module.exports = (sequelize, DataTypes) => {
   const Participant = sequelize.define("Participant", {
     fullName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     dateOfBirth: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+    },
+    quranMemorizingAmountsId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "quran_memorizing_amounts",
+        key: "id",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
     },
     gender_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "genders",
         key: "id",
@@ -36,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     profileImage: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   });
 
@@ -53,6 +63,53 @@ module.exports = (sequelize, DataTypes) => {
     Participant.belongsTo(models.Gender, {
       foreignKey: {
         name: "gender_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Participant.belongsTo(models.QuranMemorizingAmount, {
+      foreignKey: {
+        name: "quranMemorizingAmountsId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Participant.belongsToMany(models.Juza, {
+      through: models.ParticipantAjzaa,
+      foreignKey: {
+        name: "participant_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "juza_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Participant.belongsToMany(models.MemorizationGroup, {
+      through: models.GroupJoinRequest,
+      foreignKey: {
+        name: "participant_id",
+        allowNull: false,
+      },
+      otherKey: {
+        name: "group_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Participant.belongsToMany(models.MemorizationGroup, {
+      through: models.GroupMembership,
+      foreignKey: {
+        name: "participant_id",
         allowNull: false,
       },
       onDelete: "CASCADE",

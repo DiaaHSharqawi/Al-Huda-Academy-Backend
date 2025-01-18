@@ -113,6 +113,9 @@ const loginService = async (userLoginData) => {
 
   delete userDetailsWithoutPassword.roleId;
 
+  userDetailsWithoutPassword.AccountStatus =
+    getUserByEmailResponse.data.user.AccountStatus;
+
   return userDetailsWithoutPassword;
 };
 module.exports = loginService;

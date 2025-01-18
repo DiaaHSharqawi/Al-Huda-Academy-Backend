@@ -6,6 +6,14 @@ const userServices = {
 
     const user = await db.User.findOne({
       where: { email: userEmail },
+      include: [
+        {
+          model: db.AccountStatus,
+        },
+        {
+          model: db.Role,
+        },
+      ],
     });
 
     if (!user) {
