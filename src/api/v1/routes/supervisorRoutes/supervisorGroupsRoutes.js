@@ -12,6 +12,8 @@ const getAllGroupMembersController = require("../../controllers/supervisorContro
 const acceptSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/acceptGroupJoinRequestController.js");
 const rejectSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/rejectGroupJoinRequestController.js");
 
+const getSupervisorGroupPlanController = require("./../../controllers/supervisorControllers/getSupervisorGroupPlanController.js");
+
 // Middlewares imports :
 const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
 const verifyGroupExistenceMiddleware = require("./../../middlewares/groups/verifyGroupExistence.js");
@@ -22,6 +24,15 @@ const verifyParticipantExistenceMiddleware = require("./../../middlewares/partic
 // SupervisorGroups Routes /supervisor/groups
 
 router.post("/", getAllSupervisorGroupsController);
+
+router.get(
+  "/:groupId/group-plan",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware,
+  verifySupervisorExistenceMiddleware,
+  verifySupervisorGroupAuthorizationMiddleware,
+  getSupervisorGroupPlanController
+);
 
 router.get(
   "/:groupId/members",

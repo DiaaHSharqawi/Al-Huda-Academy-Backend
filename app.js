@@ -31,6 +31,7 @@ const quranMemorizingAmountRoutes = require("./src/api/v1/routes/quranMemorizing
 const accountStatusRoutes = require("./src/api/v1/routes/accountStatusRoutes/accountStatusRoutes.js");
 const groupStatusRoutes = require("./src/api/v1/routes/groupStatusRoutes/groupStatusRoutes.js");
 const notificationsRoutes = require("./src/api/v1/routes/notificationsRoutes/notificationsRoutes.js");
+const attendanceStatusRoutes = require("./src/api/v1/routes/attendanceStatusRoutes/attendanceStatusRoutes.js");
 
 // Load env variables from .env file
 dotenv.config();
@@ -117,6 +118,9 @@ app.use("/api/notifications", notificationsRoutes);
 
 // Group Status route
 app.use("/api/group-status", groupStatusRoutes);
+
+// Attendance Status route
+app.use("/api/attendance-status", attendanceStatusRoutes);
 
 // Express-Async-Handler Middleware
 app.use((err, req, res, next) => {
