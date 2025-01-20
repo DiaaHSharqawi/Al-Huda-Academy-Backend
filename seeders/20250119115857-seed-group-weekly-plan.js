@@ -8,7 +8,8 @@ module.exports = {
         {
           id: 1,
           groupId: 1,
-          weekNumber: 1,
+          weekNumber: 0,
+          startWeekDayDate: new Date("2025-01-19"),
           createdAt: new Date(),
           updatedAt: new Date(),
         },

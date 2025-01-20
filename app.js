@@ -122,6 +122,8 @@ app.use("/api/group-status", groupStatusRoutes);
 // Attendance Status route
 app.use("/api/attendance-status", attendanceStatusRoutes);
 
+// Group Days route
+
 // Express-Async-Handler Middleware
 app.use((err, req, res, next) => {
   const statusCode = err.response?.status || err.statusCode || 500;

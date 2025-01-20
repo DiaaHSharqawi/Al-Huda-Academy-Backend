@@ -34,7 +34,7 @@ const getSupervisorGroupPlanService = async (
 
   console.log("searchParams.sortOrder :", searchParams.sortOrder);
 
-  const sortOrder = (searchParams.sortOrder || "ASC").toUpperCase();
+  const sortOrder = (searchParams.sortOrder || "DESC").toUpperCase();
 
   const groupPlan = await db.GroupWeeklyPlan.findAll({
     where: {
@@ -50,6 +50,8 @@ const getSupervisorGroupPlanService = async (
     error.statusCode = 404;
     throw error;
   }
+
+  console.log("===== End getSupervisorGroupPlanService =====");
 
   return {
     groupPlan: groupPlan,

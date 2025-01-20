@@ -13,6 +13,9 @@ const acceptSupervisorGroupJoinRequestController = require("./../../controllers/
 const rejectSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/rejectGroupJoinRequestController.js");
 
 const getSupervisorGroupPlanController = require("./../../controllers/supervisorControllers/getSupervisorGroupPlanController.js");
+const createSupervisorGroupPlanController = require("./../../controllers/supervisorControllers/createSupervisorGroupPlanController.js");
+
+const getAllGroupDayController = require("./../../controllers/supervisorControllers/getAllGroupDayController.js");
 
 // Middlewares imports :
 const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
@@ -21,9 +24,21 @@ const verifySupervisorExistenceMiddleware = require("./../../middlewares/supervi
 const verifySupervisorGroupAuthorizationMiddleware = require("./../../middlewares/verifySupervisorGroupAuthorizationMiddleWare.js");
 const verifyParticipantExistenceMiddleware = require("./../../middlewares/participant/verifyParticipantExistenceMiddleware.js");
 
+// Validation imports :
+const validateCreateSupervisorGroupPlanValidation = require("./../../validations/supervisorValidations/createSupervisorGroupPlanValidation.js");
+
 // SupervisorGroups Routes /supervisor/groups
 
 router.post("/", getAllSupervisorGroupsController);
+
+router.get(
+  "/:groupId/group-days",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware,
+  verifySupervisorExistenceMiddleware,
+  verifySupervisorGroupAuthorizationMiddleware,
+  getAllGroupDayController
+);
 
 router.get(
   "/:groupId/group-plan",
@@ -32,6 +47,16 @@ router.get(
   verifySupervisorExistenceMiddleware,
   verifySupervisorGroupAuthorizationMiddleware,
   getSupervisorGroupPlanController
+);
+
+router.post(
+  "/:groupId/group-plan/create",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware,
+  verifySupervisorExistenceMiddleware,
+  verifySupervisorGroupAuthorizationMiddleware,
+  validateCreateSupervisorGroupPlanValidation,
+  createSupervisorGroupPlanController
 );
 
 router.get(
