@@ -10,6 +10,7 @@ module.exports = {
           groupId: 1,
           weekNumber: 0,
           startWeekDayDate: new Date("2025-01-19"),
+          group_weekly_plan_status_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

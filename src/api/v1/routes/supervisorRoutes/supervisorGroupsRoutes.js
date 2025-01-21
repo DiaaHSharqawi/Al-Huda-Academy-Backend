@@ -12,7 +12,7 @@ const getAllGroupMembersController = require("../../controllers/supervisorContro
 const acceptSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/acceptGroupJoinRequestController.js");
 const rejectSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/rejectGroupJoinRequestController.js");
 
-const getSupervisorGroupPlanController = require("./../../controllers/supervisorControllers/getSupervisorGroupPlanController.js");
+const getAllSupervisorGroupPlanController = require("../../controllers/supervisorControllers/getAllSupervisorGroupPlanController.js");
 const createSupervisorGroupPlanController = require("./../../controllers/supervisorControllers/createSupervisorGroupPlanController.js");
 
 const getAllGroupDayController = require("./../../controllers/supervisorControllers/getAllGroupDayController.js");
@@ -46,8 +46,16 @@ router.get(
   verifyGroupExistenceMiddleware,
   verifySupervisorExistenceMiddleware,
   verifySupervisorGroupAuthorizationMiddleware,
-  getSupervisorGroupPlanController
+  getAllSupervisorGroupPlanController
 );
+
+/*router.get(
+  "/:groupId/group-plan/:planId",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware,
+  verifySupervisorExistenceMiddleware,
+  verifySupervisorGroupAuthorizationMiddleware
+);*/
 
 router.post(
   "/:groupId/group-plan/create",

@@ -22,6 +22,12 @@ const createSupervisorGroupPlanService = async (
     throw error;
   }
 
+  const pendingGroupWeeklyPlanStatus = await db.GroupWeeklyPlanStatus.findOne({
+    where: {
+      status: "pending",
+    },
+  });
+
   const createdGroupPlan = await db.GroupWeeklyPlan.create({
     groupId: groupDetails.groupId,
     weekNumber: groupPlanData.weekNumber,

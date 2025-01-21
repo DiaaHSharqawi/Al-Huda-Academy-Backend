@@ -23,10 +23,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      isActive: {
-        type: DataTypes.BOOLEAN,
+      group_weekly_plan_status_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: false,
+        references: {
+          model: "group_weekly_plan_status",
+          key: "id",
+        },
       },
     },
     {
@@ -58,6 +61,15 @@ module.exports = (sequelize, DataTypes) => {
     GroupWeeklyPlan.hasMany(models.ContentToMemorize, {
       foreignKey: {
         name: "groupWeeklyPlanId",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    GroupWeeklyPlan.belongsTo(models.GroupWeeklyPlanStatus, {
+      foreignKey: {
+        name: "group_weekly_plan_status_id",
         allowNull: false,
       },
       onDelete: "CASCADE",

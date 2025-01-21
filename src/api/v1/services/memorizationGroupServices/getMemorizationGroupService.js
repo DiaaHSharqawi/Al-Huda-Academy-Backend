@@ -220,6 +220,8 @@ const searchMemorizationGroupService = async (
   searchParams,
   participantDetails
 ) => {
+  console.log("===== searchMemorizationGroupService =====");
+
   const { participantId } = participantDetails;
 
   console.log("participantDetails:", participantDetails);
@@ -264,10 +266,10 @@ const searchMemorizationGroupService = async (
         attributes: ["start_surah", "end_surah"],
       },
     ],
+    limit: 1,
     raw: false,
   });
-  console.dir(participantAjzaa.Juza);
-  console.dir(participantAjzaa, { depth: 4 });
+  // console.dir(participantAjzaa, { depth: 4 });
 
   const participantSurahsAjzaaId = new Set(
     participantAjzaa.map((participant) => {

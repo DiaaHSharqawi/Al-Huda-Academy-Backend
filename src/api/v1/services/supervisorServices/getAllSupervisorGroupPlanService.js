@@ -1,6 +1,6 @@
-const db = require("./../../../../../models/index.js");
+const db = require("../../../../../models/index.js");
 
-const getSupervisorGroupPlanService = async (
+const getAllSupervisorGroupPlanService = async (
   groupDetails,
   searchParams = {}
 ) => {
@@ -64,4 +64,4 @@ const getSupervisorGroupPlanService = async (
   };
 };
 
-module.exports = getSupervisorGroupPlanService;
+module.exports = getAllSupervisorGroupPlanService;
