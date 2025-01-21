@@ -1,16 +1,7 @@
 const Joi = require("joi");
 
 const createSupervisorGroupPlanSchema = Joi.object({
-  weekNumber: Joi.string()
-    .pattern(/^[0-9][0-9]*$/)
-    .required()
-    .messages({
-      "string.empty": "validations.weekNumber.weekNumber_cannot_be_empty",
-      "string.pattern.base":
-        "validations.weekNumber.must_be_a_valid_week_number",
-      "any.required": "validations.weekNumber.weekNumber_is_required",
-    }),
-  startWeekDayDate: Joi.date().iso().required().messages({
+  dayDate: Joi.date().iso().required().messages({
     "date.base": "validations.startWeekDayDate.must_be_a_valid_date",
     "date.format": "validations.startWeekDayDate.must_be_in_ISO_format",
     "any.required": "validations.startWeekDayDate.startWeekDayDate_is_required",
@@ -19,7 +10,7 @@ const createSupervisorGroupPlanSchema = Joi.object({
 
 // Middleware for validation
 const validateCreateSupervisorGroupPlanValidation = (req, res, next) => {
-  console.log("validateWeekNumber");
+  console.log("validate day date");
   const { error } = createSupervisorGroupPlanSchema.validate(req.body, {
     abortEarly: false,
   });

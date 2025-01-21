@@ -4,7 +4,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     try {
-      await queryInterface.bulkInsert("group_weekly_plan_status", [
+      await queryInterface.bulkInsert("group_plan_status", [
         {
           id: 1,
           name_ar: "قيد الانتظار",
@@ -36,25 +36,19 @@ module.exports = {
           name_en: "partially executed",
         },
       ]);
-      console.log("Data inserted successfully into group_weekly_plan_status.");
+      console.log("Data inserted successfully into group_plan_status.");
     } catch (error) {
-      console.error(
-        "Error inserting data into group_weekly_plan_status:",
-        error
-      );
+      console.error("Error inserting data into group_plan_status:", error);
       throw error;
     }
   },
 
   down: async (queryInterface, Sequelize) => {
     try {
-      await queryInterface.bulkDelete("group_weekly_plan_status", null, {});
-      console.log("Data removed successfully from group_weekly_plan_status.");
+      await queryInterface.bulkDelete("group_plan_status", null, {});
+      console.log("Data removed successfully from group_plan_status.");
     } catch (error) {
-      console.error(
-        "Error removing data from group_weekly_plan_status:",
-        error
-      );
+      console.error("Error removing data from group_plan_status:", error);
       throw error;
     }
   },

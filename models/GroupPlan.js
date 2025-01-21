@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const GroupWeeklyPlan = sequelize.define(
-    "GroupWeeklyPlan",
+  const GroupPlan = sequelize.define(
+    "GroupPlan",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -15,30 +15,26 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      weekNumber: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      startWeekDayDate: {
+      dayDate: {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      group_weekly_plan_status_id: {
+      group_plan_status_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "group_weekly_plan_status",
+          model: "group_plan_status",
           key: "id",
         },
       },
     },
     {
       timestamps: true,
-      tableName: "group_weekly_plan",
+      tableName: "group_plan",
     }
   );
-  GroupWeeklyPlan.associate = (models) => {
-    GroupWeeklyPlan.belongsTo(models.MemorizationGroup, {
+  GroupPlan.associate = (models) => {
+    GroupPlan.belongsTo(models.MemorizationGroup, {
       foreignKey: {
         name: "groupId",
         sourceKey: "id",
@@ -49,27 +45,27 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "CASCADE",
     });
 
-    GroupWeeklyPlan.hasMany(models.ContentToReview, {
+    GroupPlan.hasMany(models.ContentToReview, {
       foreignKey: {
-        name: "groupWeeklyPlanId",
+        name: "groupPlanId",
         allowNull: false,
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
 
-    GroupWeeklyPlan.hasMany(models.ContentToMemorize, {
+    GroupPlan.hasMany(models.ContentToMemorize, {
       foreignKey: {
-        name: "groupWeeklyPlanId",
+        name: "groupPlanId",
         allowNull: false,
       },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
 
-    GroupWeeklyPlan.belongsTo(models.GroupWeeklyPlanStatus, {
+    GroupPlan.belongsTo(models.GroupPlanStatus, {
       foreignKey: {
-        name: "group_weekly_plan_status_id",
+        name: "group_plan_status_id",
         allowNull: false,
       },
       onDelete: "CASCADE",
@@ -77,5 +73,5 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  return GroupWeeklyPlan;
+  return GroupPlan;
 };

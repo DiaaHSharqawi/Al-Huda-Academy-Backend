@@ -229,7 +229,7 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "CASCADE",
     });
 
-    MemorizationGroup.hasMany(models.GroupWeeklyPlan, {
+    MemorizationGroup.hasMany(models.GroupPlan, {
       foreignKey: {
         name: "groupId",
         allowNull: false,

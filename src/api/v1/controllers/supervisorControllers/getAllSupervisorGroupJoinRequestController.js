@@ -3,7 +3,9 @@ const getAllSupervisorGroupJoinRequestService = require("./../../services/superv
 
 const getAllSupervisorGroupJoinRequestController = asyncHandler(
   async (req, res) => {
-    const groupId = req.params.groupId;
+    const { groupDetails } = req.data;
+
+    const { groupId } = groupDetails;
 
     const getAllSupervisorGroupJoinRequestData = req.query;
 

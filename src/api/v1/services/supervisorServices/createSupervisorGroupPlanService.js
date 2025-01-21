@@ -1,4 +1,5 @@
 const db = require("./../../../../../models/index.js");
+const { Op } = require("sequelize");
 
 const createSupervisorGroupPlanService = async (
   groupPlanData,
@@ -9,12 +10,21 @@ const createSupervisorGroupPlanService = async (
   console.log("groupPlanData", groupPlanData);
   console.log("groupDetails", groupDetails);
 
-  const groupPlan = await db.GroupWeeklyPlan.findOne({
+  console.log(
+    " groupPlanData.dayDate.split(T)[0]",
+    groupPlanData.dayDate.split("T")[0]
+  );
+
+  const groupPlan = await db.GroupPlan.findOne({
     where: {
-      id: groupDetails.groupId,
-      weekNumber: groupPlanData.weekNumber,
+      groupId: groupDetails.groupId,
+      dayDate: {
+        [db.Sequelize.Op.eq]: groupPlanData.dayDate.split("T")[0],
+      },
     },
   });
+
+  console.log("groupPlan---->", groupPlan);
 
   if (groupPlan) {
     const error = new Error("Group plan already exists");
@@ -22,16 +32,16 @@ const createSupervisorGroupPlanService = async (
     throw error;
   }
 
-  const pendingGroupWeeklyPlanStatus = await db.GroupWeeklyPlanStatus.findOne({
+  const pendingGroupPlanStatus = await db.GroupPlanStatus.findOne({
     where: {
-      status: "pending",
+      name_en: "pending",
     },
   });
 
-  const createdGroupPlan = await db.GroupWeeklyPlan.create({
+  const createdGroupPlan = await db.GroupPlan.create({
     groupId: groupDetails.groupId,
-    weekNumber: groupPlanData.weekNumber,
-    startWeekDayDate: groupPlanData.startWeekDayDate,
+    dayDate: groupPlanData.dayDate,
+    group_plan_status_id: pendingGroupPlanStatus.id,
   });
 
   if (!createdGroupPlan) {

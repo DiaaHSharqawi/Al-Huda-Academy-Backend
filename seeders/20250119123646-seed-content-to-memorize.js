@@ -7,19 +7,21 @@ module.exports = {
       await queryInterface.bulkInsert("content_to_memorize", [
         {
           id: 1,
-          groupWeeklyPlanId: 1,
+          groupPlanId: 1,
           surahId: 1,
           startAyah: 1,
           endAyah: 10,
+          dayDate: new Date("2025-01-22"),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           id: 2,
-          groupWeeklyPlanId: 1,
+          groupPlanId: 1,
           surahId: 2,
           startAyah: 50,
           endAyah: 60,
+          dayDate: new Date("2025-01-22"),
           createdAt: new Date(),
           updatedAt: new Date(),
         },

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const GroupWeeklyPlanStatus = sequelize.define(
-    "GroupWeeklyPlanStatus",
+  const GroupPlanStatus = sequelize.define(
+    "GroupPlanStatus",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -18,14 +18,14 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       timestamps: false,
-      tableName: "group_weekly_plan_status",
+      tableName: "group_plan_status",
     }
   );
 
-  GroupWeeklyPlanStatus.associate = (models) => {
-    GroupWeeklyPlanStatus.hasMany(models.GroupWeeklyPlan, {
+  GroupPlanStatus.associate = (models) => {
+    GroupPlanStatus.hasMany(models.GroupPlan, {
       foreignKey: {
-        name: "group_weekly_plan_status_id",
+        name: "group_plan_status_id",
         allowNull: false,
       },
       onDelete: "CASCADE",
@@ -33,5 +33,5 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  return GroupWeeklyPlanStatus;
+  return GroupPlanStatus;
 };

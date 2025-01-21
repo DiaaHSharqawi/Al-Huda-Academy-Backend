@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      groupWeeklyPlanId: {
+      groupPlanId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "group_weekly_plan",
+          model: "group_plan",
           key: "id",
         },
       },
@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      dayDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+      },
     },
     {
       tableName: "content_to_memorize",
@@ -39,9 +43,9 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   ContentToMemorize.associate = (models) => {
-    ContentToMemorize.belongsTo(models.GroupWeeklyPlan, {
+    ContentToMemorize.belongsTo(models.GroupPlan, {
       foreignKey: {
-        name: "groupWeeklyPlanId",
+        name: "groupPlanId",
         sourceKey: "id",
         allowNull: false,
       },

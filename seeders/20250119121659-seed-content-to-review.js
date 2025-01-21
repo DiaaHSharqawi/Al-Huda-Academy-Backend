@@ -7,17 +7,19 @@ module.exports = {
       await queryInterface.bulkInsert("content_to_review", [
         {
           id: 1,
-          groupWeeklyPlanId: 1,
+          groupPlanId: 1,
           surahId: 2,
           startAyah: 1,
           endAyah: 5,
+          dayDate: new Date("2025-01-22"),
         },
         {
           id: 2,
-          groupWeeklyPlanId: 1,
+          groupPlanId: 1,
           surahId: 1,
           startAyah: 1,
           endAyah: 5,
+          dayDate: new Date("2025-01-22"),
         },
       ]);
       console.log("Data successfully seeded into content_to_review.");

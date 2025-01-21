@@ -18,7 +18,7 @@ const getAllSupervisorGroupPlanService = async (
   console.log("limit", limit);
   console.log("offset", offset);
 
-  const totalNumberOfGroupPlan = await db.GroupWeeklyPlan.count({
+  const totalNumberOfGroupPlan = await db.GroupPlan.count({
     where: {
       groupId: groupId,
     },
@@ -36,7 +36,7 @@ const getAllSupervisorGroupPlanService = async (
 
   const sortOrder = (searchParams.sortOrder || "DESC").toUpperCase();
 
-  const groupPlan = await db.GroupWeeklyPlan.findAll({
+  const groupPlan = await db.GroupPlan.findAll({
     where: {
       groupId: groupId,
     },
