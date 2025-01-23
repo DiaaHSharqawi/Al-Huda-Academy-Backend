@@ -11,7 +11,8 @@ module.exports = {
           surahId: 2,
           startAyah: 1,
           endAyah: 5,
-          dayDate: new Date("2025-01-22"),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           id: 2,
@@ -19,7 +20,8 @@ module.exports = {
           surahId: 1,
           startAyah: 1,
           endAyah: 5,
-          dayDate: new Date("2025-01-22"),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ]);
       console.log("Data successfully seeded into content_to_review.");

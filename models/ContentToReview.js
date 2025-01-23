@@ -31,13 +31,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      dayDate: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-      },
     },
     {
-      timestamps: false,
+      timestamps: true,
       tableName: "content_to_review",
     }
   );

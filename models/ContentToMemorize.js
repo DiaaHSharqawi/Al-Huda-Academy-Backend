@@ -31,10 +31,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      dayDate: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-      },
     },
     {
       tableName: "content_to_memorize",

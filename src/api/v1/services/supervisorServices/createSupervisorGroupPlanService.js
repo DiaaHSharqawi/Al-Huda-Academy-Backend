@@ -37,21 +37,79 @@ const createSupervisorGroupPlanService = async (
       name_en: "pending",
     },
   });
+  const transaction = await db.sequelize.transaction();
 
-  const createdGroupPlan = await db.GroupPlan.create({
-    groupId: groupDetails.groupId,
-    dayDate: groupPlanData.dayDate,
-    group_plan_status_id: pendingGroupPlanStatus.id,
-  });
+  let groupPlanId;
 
-  if (!createdGroupPlan) {
-    const error = new Error("Group plan not created");
-    error.statusCode = 500;
+  try {
+    const createdGroupPlan = await db.GroupPlan.create(
+      {
+        groupId: groupDetails.groupId,
+        dayDate: groupPlanData.dayDate,
+        group_plan_status_id: pendingGroupPlanStatus.id,
+        note: groupPlanData.note,
+      },
+      { transaction }
+    );
+
+    groupPlanId = createdGroupPlan.id;
+
+    if (!createdGroupPlan) {
+      const error = new Error("Group plan not created");
+      error.statusCode = 500;
+      throw error;
+    }
+
+    const surahIds = [
+      ...new Set([
+        ...groupPlanData.contentToMemorize.map((content) => content.surahId),
+        ...groupPlanData.contentToReview.map((content) => content.surahId),
+      ]),
+    ];
+
+    const surahs = await db.Surah.findAll({
+      where: {
+        id: {
+          [Op.in]: surahIds,
+        },
+      },
+    });
+
+    if (surahs.length !== surahIds.length) {
+      const error = new Error("Invalid surah id");
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const contentToMemorize = groupPlanData.contentToMemorize.map(
+      (content) => ({
+        ...content,
+        groupPlanId: groupPlanId,
+      })
+    );
+
+    const contentToReview = groupPlanData.contentToReview.map((content) => ({
+      ...content,
+      groupPlanId: groupPlanId,
+    }));
+
+    console.log("contentToMemorize", contentToMemorize);
+    console.log("contentToReview", contentToReview);
+
+    if (contentToMemorize.length > 0) {
+      await db.ContentToMemorize.bulkCreate(contentToMemorize, { transaction });
+    }
+
+    if (contentToReview.length > 0) {
+      await db.ContentToReview.bulkCreate(contentToReview, { transaction });
+    }
+
+    await transaction.commit();
+    console.log("===== End of createSupervisorGroupPlanService =====");
+  } catch (error) {
+    await transaction.rollback();
     throw error;
   }
-
-  console.log("===== End of createSupervisorGroupPlanService =====");
-  return;
 };
 
 module.exports = createSupervisorGroupPlanService;

@@ -1,5 +1,7 @@
 "use strict";
 
+const { not } = require("joi");
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -10,6 +12,7 @@ module.exports = {
           groupId: 1,
           dayDate: 0,
           dayDate: new Date("2025-01-19"),
+          note: "This is a note",
           group_plan_status_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),

@@ -32,6 +32,7 @@ const accountStatusRoutes = require("./src/api/v1/routes/accountStatusRoutes/acc
 const groupStatusRoutes = require("./src/api/v1/routes/groupStatusRoutes/groupStatusRoutes.js");
 const notificationsRoutes = require("./src/api/v1/routes/notificationsRoutes/notificationsRoutes.js");
 const attendanceStatusRoutes = require("./src/api/v1/routes/attendanceStatusRoutes/attendanceStatusRoutes.js");
+const groupPlansRoutes = require("./src/api/v1/routes/groupPlansRoutes/groupPlansRoutes.js");
 
 // Load env variables from .env file
 dotenv.config();
@@ -121,6 +122,9 @@ app.use("/api/group-status", groupStatusRoutes);
 
 // Attendance Status route
 app.use("/api/attendance-status", attendanceStatusRoutes);
+
+// Group Plans route
+app.use("/api/group-plans", groupPlansRoutes);
 
 // Group Days route
 

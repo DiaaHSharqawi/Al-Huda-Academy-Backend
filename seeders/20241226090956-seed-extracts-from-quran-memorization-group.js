@@ -5,7 +5,7 @@
 const extractsFromQuranMemorizationGroup = [
   {
     surahId: 1,
-    ayat: "1-7,10-12,15-18",
+    ayat: "1-7",
     groupId: 10,
   },
   {

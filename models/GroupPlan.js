@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
+      note: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       timestamps: true,

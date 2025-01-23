@@ -16,6 +16,9 @@ const getSupervisorGroupPlanDetailsService = async (groupPlanDetailsData) => {
       {
         model: db.ContentToReview,
       },
+      {
+        model: db.GroupPlanStatus,
+      },
     ],
   });
 

@@ -40,6 +40,11 @@ const getAllSupervisorGroupPlanService = async (
     where: {
       groupId: groupId,
     },
+    include: [
+      {
+        model: db.GroupPlanStatus,
+      },
+    ],
     limit,
     offset,
     order: [["createdAt", sortOrder]],

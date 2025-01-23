@@ -3,16 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 // Controllers imports :
-const getAllSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupJoinRequestController");
 const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
 const getSupervisorGroupDashboardController = require("./../../controllers/supervisorControllers/getSupervisorGroupDashboardController");
 
 const getAllGroupMembersController = require("../../controllers/supervisorControllers/getAllGroupMembersController.js");
 
-const acceptSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/acceptGroupJoinRequestController.js");
-const rejectSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/rejectGroupJoinRequestController.js");
-
 const getAllGroupDayController = require("./../../controllers/supervisorControllers/getAllGroupDayController.js");
+
+const getGroupContentController = require("./../../controllers/supervisorControllers/getGroupContentController.js");
 
 // Middlewares imports :
 const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
@@ -29,6 +27,15 @@ const supervisorGroupJoinRequests = require("./supervisorGroupJoinRequests.js");
 // SupervisorGroups Routes /supervisor/groups
 
 router.post("/", getAllSupervisorGroupsController);
+
+router.get(
+  "/:groupId/content",
+  verifyJwtTokenMiddleware,
+  verifyGroupExistenceMiddleware,
+  verifySupervisorExistenceMiddleware,
+  verifySupervisorGroupAuthorizationMiddleware,
+  getGroupContentController
+);
 
 router.use(
   "/:groupId/group-plan",
