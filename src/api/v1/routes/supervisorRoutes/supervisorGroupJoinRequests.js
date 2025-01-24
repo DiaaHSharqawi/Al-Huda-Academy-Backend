@@ -3,10 +3,10 @@ const express = require("express");
 const router = express.Router();
 
 // Controllers imports :
-const getAllSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupJoinRequestController");
+const getAllSupervisorGroupJoinRequestController = require("../../controllers/supervisorControllers/groupControllers/groupJoinRequestControllers/getAllSupervisorGroupJoinRequestController.js");
 
-const acceptSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/acceptGroupJoinRequestController.js");
-const rejectSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/rejectGroupJoinRequestController.js");
+const acceptSupervisorGroupJoinRequestController = require("../../controllers/supervisorControllers/groupControllers/groupJoinRequestControllers/acceptGroupJoinRequestController.js");
+const rejectSupervisorGroupJoinRequestController = require("../../controllers/supervisorControllers/groupControllers/groupJoinRequestControllers/rejectGroupJoinRequestController.js");
 
 // Middlewares imports :
 const verifyParticipantExistenceMiddleware = require("./../../middlewares/participant/verifyParticipantExistenceMiddleware.js");

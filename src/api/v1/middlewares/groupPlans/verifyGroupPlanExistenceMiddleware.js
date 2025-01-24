@@ -6,9 +6,9 @@ const verifyGroupPlanExistenceMiddleware = asyncHandler(
   async (req, res, next) => {
     const { planId } = req.params;
 
-    const groupPlan = await db.GroupPlan.findByPk(planId);
+    const groupPlanDetails = await db.GroupPlan.findByPk(planId);
 
-    if (!groupPlan) {
+    if (!groupPlanDetails) {
       const error = new Error("Group Plan not found");
       error.statusCode = 404;
       throw error;
@@ -16,7 +16,9 @@ const verifyGroupPlanExistenceMiddleware = asyncHandler(
 
     req.data = req.data || {};
 
-    req.data.groupPlan = groupPlan;
+    req.data.groupPlanDetails = {
+      groupPlanId: groupPlanDetails.id,
+    };
 
     next();
   }

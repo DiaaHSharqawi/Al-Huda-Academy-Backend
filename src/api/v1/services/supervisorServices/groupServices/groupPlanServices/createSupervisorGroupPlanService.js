@@ -1,4 +1,4 @@
-const db = require("./../../../../../models/index.js");
+const db = require("../../../../../../../models/index.js");
 const { Op } = require("sequelize");
 
 const createSupervisorGroupPlanService = async (
@@ -32,9 +32,9 @@ const createSupervisorGroupPlanService = async (
     throw error;
   }
 
-  const pendingGroupPlanStatus = await db.GroupPlanStatus.findOne({
+  const activeGroupPlanStatus = await db.GroupPlanStatus.findOne({
     where: {
-      name_en: "pending",
+      name_en: "active",
     },
   });
   const transaction = await db.sequelize.transaction();
@@ -46,7 +46,7 @@ const createSupervisorGroupPlanService = async (
       {
         groupId: groupDetails.groupId,
         dayDate: groupPlanData.dayDate,
-        group_plan_status_id: pendingGroupPlanStatus.id,
+        group_plan_status_id: activeGroupPlanStatus.id,
         note: groupPlanData.note,
       },
       { transaction }

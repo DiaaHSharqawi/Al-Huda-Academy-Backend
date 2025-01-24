@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 
-const getAllSupervisorGroupPlanService = require("../../services/supervisorServices/getAllSupervisorGroupPlanService.js");
+const getAllSupervisorGroupPlanService = require("../../../../services/supervisorServices/groupServices/groupPlanServices/getAllSupervisorGroupPlanService.js");
 
 const getAllSupervisorGroupPlanController = asyncHandler(async (req, res) => {
   console.log("\n\n===== getSupervisorGroupPlanController =====\n");

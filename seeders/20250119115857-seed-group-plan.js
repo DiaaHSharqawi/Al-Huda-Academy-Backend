@@ -13,7 +13,7 @@ module.exports = {
           dayDate: 0,
           dayDate: new Date("2025-01-19"),
           note: "This is a note",
-          group_plan_status_id: 1,
+          group_plan_status_id: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

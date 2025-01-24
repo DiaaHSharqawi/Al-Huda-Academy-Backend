@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const getAllSupervisorGroupJoinRequestService = require("./../../services/supervisorServices/getAllSupervisorGroupJoinRequestService");
+const getAllSupervisorGroupJoinRequestService = require("../../../../services/supervisorServices/groupServices/groupJoinRequestServices/getAllSupervisorGroupJoinRequestService.js");
 
 const getAllSupervisorGroupJoinRequestController = asyncHandler(
   async (req, res) => {

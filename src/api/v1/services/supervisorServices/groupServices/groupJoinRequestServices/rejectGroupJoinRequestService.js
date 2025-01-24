@@ -1,5 +1,5 @@
-const db = require("../../../../../models/index.js");
-const sendNotificationsUtil = require("../../utils/notifications/sendNotificationsUtil.js");
+const db = require("../../../../../../../models/index.js");
+const sendNotificationsUtil = require("../../../../utils/notifications/sendNotificationsUtil.js");
 
 const rejectGroupJoinRequestService = async (
   supervisorDetails,

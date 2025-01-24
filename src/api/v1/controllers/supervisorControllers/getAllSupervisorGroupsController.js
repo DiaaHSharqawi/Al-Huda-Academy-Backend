@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 
-const getAllSupervisorGroupsService = require("./../../services/supervisorServices/getAllSupervisorGroupsService");
+const getAllSupervisorGroupsService = require("./../../services/supervisorServices/getAllSupervisorGroupsService.js");
 
 const getAllSupervisorGroupsController = asyncHandler(async (req, res) => {
   const getAllSupervisorGroupsData = req.body;

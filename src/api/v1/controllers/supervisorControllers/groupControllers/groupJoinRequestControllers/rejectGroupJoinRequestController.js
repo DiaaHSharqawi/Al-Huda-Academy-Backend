@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const rejectGroupJoinRequestService = require("../../services/supervisorServices/rejectGroupJoinRequestService");
+const rejectGroupJoinRequestService = require("./../../../../services/supervisorServices/groupServices/groupJoinRequestServices/rejectGroupJoinRequestService.js");
 
 const rejectGroupJoinRequestController = asyncHandler(async (req, res) => {
   console.log("\n------ rejectGroupJoinRequestController ------\n");

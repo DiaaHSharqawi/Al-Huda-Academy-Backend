@@ -25,6 +25,11 @@ module.exports = {
           name_ar: "مؤجل",
           name_en: "deferred",
         },
+        {
+          id: 5,
+          name_ar: "نشط",
+          name_en: "active",
+        },
       ]);
       console.log("Data inserted successfully into group_plan_status.");
     } catch (error) {
