@@ -13,11 +13,11 @@ const rejectGroupJoinRequestService = async (
   const { supervisorId } = supervisorDetails;
   const { participantId } = participantDetails;
 
-  const participantMembership = await db.GroupMembership.findOne({
+  const participantMember = await db.GroupMembers.findOne({
     where: { group_id: groupId, participant_id: participantId },
   });
 
-  if (participantMembership) {
+  if (participantMember) {
     const error = new Error("Participant already a member of the group");
     error.statusCode = 409;
     throw error;

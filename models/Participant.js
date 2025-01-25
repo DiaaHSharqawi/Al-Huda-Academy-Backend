@@ -107,7 +107,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Participant.belongsToMany(models.MemorizationGroup, {
-      through: models.GroupMembership,
+      through: models.GroupMembers,
       foreignKey: {
         name: "participant_id",
         allowNull: false,

@@ -234,14 +234,14 @@ const searchMemorizationGroupService = async (
 
   console.log("whereClause:", whereClause);
 
-  const participantGroupMembership = await db.GroupMembership.findAll({
+  const participantGroupMembers = await db.GroupMembers.findAll({
     where: {
       participant_id: participantId,
     },
     attributes: ["group_id"],
   });
 
-  const participantGroupIds = participantGroupMembership.map(
+  const participantGroupIds = participantGroupMembers.map(
     (members) => members.group_id
   );
 

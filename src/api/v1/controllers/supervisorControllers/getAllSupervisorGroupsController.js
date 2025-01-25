@@ -8,6 +8,10 @@ const getAllSupervisorGroupsController = asyncHandler(async (req, res) => {
   const getAllSupervisorGroupsDataQuery = req.query;
 
   console.log("getAllSupervisorGroupsData", getAllSupervisorGroupsData);
+  console.log(
+    "getAllSupervisorGroupsDataQuery",
+    getAllSupervisorGroupsDataQuery
+  );
 
   const { supervisorGroups, supervisorGroupsMetaData } =
     await getAllSupervisorGroupsService(

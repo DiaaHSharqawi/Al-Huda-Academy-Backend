@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const GroupMembership = sequelize.define(
-    "GroupMembership",
+  const GroupMembers = sequelize.define(
+    "GroupMembers",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -25,13 +25,13 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      tableName: "group_memberships",
+      tableName: "group_member",
       timestamps: true,
     }
   );
 
-  GroupMembership.associate = (models) => {
-    GroupMembership.belongsTo(models.MemorizationGroup, {
+  GroupMembers.associate = (models) => {
+    GroupMembers.belongsTo(models.MemorizationGroup, {
       foreignKey: {
         name: "group_id",
         allowNull: false,
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "CASCADE",
     });
 
-    GroupMembership.belongsTo(models.Participant, {
+    GroupMembers.belongsTo(models.Participant, {
       foreignKey: {
         name: "participant_id",
         allowNull: false,
@@ -48,16 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
-
-    /*GroupMembership.belongsTo(models.GroupMembershipStatus, {
-      foreignKey: {
-        name: "membership_status_id",
-        allowNull: false,
-      },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
-    });*/
   };
 
-  return GroupMembership;
+  return GroupMembers;
 };

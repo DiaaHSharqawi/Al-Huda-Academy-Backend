@@ -24,7 +24,7 @@ const getAllGroupMembersService = async (groupId, searchParams = {}) => {
   const limit = parseInt(searchParams.limit, 10) || 3;
   const offset = (page - 1) * limit;
 
-  const totalNumberOfRecords = await db.GroupMembership.count({
+  const totalNumberOfRecords = await db.GroupMembers.count({
     include: [
       {
         model: db.Participant,
@@ -44,7 +44,7 @@ const getAllGroupMembersService = async (groupId, searchParams = {}) => {
 
   const sortOrder = (searchParams.sortOrder || "ASC").toUpperCase();
 
-  const groupMembers = await db.GroupMembership.findAll({
+  const groupMembers = await db.GroupMembers.findAll({
     where: {
       group_id: groupId,
     },
@@ -68,7 +68,7 @@ const getAllGroupMembersService = async (groupId, searchParams = {}) => {
   });
 
   if (!groupMembers) {
-    const error = new Error("Group Membership not found");
+    const error = new Error("Group members not found");
     error.status = 404;
     throw error;
   }

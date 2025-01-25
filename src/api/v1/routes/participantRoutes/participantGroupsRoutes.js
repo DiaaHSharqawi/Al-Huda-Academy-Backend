@@ -4,6 +4,7 @@ const router = express.Router();
 
 // Controllers imports :
 const sendRequestToJoinGroupController = require("./../../controllers/participantControllers/sendRequestToJoinGroupController");
+const getAllParticipantGroupsController = require("./../../controllers/participantControllers/groupControllers/getAllParticipantGroupsController.js");
 
 // Middlewares imports :
 const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
@@ -12,6 +13,13 @@ const verifyParticipantExistenceMiddleware = require("./../../middlewares/partic
 
 // participantGroupsRoutes:
 // participant/groups
+
+router.get(
+  "/",
+  verifyJwtTokenMiddleware,
+  verifyParticipantExistenceMiddleware,
+  getAllParticipantGroupsController
+);
 
 router.post(
   "/:groupId/send-request-to-join-group",
