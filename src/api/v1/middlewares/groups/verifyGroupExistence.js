@@ -7,7 +7,11 @@ const db = require("./../../../../../models/index.js");
 const verifyGroupExistenceMiddleware = asyncHandler(async (req, res, next) => {
   console.log("\n------ verifyGroupExistenceMiddleware ------\n");
 
+  console.log(req.route);
+
   const groupId = req.params.groupId;
+
+  console.log("req.params", req.params);
 
   console.log("groupId", groupId);
 

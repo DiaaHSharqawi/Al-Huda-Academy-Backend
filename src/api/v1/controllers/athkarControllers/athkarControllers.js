@@ -27,8 +27,10 @@ const athkarControllers = {
 
   getAthkarByCategory: asyncHandler(async (req, res) => {
     const lang = req.headers["accept-language"]?.includes("ar") ? "ar" : "en";
-    console.dir(req.query, { depth: null });
-    const { categoryId } = req.query;
+
+    console.dir(req.params, { depth: null });
+
+    const { categoryId } = req.params;
     console.log(`categoryId: ${categoryId}`);
 
     const athkars = await athkarServices.getAthkarByCategory(categoryId, lang);

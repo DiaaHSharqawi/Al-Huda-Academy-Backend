@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get("/categories", athkarControllers.getCategorizedAthkars);
 
-router.get("/category", athkarControllers.getAthkarByCategory);
+router.get("/category/:categoryId", athkarControllers.getAthkarByCategory);
 
 module.exports = router;

@@ -43,18 +43,29 @@ const getSupervisorGroupDashboardService = async (groupId) => {
   });
 
   console.log("groupJoinRequests", groupJoinRequests);
-  /*
-  const groupMembers = await db.GroupMember.findAll({
+
+  const groupPlans = await db.GroupPlan.findOne({
     where: {
-      group_id: groupId,
+      groupId: groupId,
+      dayDate: {
+        [db.Sequelize.Op.gte]: new Date().setHours(0, 0, 0, 0),
+      },
     },
+    include: [
+      {
+        model: db.GroupPlanStatus,
+      },
+    ],
+    order: [["dayDate", "ASC"]],
+    limit: 1,
   });
 
-  console.log("groupMembers", groupMembers);*/
+  console.log("groupPlans", groupPlans);
 
   const groupDashboard = {
     groupDetailsDashboard: groupDetails,
     groupJoinRequestsDashboard: groupJoinRequests,
+    groupPlans: groupPlans,
   };
 
   return groupDashboard;

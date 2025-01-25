@@ -100,6 +100,26 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    Surah.hasMany(models.ContentToReview, {
+      foreignKey: {
+        name: "surahId",
+        sourceKey: "id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+
+    Surah.hasMany(models.ContentToMemorize, {
+      foreignKey: {
+        name: "surahId",
+        sourceKey: "id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
 
   return Surah;

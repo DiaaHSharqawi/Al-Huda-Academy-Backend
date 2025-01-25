@@ -7,12 +7,7 @@ const router = express.Router();
 const getSupervisorByUserIdController = require("./../../controllers/supervisorControllers/getSupervisorController");
 const getSupervisorBySupervisorIdController = require("./../../controllers/supervisorControllers/getSupervisorBySupervisorIdController");
 
-const getAllSupervisorGroupJoinRequestController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupJoinRequestController");
-const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
-
 // Middlewares imports :
-const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
-//const verifySupervisorGroupAuthorizationMiddleware = require("../../middlewares/verifySupervisorGroupAuthorizationMiddleware.js");
 
 // Supervisor SubRoutes
 const supervisorGroupsRoutes = require("./supervisorGroupsRoutes.js");
