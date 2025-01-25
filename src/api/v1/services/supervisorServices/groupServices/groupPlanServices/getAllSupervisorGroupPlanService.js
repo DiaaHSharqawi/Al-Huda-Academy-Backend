@@ -18,9 +18,21 @@ const getAllSupervisorGroupPlanService = async (
   console.log("limit", limit);
   console.log("offset", offset);
 
+  let whereClause = {};
+
+  if (searchParams.fromDate && searchParams.toDate) {
+    whereClause = {
+      ...whereClause,
+      dayDate: {
+        [db.Sequelize.Op.between]: [searchParams.fromDate, searchParams.toDate],
+      },
+    };
+  }
+
   const totalNumberOfGroupPlan = await db.GroupPlan.count({
     where: {
       groupId: groupId,
+      ...whereClause,
     },
   });
 
@@ -39,6 +51,7 @@ const getAllSupervisorGroupPlanService = async (
   const groupPlan = await db.GroupPlan.findAll({
     where: {
       groupId: groupId,
+      ...whereClause,
     },
     include: [
       {
@@ -47,7 +60,7 @@ const getAllSupervisorGroupPlanService = async (
     ],
     limit,
     offset,
-    order: [["createdAt", sortOrder]],
+    order: [["dayDate", sortOrder]],
   });
 
   if (!groupPlan) {
