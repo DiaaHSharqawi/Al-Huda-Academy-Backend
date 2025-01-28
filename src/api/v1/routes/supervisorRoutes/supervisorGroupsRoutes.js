@@ -22,7 +22,8 @@ const verifySupervisorGroupAuthorizationMiddleware = require("./../../middleware
 
 // SubRoutes imports :
 const supervisorGroupPlanRoutes = require("./supervisorGroupPlanRoutes.js");
-const supervisorGroupJoinRequests = require("./supervisorGroupJoinRequests.js");
+const supervisorGroupJoinRequestsRoutes = require("./supervisorGroupJoinRequestsRoutes.js");
+const supervisorGroupMembersRoutes = require("./supervisorGroupMemberRoutes.js");
 
 // SupervisorGroups Routes /supervisor/groups
 
@@ -61,16 +62,16 @@ router.use(
   verifyGroupExistenceMiddleware,
   verifySupervisorExistenceMiddleware,
   verifySupervisorGroupAuthorizationMiddleware,
-  supervisorGroupJoinRequests
+  supervisorGroupJoinRequestsRoutes
 );
 
-router.get(
+router.use(
   "/:groupId/members",
   verifyJwtTokenMiddleware,
   verifyGroupExistenceMiddleware,
   verifySupervisorExistenceMiddleware,
   verifySupervisorGroupAuthorizationMiddleware,
-  getAllGroupMembersController
+  supervisorGroupMembersRoutes
 );
 
 router.get("/:groupId/dashboard", getSupervisorGroupDashboardController);

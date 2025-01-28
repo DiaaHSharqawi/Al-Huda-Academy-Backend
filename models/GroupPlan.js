@@ -75,6 +75,15 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     });
+
+    GroupPlan.hasMany(models.GroupMembersFollowUpRecord, {
+      foreignKey: {
+        name: "group_plan_id",
+        allowNull: false,
+      },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
   };
 
   return GroupPlan;

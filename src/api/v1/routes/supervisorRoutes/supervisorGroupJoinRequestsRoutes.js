@@ -9,7 +9,7 @@ const acceptSupervisorGroupJoinRequestController = require("../../controllers/su
 const rejectSupervisorGroupJoinRequestController = require("../../controllers/supervisorControllers/groupControllers/groupJoinRequestControllers/rejectGroupJoinRequestController.js");
 
 // Middlewares imports :
-const verifyParticipantExistenceMiddleware = require("./../../middlewares/participant/verifyParticipantExistenceMiddleware.js");
+const verifyParticipantExistenceMiddleware = require("../../middlewares/participant/verifyParticipantExistenceMiddleware.js");
 
 // Validation imports :
 
