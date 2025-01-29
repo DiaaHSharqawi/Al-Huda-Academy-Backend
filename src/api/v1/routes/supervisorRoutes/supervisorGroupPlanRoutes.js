@@ -11,6 +11,7 @@ const updateSupervisorGroupPlanController = require("../../controllers/superviso
 const deleteSupervisorGroupPlanController = require("../../controllers/supervisorControllers/groupControllers/groupPlanControllers/deleteSupervisorGroupPlanController.js");
 
 const getSupervisorGroupPlanDetailsController = require("../../controllers/supervisorControllers/groupControllers/groupPlanControllers/getSupervisorGroupPlanDetailsController.js");
+const getAllSupervisorGroupPlanDatesController = require("../../controllers/supervisorControllers/groupControllers/groupPlanControllers/getAllSupervisorGroupPlanDatesController.js");
 
 // Middlewares imports :
 const verifyGroupPlanExistenceMiddleware = require("./../../middlewares/groupPlans/verifyGroupPlanExistenceMiddleware.js");
@@ -21,6 +22,8 @@ const validateCreateSupervisorGroupPlanValidation = require("./../../validations
 // SupervisorGroups Routes /supervisor/groups/:groupId/group-plan
 
 router.get("/", getAllSupervisorGroupPlanController);
+
+router.get("/dates", getAllSupervisorGroupPlanDatesController);
 
 router.get(
   "/:planId",

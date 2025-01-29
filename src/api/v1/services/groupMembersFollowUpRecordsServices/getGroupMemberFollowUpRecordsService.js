@@ -25,12 +25,14 @@ const getGroupMemberFollowUpRecordsService = async (
 
   console.log("Newest dayDate:", newestDayDate);
 
+  console.log("searchParams", searchParams);
+
   const { dayDate } = searchParams;
 
-  const dayDateToUse = dayDate || newestDayDate;
+  const dayDateToUse = dayDate ?? newestDayDate;
 
   const groupMemberFollowUpRecords =
-    (await db.GroupMembersFollowUpRecord.findOne({
+    await db.GroupMembersFollowUpRecord.findOne({
       where: { group_member_id: groupMemberId },
       include: [
         { model: db.AttendanceStatus },
@@ -50,11 +52,10 @@ const getGroupMemberFollowUpRecordsService = async (
         },
       ],
       order: [
-        // Sort ContentToMemorize and ContentToReview by Surah.id
         [db.GroupPlan, db.ContentToMemorize, db.Surah, "id", "ASC"],
         [db.GroupPlan, db.ContentToReview, db.Surah, "id", "ASC"],
       ],
-    })) || [];
+    });
 
   const groupPlans = await db.GroupPlan.findAll({
     where: { groupId },
@@ -82,10 +83,12 @@ const getGroupMemberFollowUpRecordsService = async (
 
   const groupMemberFollowUpRecordsMetadata = {
     totalGroupPlans: groupPlans.length,
-    newestDayDate,
+    dayDateToUse: new Date(dayDateToUse).toISOString(),
     navigation: {
-      previous: previousDayDate,
-      next: nextDayDate,
+      previous: previousDayDate
+        ? new Date(previousDayDate).toISOString()
+        : null,
+      next: nextDayDate ? new Date(nextDayDate).toISOString() : null,
     },
   };
 

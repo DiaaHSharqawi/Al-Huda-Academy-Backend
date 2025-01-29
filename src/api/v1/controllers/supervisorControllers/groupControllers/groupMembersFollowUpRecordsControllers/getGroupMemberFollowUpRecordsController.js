@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 
-const getGroupMemberFollowUpRecordsService = require("../../services/groupMembersFollowUpRecordsServices/getGroupMemberFollowUpRecordsService.js");
+const getGroupMemberFollowUpRecordsService = require("../../../../services/groupMembersFollowUpRecordsServices/getGroupMemberFollowUpRecordsService.js");
 
 const getGroupMemberFollowUpRecordsController = asyncHandler(
   async (req, res) => {
@@ -9,10 +9,13 @@ const getGroupMemberFollowUpRecordsController = asyncHandler(
     const { groupMemberDetails } = req.data;
     const { groupDetails } = req.data;
 
+    const searchParams = req.query;
+
     const { groupMemberFollowUpRecordsMetadata, groupMemberFollowUpRecords } =
       await getGroupMemberFollowUpRecordsService(
         groupDetails,
-        groupMemberDetails
+        groupMemberDetails,
+        searchParams
       );
 
     res.status(200).json({

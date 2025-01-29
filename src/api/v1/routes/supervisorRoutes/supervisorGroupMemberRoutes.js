@@ -4,8 +4,8 @@ const router = express.Router();
 
 // Controllers imports :
 
-const getAllGroupMembersController = require("../../controllers/supervisorControllers/getAllGroupMembersController.js");
-const getGroupMemberFollowUpRecordsController = require("../../controllers/groupMembersFollowUpRecordsControllers/getGroupMemberFollowUpRecordsController.js");
+const getAllGroupMembersController = require("../../controllers/supervisorControllers/groupControllers/groupMembersControllers/getAllGroupMembersController.js");
+const getGroupMemberFollowUpRecordsController = require("../../controllers/supervisorControllers/groupControllers/groupMembersFollowUpRecordsControllers/getGroupMemberFollowUpRecordsController.js");
 
 // Middlewares imports :
 const verifyGroupMemberExistenceMiddleware = require("./../../middlewares/supervisor/verifyGroupMemberExistenceMiddleware.js");
@@ -13,15 +13,16 @@ const verifyGroupMemberExistenceMiddleware = require("./../../middlewares/superv
 // Validation imports :
 
 // SubRoutes imports :
+const supervisorGroupMemberFollowUpRecordsRoutes = require("./supervisorGroupMemberFollowUpRecordsRoutes.js");
 
 // Supervisor groups member Routes /supervisor/groups/:groupId/members
 
 router.get("/", getAllGroupMembersController);
 
-router.get(
+router.use(
   "/:memberId/follow-up-records",
   verifyGroupMemberExistenceMiddleware,
-  getGroupMemberFollowUpRecordsController
+  supervisorGroupMemberFollowUpRecordsRoutes
 );
 
 module.exports = router;

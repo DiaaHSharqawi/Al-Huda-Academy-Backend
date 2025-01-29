@@ -6,7 +6,7 @@ const router = express.Router();
 const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
 const getSupervisorGroupDashboardController = require("./../../controllers/supervisorControllers/getSupervisorGroupDashboardController");
 
-const getAllGroupMembersController = require("../../controllers/supervisorControllers/getAllGroupMembersController.js");
+const getAllGroupMembersController = require("../../controllers/supervisorControllers/groupControllers/groupMembersControllers/getAllGroupMembersController.js");
 
 const getAllGroupDayController = require("./../../controllers/supervisorControllers/getAllGroupDayController.js");
 

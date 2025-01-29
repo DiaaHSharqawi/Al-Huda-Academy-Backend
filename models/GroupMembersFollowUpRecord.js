@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       grade_of_memorization: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       grade_of_review: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       attendance_status_id: {
