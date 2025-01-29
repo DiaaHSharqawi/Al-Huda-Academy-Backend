@@ -31,6 +31,8 @@ const getGroupMemberFollowUpRecordsService = async (
 
   const dayDateToUse = dayDate ?? newestDayDate;
 
+  console.log("dayDateToUse", dayDateToUse);
+
   const groupMemberFollowUpRecords =
     await db.GroupMembersFollowUpRecord.findOne({
       where: { group_member_id: groupMemberId },
@@ -57,11 +59,21 @@ const getGroupMemberFollowUpRecordsService = async (
       ],
     });
 
-  const groupPlans = await db.GroupPlan.findAll({
-    where: { groupId },
+  const groupPlan = await db.GroupPlan.findOne({
+    where: { groupId, dayDate: dayDateToUse },
+    include: [
+      {
+        model: db.ContentToMemorize,
+        include: [{ model: db.Surah }],
+      },
+      {
+        model: db.ContentToReview,
+        include: [{ model: db.Surah }],
+      },
+    ],
   });
 
-  if (!groupPlans || groupPlans.length === 0) {
+  if (!groupPlan || groupPlan.length === 0) {
     const error = new Error("Group plans not found");
     error.statusCode = 404;
     throw error;
@@ -82,19 +94,23 @@ const getGroupMemberFollowUpRecordsService = async (
   });
 
   const groupMemberFollowUpRecordsMetadata = {
-    totalGroupPlans: groupPlans.length,
-    dayDateToUse: new Date(dayDateToUse).toISOString(),
+    totalGroupPlans: groupPlan.length,
+    dayDateToUse: dayDateToUse,
     navigation: {
       previous: previousDayDate
         ? new Date(previousDayDate).toISOString()
         : null,
-      next: nextDayDate ? new Date(nextDayDate).toISOString() : null,
+      next: nextDayDate ? new Date(nextDayDate) : null,
     },
   };
 
   console.log("\n------ End of getGroupMemberFollowUpRecordsService ------\n");
 
-  return { groupMemberFollowUpRecordsMetadata, groupMemberFollowUpRecords };
+  return {
+    groupMemberFollowUpRecordsMetadata,
+    groupMemberFollowUpRecords,
+    groupPlan,
+  };
 };
 
 module.exports = getGroupMemberFollowUpRecordsService;

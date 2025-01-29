@@ -11,16 +11,20 @@ const getGroupMemberFollowUpRecordsController = asyncHandler(
 
     const searchParams = req.query;
 
-    const { groupMemberFollowUpRecordsMetadata, groupMemberFollowUpRecords } =
-      await getGroupMemberFollowUpRecordsService(
-        groupDetails,
-        groupMemberDetails,
-        searchParams
-      );
+    const {
+      groupPlan,
+      groupMemberFollowUpRecordsMetadata,
+      groupMemberFollowUpRecords,
+    } = await getGroupMemberFollowUpRecordsService(
+      groupDetails,
+      groupMemberDetails,
+      searchParams
+    );
 
     res.status(200).json({
       success: true,
       message: "Group member follow-up records retrieved successfully",
+      groupPlan: groupPlan,
       groupMemberFollowUpRecords: groupMemberFollowUpRecords,
       groupMemberFollowUpRecordsMetadata: groupMemberFollowUpRecordsMetadata,
     });
