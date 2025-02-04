@@ -132,7 +132,7 @@ app.use("/api/group-plans", groupPlansRoutes);
 app.use((err, req, res, next) => {
   const statusCode = err.response?.status || err.statusCode || 500;
   const message =
-    err.response?.data.message || err.message || "Internal Server Error";
+    err.response?.data?.message || err.message || "Internal Server Error";
 
   res.status(statusCode).json({
     success: false,

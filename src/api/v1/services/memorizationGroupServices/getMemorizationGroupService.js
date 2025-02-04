@@ -367,9 +367,17 @@ const searchMemorizationGroupService = async (
   const memorizationGroups = await db.MemorizationGroup.findAll({
     where: {
       ...whereClause,
-      id: {
-        [Op.notIn]: [...participantGroupIds, ...participantGroupJoinRequestIds],
-      },
+      ...(participantGroupIds.length > 0 ||
+      participantGroupJoinRequestIds.length > 0
+        ? {
+            id: {
+              [Op.notIn]: [
+                ...participantGroupIds,
+                ...participantGroupJoinRequestIds,
+              ],
+            },
+          }
+        : {}),
     },
     include: [
       {
@@ -412,7 +420,11 @@ const searchMemorizationGroupService = async (
         // Add a computed "recommendedFlag" attribute
         [
           db.Sequelize.literal(`CASE 
-            WHEN id IN (${recommendedGroups.join(",")}) THEN TRUE 
+            WHEN ${
+              recommendedGroups.length > 0
+                ? `id IN (${recommendedGroups.join(",")})`
+                : "FALSE"
+            } THEN TRUE 
             ELSE FALSE 
           END`),
           "recommended_flag",

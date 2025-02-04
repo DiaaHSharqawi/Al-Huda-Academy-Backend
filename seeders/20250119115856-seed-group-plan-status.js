@@ -7,28 +7,28 @@ module.exports = {
       await queryInterface.bulkInsert("group_plan_status", [
         {
           id: 1,
-          name_ar: "قيد الانتظار",
-          name_en: "pending",
+          name_ar: "قادمة",
+          name_en: "upcoming",
         },
         {
           id: 2,
-          name_ar: "مكتمل",
-          name_en: "completed",
+          name_ar: "ماضية",
+          name_en: "past",
         },
         {
           id: 3,
-          name_ar: "ملغى",
-          name_en: "cancelled",
+          name_ar: "مكتملة",
+          name_en: "completed",
         },
         {
           id: 4,
-          name_ar: "مؤجل",
-          name_en: "deferred",
+          name_ar: "ملغية",
+          name_en: "cancelled",
         },
         {
           id: 5,
-          name_ar: "نشط",
-          name_en: "active",
+          name_ar: "مؤجلة",
+          name_en: "deferred",
         },
       ]);
       console.log("Data inserted successfully into group_plan_status.");

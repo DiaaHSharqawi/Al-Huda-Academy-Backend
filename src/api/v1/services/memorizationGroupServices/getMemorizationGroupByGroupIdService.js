@@ -86,7 +86,7 @@ const getMemorizationGroupByGroupIdService = async (
     //memorizationGroups.setDataValue("surahs", surahs);
   } else if (
     memorizationGroups.TeachingMethod.id == 2 ||
-    memorizationGroups.TeachingMethod.id == 4
+    memorizationGroups.TeachingMethod.id == 3
   ) {
     console.log("Memorization of Parts of the Quran");
     juzas = await db.JuzaMemorizationGroup.findAll({

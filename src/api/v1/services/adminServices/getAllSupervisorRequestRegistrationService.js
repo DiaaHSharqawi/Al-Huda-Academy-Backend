@@ -57,7 +57,7 @@ const getAllSupervisorRequestRegistrationService = async (
           {
             model: db.AccountStatus,
             where: {
-              englishName: "pending",
+              englishName: "under review",
             },
           },
         ],

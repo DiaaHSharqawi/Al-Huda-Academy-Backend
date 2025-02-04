@@ -66,10 +66,12 @@ const acceptSupervisorRequestRegistrationService = async (
     }
   );
 
+  console.log("supervisor.User.id", supervisor.User.id);
+
   const acceptSupervisorRequestRegistrationNotificationMessage = {
     title: "تم قبول طلب التسجيل",
     message: "تم قبول طلب تسجيلك كمشرف لتحفيظ القرآن الكريم",
-    externalIds: supervisor.userId,
+    externalIds: [`${supervisor.User.id}`],
   };
 
   const sendNotificationsResponse = await sendNotificationsUtil(

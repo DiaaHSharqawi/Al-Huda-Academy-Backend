@@ -32,9 +32,9 @@ const createSupervisorGroupPlanService = async (
     throw error;
   }
 
-  const activeGroupPlanStatus = await db.GroupPlanStatus.findOne({
+  const upcomingGroupPlanStatus = await db.GroupPlanStatus.findOne({
     where: {
-      name_en: "active",
+      name_en: "upcoming",
     },
   });
   const transaction = await db.sequelize.transaction();
@@ -46,7 +46,7 @@ const createSupervisorGroupPlanService = async (
       {
         groupId: groupDetails.groupId,
         dayDate: groupPlanData.dayDate,
-        group_plan_status_id: activeGroupPlanStatus.id,
+        group_plan_status_id: upcomingGroupPlanStatus.id,
         note: groupPlanData.note,
       },
       { transaction }

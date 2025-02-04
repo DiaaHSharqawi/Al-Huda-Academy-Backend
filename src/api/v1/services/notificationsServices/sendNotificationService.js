@@ -1,4 +1,5 @@
 const axios = require("axios");
+const db = require("./../../../../../models/index.js");
 
 const ONESIGNAL_URL = "https://onesignal.com/api/v1/notifications";
 const ONESIGNAL_APP_ID = process.env.ONESIGNAL_APP_ID;
@@ -38,10 +39,27 @@ const sendNotificationService = async (notificationData) => {
     );
     console.log("oneSignalResponse", oneSignalResponse);
 
+    if (Array.isArray(externalIds)) {
+      for (const userId of externalIds) {
+        console.log("userId", userId);
+        await db.Notification.create({
+          title,
+          message,
+          userId,
+        });
+      }
+    } else {
+      await db.Notification.create({
+        title,
+        message,
+        userId: externalIds,
+      });
+    }
+
     return oneSignalResponse.data;
   } catch (error) {
     console.error("Error sending notification:");
-    console.error(error.response.data);
+    console.error(error);
     throw new Error("Failed to send notification");
   }
 };
