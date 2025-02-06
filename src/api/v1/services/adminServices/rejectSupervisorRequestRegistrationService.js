@@ -1,4 +1,5 @@
 const db = require("./../../../../../models/index.js");
+const sendNotificationsUtil = require("./../../utils/notifications/sendNotificationsUtil.js");
 
 const rejectSupervisorRequestRegistrationService = async (
   supervisorId,
@@ -32,8 +33,8 @@ const rejectSupervisorRequestRegistrationService = async (
 
   console.log(supervisor.User.AccountStatus.englishName);
 
-  if (supervisor.User.AccountStatus.englishName !== "pending") {
-    const error = new Error("Account status is not pending");
+  if (supervisor.User.AccountStatus.englishName !== "under review") {
+    const error = new Error("Account status is not under review");
     error.statusCode = 404;
     throw error;
   }
@@ -63,7 +64,7 @@ const rejectSupervisorRequestRegistrationService = async (
   const acceptSupervisorRequestRegistrationNotificationMessage = {
     title: "تم قبول طلب التسجيل",
     message: "تم قبول طلب تسجيلك كمشرف لتحفيظ القرآن الكريم",
-    externalIds: supervisor.userId,
+    externalIds: [`${supervisor.User.id}`],
   };
 
   const sendNotificationsResponse = await sendNotificationsUtil(

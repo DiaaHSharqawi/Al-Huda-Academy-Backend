@@ -22,27 +22,38 @@ const deleteSupervisorGroupPlanService = async (
     },
   });
 
+  if (!existingGroupPlan) {
+    console.log("GroupPlan not found, skipping deletion.");
+    return;
+  }
+
   const transaction = await db.sequelize.transaction();
   try {
-    if (existingGroupPlan) {
-      await db.ContentToMemorize.destroy({
-        where: { groupPlanId },
-        transaction,
-      });
+    // Delete dependent records first to prevent FK constraint errors
+    await db.GroupMembersFollowUpRecord.destroy({
+      where: { group_plan_id: groupPlanId },
+      transaction,
+    });
 
-      await db.ContentToReview.destroy({
-        where: { groupPlanId },
-        transaction,
-      });
+    await db.ContentToMemorize.destroy({
+      where: { groupPlanId },
+      transaction,
+    });
 
-      await existingGroupPlan.destroy({ transaction });
-    }
+    await db.ContentToReview.destroy({
+      where: { groupPlanId },
+      transaction,
+    });
+
+    // Now delete the group plan
+    await existingGroupPlan.destroy({ transaction });
 
     await transaction.commit();
 
     console.log("===== End of deleteSupervisorGroupPlanService =====");
   } catch (error) {
     await transaction.rollback();
+    console.error("Error deleting GroupPlan:", error);
     throw error;
   }
 };

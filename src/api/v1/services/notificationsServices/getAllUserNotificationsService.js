@@ -44,6 +44,7 @@ const getAllUserNotificationsService = async (userDetails, queryParams) => {
       ].filter(Boolean),
       limit,
       offset,
+      order: [["createdAt", "DESC"]],
     });
 
   console.log("userNotifications", userNotifications);

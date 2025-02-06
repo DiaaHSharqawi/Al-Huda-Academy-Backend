@@ -1,4 +1,7 @@
+const { t } = require("i18next");
 const db = require("../../../../../models/index.js");
+
+const sendNotificationsUtil = require("./../../utils/notifications/sendNotificationsUtil.js");
 
 const createGroupMembersFollowUpRecordsService = async (
   groupMembersFollowUpRecordsData,
@@ -53,6 +56,30 @@ const createGroupMembersFollowUpRecordsService = async (
     error.statusCode = 500;
     throw error;
   }
+
+  const groupMemberInfo = await db.GroupMembers.findOne({
+    where: {
+      id: groupMemberId,
+    },
+  });
+
+  const participantId = groupMemberInfo.participant_id;
+
+  const participantDetails = await db.Participant.findOne({
+    where: {
+      id: participantId,
+    },
+  });
+
+  const userId = participantDetails.userId;
+
+  console.log("userId: ", userId);
+
+  /*sendNotificationsUtil({
+    title: "تم إضافة علامة جديدة",
+    message: ""
+    userId: userId,
+  });*/
 };
 
 module.exports = createGroupMembersFollowUpRecordsService;
