@@ -234,14 +234,14 @@ const searchMemorizationGroupService = async (
 
   console.log("whereClause:", whereClause);
 
-  const participantGroupMembership = await db.GroupMembership.findAll({
+  const participantGroupMembers = await db.GroupMembers.findAll({
     where: {
       participant_id: participantId,
     },
     attributes: ["group_id"],
   });
 
-  const participantGroupIds = participantGroupMembership.map(
+  const participantGroupIds = participantGroupMembers.map(
     (members) => members.group_id
   );
 
@@ -367,9 +367,17 @@ const searchMemorizationGroupService = async (
   const memorizationGroups = await db.MemorizationGroup.findAll({
     where: {
       ...whereClause,
-      id: {
-        [Op.notIn]: [...participantGroupIds, ...participantGroupJoinRequestIds],
-      },
+      ...(participantGroupIds.length > 0 ||
+      participantGroupJoinRequestIds.length > 0
+        ? {
+            id: {
+              [Op.notIn]: [
+                ...participantGroupIds,
+                ...participantGroupJoinRequestIds,
+              ],
+            },
+          }
+        : {}),
     },
     include: [
       {
@@ -412,7 +420,11 @@ const searchMemorizationGroupService = async (
         // Add a computed "recommendedFlag" attribute
         [
           db.Sequelize.literal(`CASE 
-            WHEN id IN (${recommendedGroups.join(",")}) THEN TRUE 
+            WHEN ${
+              recommendedGroups.length > 0
+                ? `id IN (${recommendedGroups.join(",")})`
+                : "FALSE"
+            } THEN TRUE 
             ELSE FALSE 
           END`),
           "recommended_flag",

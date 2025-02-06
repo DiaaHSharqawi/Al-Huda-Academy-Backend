@@ -16,6 +16,10 @@ const nodemailer = require("nodemailer");
 const handlebars = require("handlebars");
 
 const sendPasswordResetCodeService = async (userIdentifier) => {
+  console.log("\n------ sendPasswordResetCodeService ------\n");
+
+  console.log(`userIdentifier : ${userIdentifier}`);
+
   const getUserByEmailResponse = await getUserByEmail(userIdentifier);
 
   if (getUserByEmailResponse.status === 422) {
@@ -34,7 +38,7 @@ const sendPasswordResetCodeService = async (userIdentifier) => {
     throw error;
   }
 
-  console.dir(getUserByEmailResponse, { depth: null });
+  //console.dir(getUserByEmailResponse, { depth: null });
 
   await db.PasswordResetCode.deleteExpiredTokens();
 

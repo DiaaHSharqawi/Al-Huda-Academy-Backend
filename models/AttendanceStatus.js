@@ -19,5 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  AttendanceStatus.associate = (models) => {
+    AttendanceStatus.hasMany(models.GroupMembersFollowUpRecord, {
+      foreignKey: {
+        name: "attendance_status_id",
+        allowNull: false,
+      },
+    });
+  };
   return AttendanceStatus;
 };

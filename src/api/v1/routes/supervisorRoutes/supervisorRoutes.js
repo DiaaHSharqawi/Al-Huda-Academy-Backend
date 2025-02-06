@@ -8,6 +8,8 @@ const getSupervisorByUserIdController = require("./../../controllers/supervisorC
 const getSupervisorBySupervisorIdController = require("./../../controllers/supervisorControllers/getSupervisorBySupervisorIdController");
 
 // Middlewares imports :
+const verifyJwtTokenMiddleware = require("../../middlewares/verifyJwtMiddleware.js");
+const verifySupervisorExistenceMiddleware = require("./../../middlewares/supervisor/verifySupervisorExistenceMiddleware.js");
 
 // Supervisor SubRoutes
 const supervisorGroupsRoutes = require("./supervisorGroupsRoutes.js");

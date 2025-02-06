@@ -72,7 +72,7 @@ const createSupervisorGroupPlanSchema = Joi.object({
       })
     )
     .messages({}),
-  note: Joi.string().optional().messages({
+  note: Joi.string().optional().allow("").messages({
     "string.base": "validations.note.must_be_a_string",
   }),
 })

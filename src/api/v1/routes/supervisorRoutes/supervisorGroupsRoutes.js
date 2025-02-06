@@ -6,8 +6,6 @@ const router = express.Router();
 const getAllSupervisorGroupsController = require("./../../controllers/supervisorControllers/getAllSupervisorGroupsController");
 const getSupervisorGroupDashboardController = require("./../../controllers/supervisorControllers/getSupervisorGroupDashboardController");
 
-const getAllGroupMembersController = require("../../controllers/supervisorControllers/getAllGroupMembersController.js");
-
 const getAllGroupDayController = require("./../../controllers/supervisorControllers/getAllGroupDayController.js");
 
 const getGroupContentController = require("./../../controllers/supervisorControllers/getGroupContentController.js");
@@ -22,7 +20,8 @@ const verifySupervisorGroupAuthorizationMiddleware = require("./../../middleware
 
 // SubRoutes imports :
 const supervisorGroupPlanRoutes = require("./supervisorGroupPlanRoutes.js");
-const supervisorGroupJoinRequests = require("./supervisorGroupJoinRequests.js");
+const supervisorGroupJoinRequestsRoutes = require("./supervisorGroupJoinRequestsRoutes.js");
+const supervisorGroupMembersRoutes = require("./supervisorGroupMemberRoutes.js");
 
 // SupervisorGroups Routes /supervisor/groups
 
@@ -61,16 +60,16 @@ router.use(
   verifyGroupExistenceMiddleware,
   verifySupervisorExistenceMiddleware,
   verifySupervisorGroupAuthorizationMiddleware,
-  supervisorGroupJoinRequests
+  supervisorGroupJoinRequestsRoutes
 );
 
-router.get(
+router.use(
   "/:groupId/members",
   verifyJwtTokenMiddleware,
   verifyGroupExistenceMiddleware,
   verifySupervisorExistenceMiddleware,
   verifySupervisorGroupAuthorizationMiddleware,
-  getAllGroupMembersController
+  supervisorGroupMembersRoutes
 );
 
 router.get("/:groupId/dashboard", getSupervisorGroupDashboardController);

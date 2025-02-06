@@ -31,7 +31,7 @@ const groups = [
     createdAt: new Date(),
   },
   {
-    group_name: "مجموعة علي بن أبي طالب - مستوى مبتدئ",
+    group_name: "مجموعة علي بن أبي طالب",
     group_description: "مجموعة مخصصة لحفظ القرآن الكريم لجميع المستويات.",
     capacity: 25,
     start_time: "14:00:00",
@@ -73,7 +73,7 @@ const groups = [
     createdAt: new Date(),
   },
   {
-    group_name: "مجموعة سعد بن أبي وقاص - مستوى مبتدئ",
+    group_name: "مجموعة سعد بن أبي وقاص",
     group_description: "مجموعة مخصصة لحفظ القرآن الكريم.",
     capacity: 18,
     start_time: "10:00:00",
@@ -143,7 +143,7 @@ const groups = [
     createdAt: new Date(),
   },
   {
-    group_name: "مجموعة أبو عبيدة بن الجراح - مراجعة",
+    group_name: "مجموعة أبو عبيدة بن الجراح",
     group_description: "مجموعة مخصصة لمراجعة القرآن الكريم.",
     capacity: 15,
     start_time: "13:00:00",
@@ -157,7 +157,7 @@ const groups = [
     createdAt: new Date(),
   },
   {
-    group_name: "مجموعة عبد الله بن عباس - مستوى متقدم",
+    group_name: "مجموعة عبد الله بن عباس",
     group_description: "مجموعة مخصصة لحفظ القرآن الكريم.",
     capacity: 18,
     start_time: "14:00:00",
